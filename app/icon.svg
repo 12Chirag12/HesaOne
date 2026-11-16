@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="#070C14" />
+  <rect x="1" y="1" width="30" height="30" rx="6" fill="none" stroke="#1E293B" stroke-width="1" />
+  <!-- Shield & H Glyph -->
+  <path d="M16 5 L24 8.5 V15 C24 20.5 16 25 16 25 C16 25 8 20.5 8 15 V8.5 L16 5 Z" fill="url(#brandGrad)" />
+  <!-- Inner Cutout H -->
+  <path d="M12 11 H14 V14 H18 V11 H20 V20 H18 V16 H14 V20 H12 Z" fill="#070C14" />
+</svg>
