@@ -134,7 +134,7 @@ export default function ContactPage() {
             {/* Confidentiality & Security Card */}
             <div className="info-card nda-card">
               <div className="nda-badge">
-                <ShieldCheck size={22} className="text-orange" />
+                <ShieldCheck size={22} className="nda-shield-icon" />
                 <h4>Strict Confidentiality Guaranteed</h4>
               </div>
               <p>

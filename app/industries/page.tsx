@@ -80,8 +80,7 @@ export default function IndustriesPage() {
                   <div className="ind-hazards-col">
                     <div className="ind-subcard hazard-subcard">
                       <h4>
-                        <AlertTriangle size={18} className="text-orange" /> Typical Hazard
-                        Exposures
+                        <AlertTriangle size={18} className="hazard-header-icon" /> Typical Hazard Exposures
                       </h4>
                       <ul>
                         {ind.typicalHazards.map((hazard) => (
@@ -95,8 +94,7 @@ export default function IndustriesPage() {
 
                     <div className="ind-subcard standards-subcard">
                       <h4>
-                        <Scale size={18} className="text-orange" /> Key Compliance
-                        Frameworks
+                        <Scale size={18} className="standards-header-icon" /> Key Compliance Frameworks
                       </h4>
                       <div className="ind-standards-tags">
                         {ind.complianceStandards.map((std) => (
@@ -112,29 +110,29 @@ export default function IndustriesPage() {
                   <div className="ind-solutions-col">
                     <div className="ind-subcard solutions-subcard">
                       <h4>
-                        <ShieldCheck size={18} className="text-orange" /> Tailored
-                        HESAONE Interventions
+                        <ShieldCheck size={18} className="solutions-header-icon" /> Tailored HESAONE Interventions
                       </h4>
                       <ul>
                         {ind.solutionsProvided.map((sol) => (
                           <li key={sol}>
-                            <CheckCircle2 size={16} className="text-orange" />
+                            <CheckCircle2 size={16} className="bullet-check" />
                             <span>{sol}</span>
                           </li>
                         ))}
                       </ul>
 
                       <div className="ind-outcome-banner">
-                        <small>MEASURABLE FIELD IMPACT</small>
+                        <small>CORE ENGINEERING OBJECTIVE</small>
                         <p>{ind.outcomes}</p>
                       </div>
 
                       <div className="ind-action-row">
                         <Link
                           href={`/contact?sector=${encodeURIComponent(ind.title)}`}
-                          className="button button-orange"
+                          className="button button-primary"
                         >
-                          Consult for {ind.title} <ArrowUpRight size={16} />
+                          <span>Consult for {ind.title}</span>
+                          <ArrowUpRight size={15} />
                         </Link>
                       </div>
                     </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, ShieldCheck, Mail } from "lucide-react";
+import { ArrowRight, ShieldCheck, Mail, Lock, FileCheck } from "lucide-react";
 
 interface CTASectionProps {
   title?: string;
@@ -11,53 +11,58 @@ interface CTASectionProps {
 
 export default function CTASection({
   title = "Ready to elevate your facility's safety and compliance?",
-  subtitle = "Discuss your site challenges with our certified process safety and EHS engineers. We provide scoped, objective audits and actionable roadmaps.",
-  primaryBtnText = "Request an Industrial Consultation",
+  subtitle = "Discuss your plant challenges with our certified process safety and EHS engineering team. We provide scoped, objective audits and actionable compliance roadmaps.",
+  primaryBtnText = "Request Technical Consultation",
   primaryBtnLink = "/contact",
-  serviceTag = "HEALTH • SAFETY • ENVIRONMENT"
+  serviceTag = "HEALTH • SAFETY • ENVIRONMENT ADVISORY"
 }: CTASectionProps) {
   return (
     <section className="cta-banner-section">
       <div className="section-wrap cta-banner-inner">
         <div className="cta-banner-content">
-          <div className="eyebrow orange-tag">
-            <span /> {serviceTag}
+          <div className="cta-kicker">
+            <span className="cta-dot" />
+            <span>{serviceTag}</span>
           </div>
           <h2>{title}</h2>
           <p>{subtitle}</p>
 
           <div className="cta-banner-actions">
-            <Link className="button button-orange" href={primaryBtnLink}>
-              {primaryBtnText} <ArrowUpRight size={17} />
+            <Link className="button button-primary" href={primaryBtnLink}>
+              <span>{primaryBtnText}</span>
+              <ArrowRight size={16} />
             </Link>
-            <a className="button button-outline-light" href="mailto:hesaonellp@gmail.com">
-              <Mail size={16} /> Direct Email Inquiry
+            <a className="button button-ghost" href="mailto:hesaonellp@gmail.com">
+              <Mail size={15} />
+              <span>Direct Email: hesaonellp@gmail.com</span>
             </a>
           </div>
         </div>
 
         <div className="cta-banner-side">
-          <div className="cta-trust-badge">
-            <div className="badge-icon">
-              <ShieldCheck size={32} />
+          <div className="cta-trust-card">
+            <div className="trust-card-header">
+              <ShieldCheck size={28} className="trust-icon" />
+              <div>
+                <strong>HESAONE Practice Standards</strong>
+                <span>Engineering Integrity &bull; Code Compliance</span>
+              </div>
             </div>
-            <div className="badge-details">
-              <strong>HESAONE Commitment</strong>
-              <p>Zero-Harm Philosophy • Confirmed NDA Protection • Practical Field Solutions</p>
-            </div>
-          </div>
-          <div className="cta-stats-row">
-            <div>
-              <b>100%</b>
-              <span>Audit Confidentiality</span>
-            </div>
-            <div>
-              <b>24h</b>
-              <span>Initial Technical Response</span>
-            </div>
-            <div>
-              <b>ISO / OSHA</b>
-              <span>Aligned Frameworks</span>
+            <div className="trust-commitments">
+              <div className="commitment-item">
+                <Lock size={15} className="commitment-icon" />
+                <div>
+                  <b>Mutual NDA Protection</b>
+                  <p>All drawings, P&amp;IDs, and operational data remain strictly confidential.</p>
+                </div>
+              </div>
+              <div className="commitment-item">
+                <FileCheck size={15} className="commitment-icon" />
+                <div>
+                  <b>Accredited Lead Auditors</b>
+                  <p>ISO 45001, ISO 14001, and Certified Functional Safety Practitioners.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

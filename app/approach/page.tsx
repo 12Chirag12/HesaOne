@@ -108,7 +108,7 @@ export default function ApproachPage() {
                     <ul>
                       {st.details.map((d) => (
                         <li key={d}>
-                          <CheckCircle2 size={16} className="text-orange" />
+                          <CheckCircle2 size={16} className="bullet-check" />
                           <span>{d}</span>
                         </li>
                       ))}

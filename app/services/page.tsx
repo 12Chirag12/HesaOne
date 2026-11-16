@@ -77,7 +77,7 @@ export default function ServicesPage() {
                     <ul>
                       {svc.deliverables.slice(0, 4).map((item) => (
                         <li key={item}>
-                          <CheckCircle2 size={15} className="text-orange" />
+                          <CheckCircle2 size={15} className="bullet-check" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -99,15 +99,17 @@ export default function ServicesPage() {
                 <div className="catalog-card-footer">
                   <Link
                     href={`/services/${svc.slug}`}
-                    className="button button-orange w-full"
+                    className="button button-primary w-full"
                   >
-                    View Complete Methodology &amp; Details <ArrowRight size={16} />
+                    <span>View Complete Scope &amp; Deliverables</span>
+                    <ArrowRight size={15} />
                   </Link>
                   <Link
                     href={`/contact?service=${encodeURIComponent(svc.title)}`}
                     className="catalog-quick-enquire"
                   >
-                    Enquire for this service <ArrowUpRight size={14} />
+                    <span>Request Scoped Proposal</span>
+                    <ArrowUpRight size={13} />
                   </Link>
                 </div>
               </div>

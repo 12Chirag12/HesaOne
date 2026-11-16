@@ -66,7 +66,6 @@ export default function RootLayout({
     description:
       "Integrated Health, Safety and Environment solutions for heavy manufacturing, chemical, infrastructure, energy, and logistics industries.",
     email: "hesaonellp@gmail.com",
-    telephone: "+91-0000000000",
     url: "https://hesaone.com",
     address: {
       "@type": "PostalAddress",

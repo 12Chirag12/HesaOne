@@ -32,7 +32,7 @@ export default function CookieConsent() {
     <div className="cookie-banner" role="dialog" aria-live="polite">
       <div className="cookie-banner-inner">
         <div className="cookie-icon">
-          <Cookie size={24} className="text-orange" />
+          <Cookie size={22} className="cookie-icon-svg" />
         </div>
         <div className="cookie-copy">
           <strong>Privacy &amp; Site Cookies</strong>
@@ -42,10 +42,10 @@ export default function CookieConsent() {
           </p>
         </div>
         <div className="cookie-actions">
-          <button type="button" className="button button-orange cookie-btn" onClick={acceptAll}>
+          <button type="button" className="button button-primary cookie-btn" onClick={acceptAll}>
             <Check size={14} /> Accept Essential
           </button>
-          <button type="button" className="button button-outline-subtle cookie-btn" onClick={decline}>
+          <button type="button" className="button button-outline cookie-btn" onClick={decline}>
             Decline
           </button>
           <button

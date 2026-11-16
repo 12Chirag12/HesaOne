@@ -5,12 +5,13 @@ import { useSearchParams } from "next/navigation";
 import {
   Send,
   CheckCircle2,
-  ShieldCheck,
   Building,
   Mail,
   User,
   Phone,
-  RotateCcw
+  RotateCcw,
+  Lock,
+  ArrowRight
 } from "lucide-react";
 
 export default function ContactForm() {
@@ -41,7 +42,7 @@ export default function ContactForm() {
         ...(sectorParam ? { facilitySector: sectorParam } : {}),
         ...(priorityParam
           ? {
-              message: `Priority Focus: ${priorityParam}\n\n`
+              message: `Inquiry Context: ${priorityParam}\n\n`
             }
           : {})
       }));
@@ -63,7 +64,7 @@ export default function ContactForm() {
       const generatedRef = "HES-" + Math.floor(100000 + Math.random() * 900000);
       setSubmittedRef(generatedRef);
       setIsSubmitting(false);
-    }, 600);
+    }, 500);
   };
 
   const handleReset = () => {
@@ -83,46 +84,48 @@ export default function ContactForm() {
     return (
       <div className="contact-success-card">
         <div className="success-icon-wrap">
-          <CheckCircle2 size={44} className="text-orange" />
+          <CheckCircle2 size={36} className="success-icon" />
         </div>
-        <h3>Consultation Request Submitted</h3>
+        <h3>Technical Consultation Request Logged</h3>
         <p className="success-ref">
-          Reference: <strong>{submittedRef}</strong>
+          Reference Code: <code>{submittedRef}</code>
         </p>
         <p className="success-msg">
-          Thank you, <strong>{formData.fullName}</strong>. Your inquiry regarding{" "}
+          Thank you, <strong>{formData.fullName}</strong>. Your technical inquiry regarding{" "}
           <strong>{formData.serviceCategory}</strong> for{" "}
-          <strong>{formData.companyName || "your facility"}</strong> has been received. Our senior safety consultant will contact you within 24 business hours.
+          <strong>{formData.companyName || "your organization"}</strong> has been securely recorded. Our lead engineering team will respond within one business day.
         </p>
 
         <div className="success-next-steps">
           <div className="step-item">
             <span className="step-badge">1</span>
             <div>
-              <strong>Technical Review</strong>
-              <p>Preliminary desk review of your sector&apos;s statutory requirements.</p>
+              <strong>Preliminary Technical Review</strong>
+              <p>Our lead consultant reviews relevant sector codes (IEC/OSHA/NFPA) and facility requirements.</p>
             </div>
           </div>
           <div className="step-item">
             <span className="step-badge">2</span>
             <div>
-              <strong>Confidential Scope Discussion</strong>
-              <p>Direct follow-up to agree on NDA and technical walkthrough deliverables.</p>
+              <strong>Mutual NDA &amp; Scoping Discussion</strong>
+              <p>Direct technical dialogue to execute a mutual NDA and establish project deliverables.</p>
             </div>
           </div>
         </div>
 
         <div className="success-actions">
           <a
-            className="button button-orange"
-            href={`mailto:hesaonellp@gmail.com?subject=Inquiry%20Ref%20${submittedRef}%20-%20${encodeURIComponent(
+            className="button button-primary"
+            href={`mailto:hesaonellp@gmail.com?subject=Consultation%20Ref%20${submittedRef}%20-%20${encodeURIComponent(
               formData.companyName || formData.fullName
             )}`}
           >
-            Email Project P&amp;ID / Files
+            <span>Email Technical Drawings / Scope</span>
+            <ArrowRight size={15} />
           </a>
           <button type="button" className="button button-outline" onClick={handleReset}>
-            <RotateCcw size={14} /> New Request
+            <RotateCcw size={14} />
+            <span>Submit Another Inquiry</span>
           </button>
         </div>
       </div>
@@ -134,16 +137,16 @@ export default function ContactForm() {
       <div className="form-grid-2">
         <div className="form-field">
           <label htmlFor="fullName">
-            Full Name <i>*</i>
+            Full Name <span className="req">*</span>
           </label>
           <div className="input-with-icon">
-            <User size={15} />
+            <User size={15} className="input-icon" />
             <input
               id="fullName"
               name="fullName"
               type="text"
               required
-              placeholder="e.g. Sarah Jenkins / Dr. R. Kumar"
+              placeholder="e.g. R. K. Sharma / John Reynolds"
               value={formData.fullName}
               onChange={handleChange}
             />
@@ -152,10 +155,10 @@ export default function ContactForm() {
 
         <div className="form-field">
           <label htmlFor="workEmail">
-            Work Email <i>*</i>
+            Corporate Email <span className="req">*</span>
           </label>
           <div className="input-with-icon">
-            <Mail size={15} />
+            <Mail size={15} className="input-icon" />
             <input
               id="workEmail"
               name="workEmail"
@@ -172,10 +175,10 @@ export default function ContactForm() {
       <div className="form-grid-2">
         <div className="form-field">
           <label htmlFor="phoneNumber">
-            Phone Number <i>*</i>
+            Phone / Contact Number <span className="req">*</span>
           </label>
           <div className="input-with-icon">
-            <Phone size={15} />
+            <Phone size={15} className="input-icon" />
             <input
               id="phoneNumber"
               name="phoneNumber"
@@ -190,16 +193,16 @@ export default function ContactForm() {
 
         <div className="form-field">
           <label htmlFor="companyName">
-            Company / Facility Name <i>*</i>
+            Organization / Plant Name <span className="req">*</span>
           </label>
           <div className="input-with-icon">
-            <Building size={15} />
+            <Building size={15} className="input-icon" />
             <input
               id="companyName"
               name="companyName"
               type="text"
               required
-              placeholder="e.g. Apex Industries Ltd."
+              placeholder="e.g. Apex Petrochemicals Ltd."
               value={formData.companyName}
               onChange={handleChange}
             />
@@ -210,7 +213,7 @@ export default function ContactForm() {
       <div className="form-grid-2">
         <div className="form-field">
           <label htmlFor="serviceCategory">
-            Required Service <i>*</i>
+            Practice Area / Discipline <span className="req">*</span>
           </label>
           <select
             id="serviceCategory"
@@ -220,16 +223,16 @@ export default function ContactForm() {
           >
             <option value="Process Safety & Risk Studies">Process Safety &amp; Risk Studies (HAZOP / QRA)</option>
             <option value="Safety Management Systems & Compliance">Safety Management Systems (ISO 45001)</option>
-            <option value="Fire & Emergency Safety Engineering">Fire &amp; Emergency Safety Engineering</option>
-            <option value="Environment & Sustainability Solutions">Environment &amp; Sustainability Solutions</option>
+            <option value="Fire & Emergency Safety Engineering">Industrial Fire &amp; Emergency Safety</option>
+            <option value="Environment & Sustainability Solutions">Environmental &amp; Consent Compliance</option>
             <option value="Technical Safety & Operational Engineering">Technical Safety &amp; LOTO Engineering</option>
-            <option value="Workforce Training & Safety Culture">Workforce Training &amp; Safety Culture</option>
+            <option value="Workforce Training & Safety Culture">HSE Training &amp; Workforce Competency</option>
           </select>
         </div>
 
         <div className="form-field">
           <label htmlFor="facilitySector">
-            Industry Sector <i>*</i>
+            Industry Sector <span className="req">*</span>
           </label>
           <select
             id="facilitySector"
@@ -242,20 +245,20 @@ export default function ContactForm() {
             <option value="Infrastructure & Construction">Infrastructure &amp; Construction</option>
             <option value="Logistics & Industrial Warehousing">Logistics &amp; Industrial Warehousing</option>
             <option value="Energy & Power Utilities">Energy &amp; Power Utilities</option>
-            <option value="Other High-Hazard Sector">Other High-Hazard Sector</option>
+            <option value="Other Industrial Facility">Other Industrial Facility</option>
           </select>
         </div>
       </div>
 
       <div className="form-field">
         <label htmlFor="message">
-          Scope / Specific Challenges
+          Technical Scope &amp; Facility Context
         </label>
         <textarea
           id="message"
           name="message"
           rows={3}
-          placeholder="Briefly describe your site, plant units, chemical inventory, or current audit priorities..."
+          placeholder="Briefly describe your site, plant units, chemical inventory, P&amp;ID availability, or audit deadlines..."
           value={formData.message}
           onChange={handleChange}
         />
@@ -263,19 +266,20 @@ export default function ContactForm() {
 
       <div className="form-footer-row">
         <div className="form-nda-assurance">
-          <ShieldCheck size={16} className="text-orange" />
-          <span>Strict Non-Disclosure Agreement (NDA) guaranteed for all discussions.</span>
+          <Lock size={14} className="nda-icon" />
+          <span>Strict mutual Non-Disclosure Agreement (NDA) applied prior to sharing technical data.</span>
         </div>
         <button
           type="submit"
           disabled={isSubmitting}
-          className="button button-orange"
+          className="button button-primary"
         >
           {isSubmitting ? (
-            <span>Submitting...</span>
+            <span>Recording Request...</span>
           ) : (
             <>
-              Submit Request <Send size={15} />
+              <span>Submit Inquiry</span>
+              <Send size={14} />
             </>
           )}
         </button>

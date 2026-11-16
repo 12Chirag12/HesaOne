@@ -90,13 +90,14 @@ export default async function ServiceDetailPage({
             <p className="service-hero-headline">{service.heroHeadline}</p>
             <div className="service-hero-actions">
               <Link
-                className="button button-orange"
+                className="button button-primary"
                 href={`/contact?service=${encodeURIComponent(service.title)}`}
               >
-                Request a Scoped Proposal <ArrowUpRight size={17} />
+                <span>Request Scoped Proposal</span>
+                <ArrowUpRight size={15} />
               </Link>
               <a
-                className="button button-outline"
+                className="button button-ghost"
                 href="mailto:hesaonellp@gmail.com"
               >
                 Direct Technical Inquiries
@@ -106,7 +107,7 @@ export default async function ServiceDetailPage({
 
           <div className="service-hero-visual-card">
             <div className="visual-card-top">
-              <Icon size={40} className="text-orange" />
+              <Icon size={36} className="visual-card-icon" />
               <span className="visual-card-title">{service.title}</span>
             </div>
             <div className="visual-card-body">
@@ -188,7 +189,7 @@ export default async function ServiceDetailPage({
             <div className="benefits-cards-grid">
               {service.businessBenefits.map((b) => (
                 <div key={b} className="benefit-card">
-                  <CheckCircle2 size={20} className="text-orange" />
+                  <CheckCircle2 size={18} className="bullet-check" />
                   <p>{b}</p>
                 </div>
               ))}
@@ -204,7 +205,7 @@ export default async function ServiceDetailPage({
             <ul className="standards-bullet-list">
               {service.keyStandards.map((std) => (
                 <li key={std}>
-                  <Scale size={18} className="text-orange" />
+                  <Scale size={18} className="standards-icon" />
                   <span>{std}</span>
                 </li>
               ))}
@@ -233,10 +234,11 @@ export default async function ServiceDetailPage({
               and provide a transparent scope outline within 24 hours.
             </p>
             <Link
-              className="button button-orange w-full"
+              className="button button-primary w-full"
               href={`/contact?service=${encodeURIComponent(service.title)}`}
             >
-              Request a Consultation <ArrowUpRight size={16} />
+              <span>Request Consultation</span>
+              <ArrowUpRight size={15} />
             </Link>
             <div className="sidebar-contact-direct">
               <small>Direct Email Inquiry:</small>
@@ -264,7 +266,7 @@ export default async function ServiceDetailPage({
 
           {/* Guarantee / NDA Note */}
           <div className="sidebar-card sidebar-badge-card">
-            <ShieldCheck size={28} className="text-orange" />
+            <ShieldCheck size={28} className="shield-badge-icon" />
             <h5>100% NDA Protected</h5>
             <p>
               All facility drawings, process chemistries, and operational data remain
