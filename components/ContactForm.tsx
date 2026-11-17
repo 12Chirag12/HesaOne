@@ -11,8 +11,16 @@ import {
   Phone,
   RotateCcw,
   Lock,
-  ArrowRight
+  ArrowRight,
+  Copy,
+  Check
 } from "lucide-react";
+
+interface SubmissionResult {
+  mode: "dispatched" | "prepared";
+  mailtoUrl?: string;
+  recipient?: string;
+}
 
 export default function ContactForm() {
   const searchParams = useSearchParams();
@@ -28,7 +36,9 @@ export default function ContactForm() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submittedRef, setSubmittedRef] = useState<string | null>(null);
+  const [submissionResult, setSubmissionResult] = useState<SubmissionResult | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const serviceParam = searchParams.get("service");
@@ -42,7 +52,7 @@ export default function ContactForm() {
         ...(sectorParam ? { facilitySector: sectorParam } : {}),
         ...(priorityParam
           ? {
-              message: `Inquiry Context: ${priorityParam}\n\n`
+              message: `Inquiry Focus: ${priorityParam}\n\n`
             }
           : {})
       }));
@@ -56,19 +66,57 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
-    setTimeout(() => {
-      const generatedRef = "HES-" + Math.floor(100000 + Math.random() * 900000);
-      setSubmittedRef(generatedRef);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to process inquiry.");
+      }
+
+      setSubmissionResult({
+        mode: data.mode,
+        mailtoUrl: data.mailtoUrl,
+        recipient: data.recipient || "hesaonellp@gmail.com",
+      });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "An unexpected error occurred.";
+      setErrorMessage(msg);
+    } finally {
       setIsSubmitting(false);
-    }, 500);
+    }
+  };
+
+  const handleCopyScope = () => {
+    const text =
+      `HESAONE TECHNICAL ADVISORY INQUIRY\n` +
+      `-----------------------------------\n` +
+      `Contact Name: ${formData.fullName}\n` +
+      `Organization: ${formData.companyName}\n` +
+      `Corporate Email: ${formData.workEmail}\n` +
+      `Phone: ${formData.phoneNumber}\n` +
+      `Discipline: ${formData.serviceCategory}\n` +
+      `Sector: ${formData.facilitySector}\n` +
+      `Facility Scope / Message:\n${formData.message}\n`;
+
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
   };
 
   const handleReset = () => {
-    setSubmittedRef(null);
+    setSubmissionResult(null);
+    setErrorMessage(null);
     setFormData({
       fullName: "",
       workEmail: "",
@@ -80,52 +128,70 @@ export default function ContactForm() {
     });
   };
 
-  if (submittedRef) {
+  if (submissionResult) {
     return (
       <div className="contact-success-card">
         <div className="success-icon-wrap">
           <CheckCircle2 size={36} className="success-icon" />
         </div>
-        <h3>Technical Consultation Request Logged</h3>
-        <p className="success-ref">
-          Reference Code: <code>{submittedRef}</code>
-        </p>
-        <p className="success-msg">
-          Thank you, <strong>{formData.fullName}</strong>. Your technical inquiry regarding{" "}
-          <strong>{formData.serviceCategory}</strong> for{" "}
-          <strong>{formData.companyName || "your organization"}</strong> has been securely recorded. Our lead engineering team will respond within one business day.
-        </p>
 
-        <div className="success-next-steps">
-          <div className="step-item">
-            <span className="step-badge">1</span>
-            <div>
-              <strong>Preliminary Technical Review</strong>
-              <p>Our lead consultant reviews relevant sector codes (IEC/OSHA/NFPA) and facility requirements.</p>
-            </div>
+        {submissionResult.mode === "dispatched" ? (
+          <>
+            <h3>Technical Consultation Request Dispatched</h3>
+            <p className="success-msg">
+              Thank you, <strong>{formData.fullName}</strong>. Your technical inquiry regarding{" "}
+              <strong>{formData.serviceCategory}</strong> for{" "}
+              <strong>{formData.companyName || "your organization"}</strong> has been transmitted to our engineering desk. A lead consultant will review your facility scope.
+            </p>
+          </>
+        ) : (
+          <>
+            <h3>Technical Inquiry Formatted &amp; Ready</h3>
+            <p className="success-msg">
+              Thank you, <strong>{formData.fullName}</strong>. To ensure direct, unmediated communication with our senior safety engineering team, your technical brief has been compiled for direct delivery to{" "}
+              <a href="mailto:hesaonellp@gmail.com" className="email-link">
+                hesaonellp@gmail.com
+              </a>.
+            </p>
+          </>
+        )}
+
+        <div className="inquiry-summary-box">
+          <div className="summary-row">
+            <span className="summary-lbl">Organization:</span>
+            <strong>{formData.companyName || "Not specified"}</strong>
           </div>
-          <div className="step-item">
-            <span className="step-badge">2</span>
-            <div>
-              <strong>Mutual NDA &amp; Scoping Discussion</strong>
-              <p>Direct technical dialogue to execute a mutual NDA and establish project deliverables.</p>
-            </div>
+          <div className="summary-row">
+            <span className="summary-lbl">Discipline:</span>
+            <span>{formData.serviceCategory}</span>
+          </div>
+          <div className="summary-row">
+            <span className="summary-lbl">Direct Contact:</span>
+            <span>{formData.workEmail} &bull; {formData.phoneNumber}</span>
           </div>
         </div>
 
         <div className="success-actions">
-          <a
-            className="button button-primary"
-            href={`mailto:hesaonellp@gmail.com?subject=Consultation%20Ref%20${submittedRef}%20-%20${encodeURIComponent(
-              formData.companyName || formData.fullName
-            )}`}
+          {submissionResult.mailtoUrl && (
+            <a
+              className="button button-primary"
+              href={submissionResult.mailtoUrl}
+            >
+              <span>Dispatch via Email Client</span>
+              <ArrowRight size={15} />
+            </a>
+          )}
+          <button
+            type="button"
+            className="button button-outline"
+            onClick={handleCopyScope}
           >
-            <span>Email Technical Drawings / Scope</span>
-            <ArrowRight size={15} />
-          </a>
-          <button type="button" className="button button-outline" onClick={handleReset}>
+            {copied ? <Check size={14} /> : <Copy size={14} />}
+            <span>{copied ? "Copied to Clipboard" : "Copy Formatted Scope"}</span>
+          </button>
+          <button type="button" className="button button-ghost" onClick={handleReset}>
             <RotateCcw size={14} />
-            <span>Submit Another Inquiry</span>
+            <span>Submit Another Scope</span>
           </button>
         </div>
       </div>
@@ -134,6 +200,12 @@ export default function ContactForm() {
 
   return (
     <form className="interactive-contact-form" onSubmit={handleSubmit}>
+      {errorMessage && (
+        <div className="form-error-banner" role="alert">
+          <span>{errorMessage}</span>
+        </div>
+      )}
+
       <div className="form-grid-2">
         <div className="form-field">
           <label htmlFor="fullName">
@@ -146,7 +218,7 @@ export default function ContactForm() {
               name="fullName"
               type="text"
               required
-              placeholder="e.g. R. K. Sharma / John Reynolds"
+              placeholder="e.g. R. K. Sharma / Lead Engineer"
               value={formData.fullName}
               onChange={handleChange}
             />
@@ -175,7 +247,7 @@ export default function ContactForm() {
       <div className="form-grid-2">
         <div className="form-field">
           <label htmlFor="phoneNumber">
-            Phone / Contact Number <span className="req">*</span>
+            Contact Number <span className="req">*</span>
           </label>
           <div className="input-with-icon">
             <Phone size={15} className="input-icon" />
@@ -222,10 +294,10 @@ export default function ContactForm() {
             onChange={handleChange}
           >
             <option value="Process Safety & Risk Studies">Process Safety &amp; Risk Studies (HAZOP / QRA)</option>
-            <option value="Safety Management Systems & Compliance">Safety Management Systems (ISO 45001)</option>
-            <option value="Fire & Emergency Safety Engineering">Industrial Fire &amp; Emergency Safety</option>
-            <option value="Environment & Sustainability Solutions">Environmental &amp; Consent Compliance</option>
-            <option value="Technical Safety & Operational Engineering">Technical Safety &amp; LOTO Engineering</option>
+            <option value="Safety Management Systems & Compliance">Safety Management Systems (ISO 45001 / Factories Act)</option>
+            <option value="Fire & Emergency Safety Engineering">Industrial Fire &amp; Emergency Safety (NFPA / NBC)</option>
+            <option value="Environment & Sustainability Solutions">Environmental &amp; SPCB Consent Compliance</option>
+            <option value="Technical Safety & Operational Engineering">Technical Safety &amp; Machine Guarding (ISO 12100)</option>
             <option value="Workforce Training & Safety Culture">HSE Training &amp; Workforce Competency</option>
           </select>
         </div>
@@ -252,11 +324,12 @@ export default function ContactForm() {
 
       <div className="form-field">
         <label htmlFor="message">
-          Technical Scope &amp; Facility Context
+          Technical Scope &amp; Facility Context <span className="req">*</span>
         </label>
         <textarea
           id="message"
           name="message"
+          required
           rows={3}
           placeholder="Briefly describe your site, plant units, chemical inventory, P&amp;ID availability, or audit deadlines..."
           value={formData.message}
@@ -267,7 +340,7 @@ export default function ContactForm() {
       <div className="form-footer-row">
         <div className="form-nda-assurance">
           <Lock size={14} className="nda-icon" />
-          <span>Strict mutual Non-Disclosure Agreement (NDA) applied prior to sharing technical data.</span>
+          <span>Technical disclosures handled under bilateral Non-Disclosure Agreement (NDA).</span>
         </div>
         <button
           type="submit"
@@ -275,10 +348,10 @@ export default function ContactForm() {
           className="button button-primary"
         >
           {isSubmitting ? (
-            <span>Recording Request...</span>
+            <span>Preparing Scope...</span>
           ) : (
             <>
-              <span>Submit Inquiry</span>
+              <span>Format &amp; Submit Inquiry</span>
               <Send size={14} />
             </>
           )}

@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Users,
   Target,
   CheckCircle2,
-  Layers
+  Layers,
+  ShieldCheck
 } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "About Us | Philosophy, Leadership & Standards",
+  title: "About Practice | Philosophy, Governance & Standards",
   description:
-    "Learn about HESAONE LLP: our origins, our People-Process-Planet philosophy, certified engineering advisory, and commitment to industrial safety."
+    "Learn about HESAONE LLP: our People-Process-Planet engineering philosophy, statutory compliance expertise (Factories Act / MSIHC / ISO 45001), and commitment to industrial safety."
 };
 
 export default function AboutPage() {
@@ -23,41 +25,68 @@ export default function AboutPage() {
       <section className="page-hero section-wrap">
         <div className="page-hero-header">
           <p className="eyebrow dark">
-            WHO WE ARE <i>•</i> HESAONE LLP
+            PRACTICE ORIGINS <i>•</i> HESAONE LLP
           </p>
           <h1>
             Safety is not a checkbox.<br />
             <em>It is our fundamental duty.</em>
           </h1>
           <p className="page-hero-desc">
-            HESAONE LLP was founded with a clear mission: to replace superficial,
-            paper-heavy compliance with robust, engineering-backed Health, Safety, and
-            Environmental systems that truly protect lives, assets, and the planet.
+            HESAONE LLP was established to bridge the gap between regulatory theory and frontline plant realities. We replace superficial paperwork with robust, engineering-backed Health, Safety, and Environmental systems that protect lives, plant primary containment, and the environment.
           </p>
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
+      {/* Mission & Vision Section with Real Plant Inspection Photo */}
       <section className="about-mission-section section-wrap">
-        <div className="mission-grid">
-          <div className="mission-card">
-            <span className="card-kicker">OUR PURPOSE</span>
-            <h3>Our Mission</h3>
-            <p>
-              To empower industrial leaders with the technical clarity, practical
-              engineering tools, and cultural leadership required to eliminate workplace
-              fatalities, prevent major containment disasters, and achieve sustainable
-              compliance.
-            </p>
+        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "48px", alignItems: "center" }}>
+          <div className="mission-grid" style={{ gridTemplateColumns: "1fr", gap: "24px" }}>
+            <div className="mission-card">
+              <span className="card-kicker">OUR PURPOSE</span>
+              <h3>Our Mission</h3>
+              <p>
+                To empower industrial leaders with the technical clarity, practical engineering tools, and cultural leadership required to eliminate workplace fatalities, prevent major loss of containment disasters, and achieve resilient compliance.
+              </p>
+            </div>
+            <div className="mission-card">
+              <span className="card-kicker">OUR HORIZON</span>
+              <h3>Our Vision</h3>
+              <p>
+                To serve as a trusted industrial HSE advisory practice—recognized by plant engineers, corporate executives, and statutory authorities for uncompromising technical rigor and field-tested safety solutions.
+              </p>
+            </div>
           </div>
-          <div className="mission-card">
-            <span className="card-kicker">OUR HORIZON</span>
-            <h3>Our Vision</h3>
-            <p>
-              To become the benchmark industrial HSE advisory practice—trusted globally
-              by plant engineers, corporate executives, and statutory authorities for
-              unflinching technical integrity and human-centric safety innovation.
-            </p>
+
+          <div style={{ position: "relative", height: "420px", borderRadius: "var(--radius-md)", overflow: "hidden", border: "1px solid var(--border-light)" }}>
+            <Image
+              src="/images/hse-inspection.jpg"
+              alt="HESAONE Safety Engineers Conducting Industrial Inspection"
+              fill
+              sizes="(max-width: 1024px) 100vw, 500px"
+              style={{ objectFit: "cover" }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(0deg, rgba(16, 28, 35, 0.88) 0%, rgba(16, 28, 35, 0.2) 60%)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                padding: "24px",
+                color: "#FFFFFF"
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
+                <ShieldCheck size={16} color="var(--amber-bright)" />
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", fontWeight: "700", color: "var(--amber-bright)", letterSpacing: "0.1em" }}>
+                  ON-SITE ENGINEERING RIGOR
+                </span>
+              </div>
+              <p style={{ fontSize: "13px", color: "var(--text-light-muted)", margin: 0 }}>
+                Every recommendation is formulated on the plant floor alongside operating teams, not from an ivory tower.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -71,8 +100,7 @@ export default function AboutPage() {
               The Three Pillars: <em>People. Process. Planet.</em>
             </h2>
             <p>
-              True industrial excellence occurs at the intersection of human care,
-              engineering precision, and environmental stewardship.
+              True industrial excellence occurs at the intersection of human care, engineering precision, and environmental stewardship.
             </p>
           </div>
 
@@ -88,16 +116,20 @@ export default function AboutPage() {
               </p>
               <ul className="pillar-list">
                 <li>
-                  <CheckCircle2 size={16} /> Behavior-Based Safety (BBS) and cultural buy-in
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Behavior-Based Safety (BBS) and cultural ownership</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} /> Unconditional Stop-Work Authority for all ranks
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Unconditional Stop-Work Authority enablement</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} /> Ergonomic health and occupational hygiene monitoring
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Ergonomic assessment and industrial hygiene monitoring</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} /> Multilingual, hands-on workforce skill enablement
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Multilingual, practical shop-floor training modules</span>
                 </li>
               </ul>
             </div>
@@ -109,20 +141,24 @@ export default function AboutPage() {
               <span className="pillar-num">PILLAR 02</span>
               <h3>Process</h3>
               <p className="pillar-lead">
-                Flawless engineering barriers that prevent loss of containment.
+                Flawless engineering barriers that prevent loss of primary containment.
               </p>
               <ul className="pillar-list">
                 <li>
-                  <CheckCircle2 size={16} /> Rigorous HAZOP, HAZID &amp; What-If risk studies
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Rigorous HAZOP, HAZID &amp; What-If risk workshops</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} /> SIL/LOPA Functional Safety verification (IEC 61511)
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>SIL/LOPA Functional Safety allocation (IEC 61511)</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} /> Machine safeguarding and strict LOTO energy isolation
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Machine safeguarding and strict LOTO energy isolation</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} /> Quantitative Consequence and Dispersion Modeling
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Quantitative Consequence Dispersion &amp; Blast Modeling</span>
                 </li>
               </ul>
             </div>
@@ -138,16 +174,20 @@ export default function AboutPage() {
               </p>
               <ul className="pillar-list">
                 <li>
-                  <CheckCircle2 size={16} /> Comprehensive Environmental Impact Assessments (EIA)
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Environmental Impact Assessments (EIA) and EMPs</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} /> Industrial Effluent Treatment &amp; Zero Liquid Discharge
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Effluent Treatment Plant (ETP) &amp; Zero Liquid Discharge (ZLD)</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} /> Air Pollution Control &amp; Continuous Stack Audits
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Air pollution control &amp; continuous stack emission audits</span>
                 </li>
                 <li>
-                  <CheckCircle2 size={16} /> Corporate Carbon Accounting (Scope 1, 2 &amp; 3)
+                  <CheckCircle2 size={16} className="bullet-check" />
+                  <span>Statutory Consent to Establish (CTE) &amp; Operate (CTO)</span>
                 </li>
               </ul>
             </div>
@@ -155,7 +195,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Core Values */}
+      {/* Core Operating Values */}
       <section className="values-section section-wrap">
         <div className="section-heading">
           <div>
@@ -166,8 +206,7 @@ export default function AboutPage() {
             </h2>
           </div>
           <p className="section-description">
-            We hold ourselves to the highest ethical and professional standards in
-            every client engagement.
+            We hold ourselves to the highest ethical and professional standards in every client engagement.
           </p>
         </div>
 
@@ -176,34 +215,28 @@ export default function AboutPage() {
             <span className="value-no">01</span>
             <h4>Field Grounding</h4>
             <p>
-              Safety solutions designed in air-conditioned boardrooms often fail on the
-              shop floor. We walk the process lines, inspect the pump rooms, and listen
-              to the front line.
+              Safety systems designed in remote conference rooms often fail on the shop floor. We inspect piping runs, verify valves, and listen to shift operators.
             </p>
           </div>
           <div className="value-item">
             <span className="value-no">02</span>
             <h4>Technical Rigor</h4>
             <p>
-              We base every recommendation on established engineering codes—API, NFPA,
-              OSHA, ISO, IEC—not anecdotal guesswork.
+              We ground every finding in established statutory and engineering codes—The Factories Act, MSIHC Rules, NFPA, IEC, and CCPS—never anecdotal guesswork.
             </p>
           </div>
           <div className="value-item">
             <span className="value-no">03</span>
-            <h4>Uncompromising Confidentiality</h4>
+            <h4>Strict Confidentiality</h4>
             <p>
-              Process chemistries, proprietary flowsheets, and internal audit findings
-              remain strictly protected under robust non-disclosure frameworks.
+              Proprietary chemical flowsheets, P&amp;IDs, and audit findings are strictly protected under bilateral non-disclosure agreements (NDAs).
             </p>
           </div>
           <div className="value-item">
             <span className="value-no">04</span>
             <h4>Actionable Pragmatism</h4>
             <p>
-              We do not deliver 500-page theoretical reports that collect dust. We provide
-              prioritized, step-by-step action trackers that engineering teams can
-              implement.
+              We avoid 500-page theoretical manuals that collect dust. We formulate prioritized, realistic action registers that plant engineering teams can execute.
             </p>
           </div>
         </div>
@@ -214,37 +247,36 @@ export default function AboutPage() {
         <div className="section-wrap">
           <div className="standards-matrix-box">
             <div className="matrix-text">
-              <span className="badge-tag">GOVERNANCE &amp; ACCREDITATION</span>
-              <h3>Global Frameworks &amp; Statutory Familiarity</h3>
+              <span className="badge-tag">STATUTORY &amp; GOVERNING FRAMEWORKS</span>
+              <h3>Statutory Compliance &amp; International Code Alignment</h3>
               <p>
-                Our consultants maintain active credentials and deep working experience
-                with principal international and statutory governing bodies:
+                Our engineering team maintains active working familiarity with both Indian statutory requirements and international safety codes:
               </p>
             </div>
             <div className="matrix-tags-grid">
               <div className="matrix-tag-item">
+                <strong>The Factories Act, 1948</strong>
+                <small>Sections 41B, 41C &amp; State Factory Rules Compliance</small>
+              </div>
+              <div className="matrix-tag-item">
+                <strong>MSIHC Rules, 1989</strong>
+                <small>Hazardous Chemical Storage &amp; Safety Audit Reports</small>
+              </div>
+              <div className="matrix-tag-item">
                 <strong>ISO 45001:2018</strong>
-                <small>Occupational Health &amp; Safety Management</small>
+                <small>Occupational Health &amp; Safety Management Systems</small>
               </div>
               <div className="matrix-tag-item">
                 <strong>ISO 14001:2015</strong>
-                <small>Environmental Management Systems</small>
-              </div>
-              <div className="matrix-tag-item">
-                <strong>OSHA 29 CFR 1910.119</strong>
-                <small>Process Safety Management of Highly Hazardous Chemicals</small>
-              </div>
-              <div className="matrix-tag-item">
-                <strong>NFPA Codes</strong>
-                <small>National Fire Protection Association Standards</small>
+                <small>Environmental Management Systems &amp; Auditing</small>
               </div>
               <div className="matrix-tag-item">
                 <strong>IEC 61508 / 61511</strong>
-                <small>Functional Safety &amp; Safety Instrumented Systems</small>
+                <small>Functional Safety, SIF Design &amp; SIL Allocation</small>
               </div>
               <div className="matrix-tag-item">
-                <strong>CPCB / SPCB Guidelines</strong>
-                <small>Pollution Control Board Consents &amp; Auditing</small>
+                <strong>NBC 2016 &bull; NFPA Codes</strong>
+                <small>Fire Protection, Hydraulics &amp; Life Safety Egress</small>
               </div>
             </div>
           </div>
@@ -254,7 +286,7 @@ export default function AboutPage() {
       {/* CTA */}
       <CTASection
         title="Partner with HESAONE for your next safety milestone."
-        subtitle="Whether preparing for ISO 45001 certification, commissioning a new chemical reactor, or overhauling machine safeguarding, our advisory team is ready."
+        subtitle="Whether preparing for statutory safety audits, commissioning a chemical synthesis unit, or formalizing machine safeguarding, our advisory team is ready."
         primaryBtnText="Schedule an Advisory Call"
         primaryBtnLink="/contact"
       />

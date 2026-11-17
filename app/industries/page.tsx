@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Factory,
   FlaskConical,
@@ -18,9 +19,9 @@ import CTASection from "@/components/CTASection";
 import { industriesData } from "@/lib/siteData";
 
 export const metadata: Metadata = {
-  title: "Industries Served | Chemical, Manufacturing, Logistics & Energy",
+  title: "Industries Served | Chemical, Heavy Engineering, Logistics & Energy",
   description:
-    "Tailored industrial safety, process risk engineering, and environmental compliance for high-hazard sectors: Chemical, Heavy Manufacturing, Infrastructure, Logistics, and Energy."
+    "Tailored industrial safety, process risk engineering, and environmental compliance for high-hazard sectors: Chemical, Manufacturing, Infrastructure, Logistics, and Energy."
 };
 
 const iconMap: Record<string, LucideIcon> = {
@@ -29,6 +30,14 @@ const iconMap: Record<string, LucideIcon> = {
   Building2,
   Truck,
   Zap
+};
+
+const industryImages: Record<string, string> = {
+  "manufacturing-engineering": "/images/industry-manufacturing.jpg",
+  "chemical-pharmaceuticals": "/images/industry-chemical.jpg",
+  "infrastructure-construction": "/images/hse-inspection.jpg",
+  "logistics-warehousing": "/images/industry-logistics.jpg",
+  "energy-power-utilities": "/images/industry-energy.jpg",
 };
 
 export default function IndustriesPage() {
@@ -40,18 +49,35 @@ export default function IndustriesPage() {
       <section className="page-hero section-wrap">
         <div className="page-hero-header">
           <p className="eyebrow dark">
-            SECTOR EXPERTISE <i>•</i> WHERE WE WORK
+            SECTOR SPECIALIZATION <i>•</i> OPERATIONAL REALITY
           </p>
           <h1>
             Safety solutions engineered for<br />
-            <em>your operating reality.</em>
+            <em>your operational physics.</em>
           </h1>
           <p className="page-hero-desc">
-            Industrial safety cannot be one-size-fits-all. A continuous chemical reactor
-            faces drastically different failure modes than an automated high-bay
-            fulfillment warehouse or a heavy structural steel foundry. We design our
-            interventions around your specific operational physics.
+            Industrial safety cannot be one-size-fits-all. A continuous chemical reactor faces fundamentally different failure modes than an automated high-bay fulfillment warehouse or a medium-voltage substation. We design our technical interventions around your specific operational physics and statutory obligations.
           </p>
+        </div>
+      </section>
+
+      {/* Fast Sector Navigation Anchor Strip */}
+      <section className="standards-banner">
+        <div className="section-wrap standards-banner-inner">
+          <span className="standards-banner-title">EXPLORE INDUSTRIAL SECTORS</span>
+          <div className="standards-pills-row">
+            {industriesData.map((ind) => (
+              <a
+                key={ind.no}
+                href={`#${ind.slug}`}
+                className="standards-item"
+                style={{ textDecoration: "none" }}
+              >
+                <b>{ind.no}</b>
+                <span>{ind.title.split("&")[0].trim()}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -60,11 +86,40 @@ export default function IndustriesPage() {
         <div className="industries-stack">
           {industriesData.map((ind) => {
             const Icon = iconMap[ind.iconName] || Factory;
+            const photoSrc = industryImages[ind.slug];
+
             return (
-              <div key={ind.slug} className="industry-detail-block" id={ind.slug}>
+              <article key={ind.slug} className="industry-detail-block" id={ind.slug}>
+                {photoSrc && (
+                  <div style={{ position: "relative", height: "220px", borderRadius: "var(--radius-sm)", overflow: "hidden", marginBottom: "28px" }}>
+                    <Image
+                      src={photoSrc}
+                      alt={ind.title}
+                      fill
+                      sizes="(max-width: 1200px) 100vw, 1200px"
+                      style={{ objectFit: "cover" }}
+                    />
+                    <div
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "linear-gradient(0deg, rgba(16, 28, 35, 0.85) 0%, rgba(16, 28, 35, 0.25) 100%)",
+                        display: "flex",
+                        alignItems: "flex-end",
+                        padding: "24px",
+                        color: "#FFFFFF"
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                        <span className="spec-badge">SECTOR {ind.no}</span>
+                        <span style={{ fontSize: "14px", fontWeight: "600", color: "#F4F2EC" }}>{ind.tagline}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div className="ind-block-header">
                   <div className="ind-badge-wrap">
-                    <span className="ind-no-tag">SECTOR {ind.no}</span>
                     <Icon size={32} className="ind-header-icon" />
                   </div>
                   <div>
@@ -98,7 +153,11 @@ export default function IndustriesPage() {
                       </h4>
                       <div className="ind-standards-tags">
                         {ind.complianceStandards.map((std) => (
-                          <span key={std} className="std-chip">
+                          <span
+                            key={std}
+                            className="std-pill"
+                            style={{ background: "#FFFFFF", color: "var(--graphite)", borderColor: "var(--border-light)" }}
+                          >
                             {std}
                           </span>
                         ))}
@@ -108,7 +167,7 @@ export default function IndustriesPage() {
 
                   {/* Right: HESAONE Tailored Solutions & Outcome */}
                   <div className="ind-solutions-col">
-                    <div className="ind-subcard solutions-subcard">
+                    <div className="ind-subcard solutions-subcard" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
                       <h4>
                         <ShieldCheck size={18} className="solutions-header-icon" /> Tailored HESAONE Interventions
                       </h4>
@@ -121,24 +180,29 @@ export default function IndustriesPage() {
                         ))}
                       </ul>
 
-                      <div className="ind-outcome-banner">
-                        <small>CORE ENGINEERING OBJECTIVE</small>
-                        <p>{ind.outcomes}</p>
+                      <div style={{ background: "#FFFFFF", padding: "16px", borderRadius: "var(--radius-xs)", border: "1px solid var(--border-light)", margin: "20px 0" }}>
+                        <small style={{ fontFamily: "var(--font-mono)", fontSize: "10.5px", fontWeight: "700", color: "var(--text-muted)", letterSpacing: "0.08em" }}>
+                          CORE ENGINEERING OBJECTIVE
+                        </small>
+                        <p style={{ fontSize: "13px", color: "var(--graphite)", fontWeight: "600", marginTop: "4px" }}>
+                          {ind.outcomes}
+                        </p>
                       </div>
 
-                      <div className="ind-action-row">
+                      <div style={{ marginTop: "auto" }}>
                         <Link
                           href={`/contact?sector=${encodeURIComponent(ind.title)}`}
                           className="button button-primary"
+                          style={{ width: "100%", justifyContent: "center" }}
                         >
-                          <span>Consult for {ind.title}</span>
+                          <span>Consult on {ind.title.split("&")[0].trim()} Profile</span>
                           <ArrowUpRight size={15} />
                         </Link>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
@@ -146,8 +210,8 @@ export default function IndustriesPage() {
 
       {/* CTA */}
       <CTASection
-        title="Don't see your specific sector listed?"
-        subtitle="HESAONE advises specialized industrial setups including defense manufacturing, food processing, and port logistics. Contact our team to review your facility's hazard profile."
+        title="Operating a specialized industrial facility?"
+        subtitle="HESAONE advises heavy process installations including bulk chemical terminals, continuous fabrication plants, and energy substations. Contact our team to review your facility's hazard profile."
         primaryBtnText="Speak with an Industry Specialist"
         primaryBtnLink="/contact"
       />

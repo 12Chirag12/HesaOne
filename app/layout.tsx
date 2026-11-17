@@ -1,43 +1,59 @@
 import type { Metadata } from "next";
+import { Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://hesaone.com"),
   title: {
-    default: "HESAONE LLP | Industrial Health, Safety & Environment (HSE) Solutions",
+    default: "HESAONE LLP | Industrial Health, Safety & Environment Engineering Advisory",
     template: "%s | HESAONE LLP"
   },
   description:
-    "Integrated Health, Safety, and Environment (HSE) consulting, Process Safety Management (PSM), HAZOP studies, ISO 45001 compliance, and fire safety engineering for high-hazard industries.",
+    "Specialized industrial HSE advisory, Process Hazard Analysis (HAZOP / LOPA), statutory compliance (Factories Act / MSIHC / PESO), ISO 45001 systems, and fire protection engineering for high-hazard process facilities.",
   keywords: [
-    "HSE consulting",
+    "Industrial HSE Consulting",
     "Process Safety Management",
-    "HAZOP study",
-    "ISO 45001 audit",
-    "Fire risk assessment",
-    "Industrial safety engineering",
-    "Behavior-based safety",
-    "QRA risk analysis",
-    "Environmental compliance EIA",
+    "HAZOP Study India",
+    "Factories Act 1948 Safety Compliance",
+    "MSIHC Rules Audit",
+    "ISO 45001 Certification Advisory",
+    "Fire Risk Assessment NFPA",
+    "Machine Guarding ISO 12100",
+    "LOTO Energy Isolation",
     "HESAONE LLP"
   ],
   authors: [{ name: "HESAONE LLP" }],
   openGraph: {
-    title: "HESAONE LLP | Health, Safety & Environment Solutions",
+    title: "HESAONE LLP | Industrial Health, Safety & Environment Engineering",
     description:
-      "Building safer industries. Protecting every tomorrow. Practical guidance, technical expertise, and zero-harm engineering for industrial operations.",
+      "Engineering process safety. Protecting industrial lives. Certified technical advisory, qualitative & quantitative hazard studies, and statutory compliance across high-hazard operations.",
     url: "https://hesaone.com",
     siteName: "HESAONE LLP",
-    locale: "en_US",
+    locale: "en_IN",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "HESAONE LLP | Industrial HSE Solutions",
-    description: "Integrated Health, Safety & Environment engineering for safer, resilient industries."
+    title: "HESAONE LLP | Industrial Safety Engineering",
+    description:
+      "Specialized Process Safety (PSM), HAZOP, and statutory HSE advisory for manufacturing, chemical, and energy operations."
   },
   icons: {
     icon: [
@@ -64,26 +80,25 @@ export default function RootLayout({
     name: "HESAONE LLP",
     image: "https://hesaone.com/images/hesaone-industrial-hero.jpg",
     description:
-      "Integrated Health, Safety and Environment solutions for heavy manufacturing, chemical, infrastructure, energy, and logistics industries.",
+      "Specialized industrial Health, Safety and Environment (HSE) engineering advisory, Process Hazard Analysis (HAZOP / LOPA), and statutory compliance for high-hazard industrial operations.",
     email: "hesaonellp@gmail.com",
     url: "https://hesaone.com",
     address: {
       "@type": "PostalAddress",
       addressCountry: "IN"
     },
-    areaServed: "Pan-National & Global Industrial Corridors",
     serviceType: [
-      "Process Safety & Risk Studies",
-      "Safety Management Systems (ISO 45001 / ISO 14001)",
-      "Fire & Emergency Safety Engineering",
-      "Environment & Sustainability Solutions",
-      "Technical Safety & Machinery Guarding",
-      "Workforce Safety Training & Culture"
+      "Process Safety & Risk Studies (HAZOP / LOPA)",
+      "Safety Management Systems (ISO 45001 / Factories Act)",
+      "Industrial Fire & Emergency Safety Engineering",
+      "Environmental Compliance & SPCB Consents",
+      "Technical Machine Guarding & Energy Isolation (LOTO)",
+      "Competency-Based HSE Workforce Training"
     ]
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${manrope.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script
           type="application/ld+json"

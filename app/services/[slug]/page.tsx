@@ -97,10 +97,10 @@ export default async function ServiceDetailPage({
                 <ArrowUpRight size={15} />
               </Link>
               <a
-                className="button button-ghost"
+                className="button button-outline"
                 href="mailto:hesaonellp@gmail.com"
               >
-                Direct Technical Inquiries
+                <span>Direct Technical Desk</span>
               </a>
             </div>
           </div>

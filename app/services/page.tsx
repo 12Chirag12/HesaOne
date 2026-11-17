@@ -8,7 +8,6 @@ import {
   HardHat,
   GraduationCap,
   ArrowRight,
-  ArrowUpRight,
   CheckCircle2,
   LucideIcon
 } from "lucide-react";
@@ -17,9 +16,9 @@ import CTASection from "@/components/CTASection";
 import { servicesData } from "@/lib/siteData";
 
 export const metadata: Metadata = {
-  title: "Services & Solutions | Process Safety, EHS Audits & Engineering",
+  title: "Services & Practice Disciplines | Industrial HSE Advisory",
   description:
-    "Explore HESAONE LLP's comprehensive industrial HSE services: HAZOP studies, ISO 45001 audits, fire engineering, environmental assessments, and safety training."
+    "Comprehensive industrial HSE advisory: Process Hazard Analysis (HAZOP / LOPA), Factories Act statutory compliance, ISO 45001 audits, fire safety hydraulics, and machine safeguarding."
 };
 
 const iconMap: Record<string, LucideIcon> = {
@@ -34,210 +33,149 @@ const iconMap: Record<string, LucideIcon> = {
 export default function ServicesPage() {
   return (
     <div className="services-page">
-      <Breadcrumb items={[{ label: "Services & Solutions" }]} />
+      <Breadcrumb items={[{ label: "Services & Capabilities" }]} />
 
       {/* Hero Header */}
       <section className="page-hero section-wrap">
         <div className="page-hero-header">
           <p className="eyebrow dark">
-            OUR CAPABILITIES <i>•</i> 6 CORE HSE DISCIPLINES
+            OUR DISCIPLINES <i>•</i> 6 CORE HSE CAPABILITIES
           </p>
           <h1>
             Engineering expertise for<br />
             <em>high-consequence industrial safety.</em>
           </h1>
           <p className="page-hero-desc">
-            We provide deep-domain advisory across the full lifecycle of industrial
-            operations—from early process design and statutory risk quantification to
-            frontline workforce safety leadership.
+            We provide deep-domain engineering advisory across the operational lifecycle—from early process hazard evaluations and consequence modeling to statutory compliance audits and frontline safety culture.
           </p>
         </div>
       </section>
 
-      {/* Services Grid with Detailed Deliverables */}
+      {/* Fast Discipline Navigation Anchor Strip */}
+      <section className="standards-banner">
+        <div className="section-wrap standards-banner-inner">
+          <span className="standards-banner-title">QUICK CAPABILITY INDEX</span>
+          <div className="standards-pills-row">
+            {servicesData.map((svc) => (
+              <a
+                key={svc.no}
+                href={`#${svc.slug}`}
+                className="standards-item"
+                style={{ textDecoration: "none" }}
+              >
+                <b>{svc.no}</b>
+                <span>{svc.title.split("&")[0].trim()}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Architectural Editorial Service Blocks */}
       <section className="services-catalog-section section-wrap">
-        <div className="catalog-grid">
+        <div style={{ display: "flex", flexDirection: "column", gap: "48px" }}>
           {servicesData.map((svc) => {
             const Icon = iconMap[svc.iconName] || ShieldCheck;
             return (
-              <div key={svc.slug} className="catalog-card" id={svc.slug}>
-                <div className="catalog-card-header">
-                  <div className="catalog-no-badge">{svc.no}</div>
-                  <div className="catalog-icon-wrap">
-                    <Icon size={28} />
+              <article
+                key={svc.slug}
+                id={svc.slug}
+                className="catalog-card"
+                style={{ padding: "40px" }}
+              >
+                <div className="catalog-card-header" style={{ marginBottom: "24px", paddingBottom: "18px", borderBottom: "1px solid var(--border-light)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                    <span className="catalog-no-badge">DISCIPLINE {svc.no}</span>
+                    <Icon size={26} color="var(--graphite)" />
+                    <h2 style={{ fontSize: "24px", margin: 0, color: "var(--graphite)" }}>{svc.title}</h2>
                   </div>
+                  <Link
+                    href={`/services/${svc.slug}`}
+                    className="button button-outline"
+                    style={{ padding: "8px 18px", fontSize: "12.5px" }}
+                  >
+                    <span>Full Technical Scope</span>
+                    <ArrowRight size={14} />
+                  </Link>
                 </div>
 
-                <div className="catalog-card-body">
-                  <h3>{svc.title}</h3>
-                  <p className="catalog-tagline">{svc.shortDesc}</p>
-
-                  <div className="catalog-deliverables">
-                    <h4>Key Scope &amp; Deliverables:</h4>
-                    <ul>
-                      {svc.deliverables.slice(0, 4).map((item) => (
-                        <li key={item}>
-                          <CheckCircle2 size={15} className="bullet-check" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                <div className="ind-content-grid">
+                  {/* Left Column: Narrative & Deliverables */}
+                  <div>
+                    <p style={{ fontSize: "15px", lineHeight: "1.65", color: "var(--text-secondary)", marginBottom: "24px" }}>
+                      {svc.fullDesc}
+                    </p>
+                    <div className="catalog-deliverables">
+                      <h4>Core Scope &amp; Deliverables:</h4>
+                      <ul>
+                        {svc.deliverables.map((item) => (
+                          <li key={item}>
+                            <CheckCircle2 size={15} className="bullet-check" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
 
-                  <div className="catalog-standards">
-                    <span className="standards-label">Relevant Standards:</span>
-                    <div className="standards-tags">
-                      {svc.keyStandards.slice(0, 2).map((std) => (
-                        <span key={std} className="std-pill">
-                          {std.split("(")[0].trim()}
-                        </span>
-                      ))}
+                  {/* Right Column: Standards, Benefits & Direct Action */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                    <div className="ind-subcard" style={{ background: "var(--limestone)" }}>
+                      <h4 style={{ fontSize: "13px", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-muted)", marginBottom: "10px" }}>
+                        Governing Standards &amp; Codes:
+                      </h4>
+                      <div className="strip-tags">
+                        {svc.keyStandards.map((std) => (
+                          <span
+                            key={std}
+                            className="std-pill"
+                            style={{ background: "#FFFFFF", color: "var(--graphite)", borderColor: "var(--border-light)" }}
+                          >
+                            {std}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="ind-subcard" style={{ background: "#FFFFFF", border: "1px solid var(--border-light)", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                      <div>
+                        <h4 style={{ fontSize: "13px", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-muted)", marginBottom: "10px" }}>
+                          Typical Facility Application:
+                        </h4>
+                        <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", fontSize: "13px", color: "var(--text-secondary)" }}>
+                          {svc.sampleUseCases.map((uc) => (
+                            <li key={uc} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
+                              <span style={{ color: "var(--amber)", fontWeight: "bold" }}>&rsaquo;</span>
+                              <span>{uc}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div style={{ marginTop: "20px", paddingTop: "14px", borderTop: "1px solid var(--border-subtle)" }}>
+                        <Link
+                          className="button button-primary"
+                          style={{ width: "100%", justifyContent: "center" }}
+                          href={`/contact?service=${encodeURIComponent(svc.title)}`}
+                        >
+                          <span>Request Proposal for {svc.title.split("&")[0].trim()}</span>
+                          <ArrowRight size={14} />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-                <div className="catalog-card-footer">
-                  <Link
-                    href={`/services/${svc.slug}`}
-                    className="button button-primary w-full"
-                  >
-                    <span>View Complete Scope &amp; Deliverables</span>
-                    <ArrowRight size={15} />
-                  </Link>
-                  <Link
-                    href={`/contact?service=${encodeURIComponent(svc.title)}`}
-                    className="catalog-quick-enquire"
-                  >
-                    <span>Request Scoped Proposal</span>
-                    <ArrowUpRight size={13} />
-                  </Link>
-                </div>
-              </div>
+              </article>
             );
           })}
         </div>
       </section>
 
-      {/* Service Selection Decision Matrix */}
-      <section className="service-matrix-section">
-        <div className="section-wrap">
-          <div className="section-center-heading">
-            <p className="eyebrow dark">DECISION MATRIX</p>
-            <h2>
-              Which Service Fits Your <em>Current Site Challenge?</em>
-            </h2>
-            <p>
-              Match your plant&apos;s immediate operational milestone with our specialized
-              service intervention.
-            </p>
-          </div>
-
-          <div className="matrix-table-wrap">
-            <table className="matrix-table">
-              <thead>
-                <tr>
-                  <th>Operational Scenario / Trigger</th>
-                  <th>Core Challenge</th>
-                  <th>Recommended HESAONE Service</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <strong>Greenfield / Plant Modification</strong>
-                  </td>
-                  <td>New chemicals, high pressures, altered flowsheets</td>
-                  <td>
-                    <span className="matrix-service-badge">
-                      Process Safety &amp; HAZOP Studies
-                    </span>
-                  </td>
-                  <td>
-                    <Link href="/services/process-safety-risk-studies">Details &rarr;</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Statutory / Customer EHS Audit</strong>
-                  </td>
-                  <td>ISO 45001 readiness, legal non-conformances</td>
-                  <td>
-                    <span className="matrix-service-badge">
-                      Safety Management Systems
-                    </span>
-                  </td>
-                  <td>
-                    <Link href="/services/safety-management-systems">Details &rarr;</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Warehouse / High-Bay Storage</strong>
-                  </td>
-                  <td>Sprinkler density, fire load, life safety egress</td>
-                  <td>
-                    <span className="matrix-service-badge">
-                      Fire &amp; Emergency Safety
-                    </span>
-                  </td>
-                  <td>
-                    <Link href="/services/fire-emergency-safety">Details &rarr;</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Effluent / PCB Compliance</strong>
-                  </td>
-                  <td>ETP efficiency, consent to operate, waste rules</td>
-                  <td>
-                    <span className="matrix-service-badge">
-                      Environment &amp; Sustainability
-                    </span>
-                  </td>
-                  <td>
-                    <Link href="/services/environment-sustainability">Details &rarr;</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Machinery &amp; Electrical Hazards</strong>
-                  </td>
-                  <td>Unguarded equipment, LOTO energy isolation, ATEX</td>
-                  <td>
-                    <span className="matrix-service-badge">
-                      Technical Safety Services
-                    </span>
-                  </td>
-                  <td>
-                    <Link href="/services/technical-safety-services">Details &rarr;</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Frontline Complacency / Near-Misses</strong>
-                  </td>
-                  <td>Low hazard reporting, unsafe worker acts</td>
-                  <td>
-                    <span className="matrix-service-badge">
-                      Workforce Training &amp; BBS
-                    </span>
-                  </td>
-                  <td>
-                    <Link href="/services/training-awareness">Details &rarr;</Link>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
+      {/* Consultation CTA */}
       <CTASection
-        title="Customized multi-disciplinary safety packages available."
-        subtitle="Many enterprise facilities benefit from an integrated assessment combining Process Safety, Fire Systems, and ISO 45001 readiness. Let us design a phased roadmap."
-        primaryBtnText="Request a Comprehensive Proposal"
+        title="Need a specialized technical consultation?"
+        subtitle="Our principal safety engineers evaluate process diagrams, fire networks, and statutory compliance under mutual NDA."
+        primaryBtnText="Initiate Facility Scope"
         primaryBtnLink="/contact"
       />
     </div>

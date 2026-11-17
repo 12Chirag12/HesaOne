@@ -58,7 +58,7 @@ export default function InteractiveRiskAssessment() {
         <div className="calc-steps-body">
           <div className="calc-field-group">
             <label className="calc-label">
-              <span className="step-num">1</span> What is your primary facility sector?
+              <span className="step-num">1</span> Primary Industrial Sector
             </label>
             <div className="calc-options-grid">
               {[
@@ -82,15 +82,15 @@ export default function InteractiveRiskAssessment() {
 
           <div className="calc-field-group">
             <label className="calc-label">
-              <span className="step-num">2</span> What represents your primary hazard exposure?
+              <span className="step-num">2</span> Primary Operational Hazard Exposure
             </label>
             <div className="calc-options-grid">
               {[
                 "Flammable & Toxic Substances",
-                "Machinery Guarding & LOTO",
-                "High-Bay Fire & Life Safety",
-                "Work at Height & Structural",
-                "Environmental Effluent & Emissions"
+                "Mechanical Machinery & Rotating Equipment",
+                "High-Bay Storage & Fire Load",
+                "Work at Height & Structural Risks",
+                "High-Voltage Electrical Arc Flash"
               ].map((val) => (
                 <button
                   type="button"
@@ -106,14 +106,15 @@ export default function InteractiveRiskAssessment() {
 
           <div className="calc-field-group">
             <label className="calc-label">
-              <span className="step-num">3</span> What is your immediate objective?
+              <span className="step-num">3</span> Immediate Compliance Milestone or Objective
             </label>
             <div className="calc-options-grid">
               {[
                 "Proactive Safety Audit & Gap Analysis",
-                "Plant Expansion / Greenfield Design",
-                "Regulatory Show-Cause Notice / Citation",
-                "Workforce Safety Culture & Training"
+                "HAZOP / LOPA Study for Plant Expansion",
+                "ISO 45001 / ISO 14001 Certification Readiness",
+                "Statutory Notice / CAPA Remediation",
+                "Behavior-Based Safety & Workforce Training"
               ].map((val) => (
                 <button
                   type="button"
@@ -127,100 +128,85 @@ export default function InteractiveRiskAssessment() {
             </div>
           </div>
 
-          <div className="calc-submit-row">
-            <button
-              type="button"
-              className="button button-orange"
-              onClick={calculateScore}
-            >
-              Analyze Exposure Profile <ArrowRight size={16} />
-            </button>
-            <span className="calc-privacy-note">
-              Instant diagnostic overview • Confidential &amp; secure.
-            </span>
-          </div>
+          <button
+            type="button"
+            className="button button-primary calc-submit-btn"
+            onClick={calculateScore}
+          >
+            <span>Analyze Safety Baseline</span>
+            <ArrowRight size={16} />
+          </button>
         </div>
       ) : (
-        <div className="calc-results-body">
-          <div className={`result-card-banner ${isHighRisk ? "high-exposure" : "moderate-exposure"}`}>
+        <div className="calc-result-panel">
+          <div className="result-badge-row">
             <div className="result-status-icon">
               {isHighRisk ? (
-                <ShieldAlert size={40} className="text-red" />
+                <ShieldAlert size={36} color="#D97706" />
               ) : (
-                <ShieldCheck size={40} className="text-orange" />
+                <ShieldCheck size={36} color="#10B981" />
               )}
             </div>
             <div className="result-status-text">
-              <div className="exposure-level">
-                STATUS: {isHighRisk ? "HIGH COMPLIANCE / SAFETY EXPOSURE" : "PROACTIVE OPTIMIZATION RECOMMENDED"}
+              <div className="badge-tag">
+                {isHighRisk ? "PRIORITY ENGINEERING REVIEW ADVISED" : "CONTINUAL IMPROVEMENT ROADMAP"}
               </div>
               <h4>
                 {isHighRisk
-                  ? "Priority Action Advised: High Regulatory & Process Exposure"
-                  : "Good Foundation: Structured Gap Closure Recommended"}
+                  ? "Priority Scope: Critical Hazard & Containment Barriers"
+                  : "Structured Scope: Management System & Risk Verification"}
               </h4>
               <p>
-                Based on your facility (<strong>{facilityType}</strong>) and hazard profile (
-                <strong>{primaryHazard}</strong>), we recommend formalizing preventive engineering barriers.
+                Targeted review for <strong>{facilityType}</strong> operating with <strong>{primaryHazard}</strong>.
               </p>
             </div>
           </div>
 
-          <div className="recommended-actions-grid">
-            <div className="action-col">
-              <h5>
-                <CheckCircle2 size={16} className="text-orange" /> Recommended Next Steps
+          <div className="grid-2" style={{ marginTop: "24px" }}>
+            <div className="ind-subcard">
+              <h5 style={{ marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
+                <CheckCircle2 size={16} color="#10B981" /> Recommended Engineering Steps
               </h5>
-              <ul className="action-points">
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px", fontSize: "13px" }}>
                 {isHighRisk ? (
                   <>
-                    <li>
-                      <strong>Statutory Walkthrough:</strong> Conduct an objective gap audit against applicable statutory codes (Factories Act, OSHA, CPCB).
-                    </li>
-                    <li>
-                      <strong>Barrier Verification:</strong> Validate critical safeguards (relief systems, interlocks, gas detection) to prevent loss of containment.
-                    </li>
-                    <li>
-                      <strong>Action Item Governance:</strong> Formalize a Corrective Action Plan (CAPA) with designated plant leadership owners.
-                    </li>
+                    <li><strong>Statutory Gap Review:</strong> Walkthrough audit against the Factories Act 1948 and MSIHC Rules.</li>
+                    <li><strong>Process Barrier Audit:</strong> Validate independent protection layers, relief valves, and emergency shutdown interlocks.</li>
+                    <li><strong>Actionable CAPA Tracker:</strong> Prioritize corrective actions with plant engineering ownership.</li>
                   </>
                 ) : (
                   <>
-                    <li>
-                      <strong>Process Risk Refresh:</strong> Update your HAZOP / FMEA worksheets for recent process modifications and piping bypasses.
-                    </li>
-                    <li>
-                      <strong>Behavior-Based Safety:</strong> Shift focus from mechanical compliance to frontline worker reporting and hazard spotting.
-                    </li>
-                    <li>
-                      <strong>ISO 45001 Readiness:</strong> Benchmark against international OHSMS standards to unlock advantages in enterprise tenders.
-                    </li>
+                    <li><strong>Process Hazard Update:</strong> Revalidate HAZOP nodes for recent piping changes or expansions.</li>
+                    <li><strong>Frontline Safety Coaching:</strong> Deploy Behavior-Based Safety observation routines for operators.</li>
+                    <li><strong>ISO 45001 Readiness:</strong> Internal audit preparation to benchmark safety governance against global criteria.</li>
                   </>
                 )}
               </ul>
             </div>
 
-            <div className="action-col next-steps-col">
-              <h5>Consult with HESAONE</h5>
-              <p>
-                Our senior safety practitioners can provide an objective, NDA-protected walkthrough or structured proposal.
-              </p>
-
-              <div className="selected-summary-box">
-                <small>Sector:</small> <span>{facilityType}</span><br />
-                <small>Hazard:</small> <span>{primaryHazard}</span><br />
-                <small>Goal:</small> <span>{urgentNeed}</span>
+            <div className="ind-subcard" style={{ background: "#FFFFFF", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <h5 style={{ marginBottom: "8px" }}>Discuss Your Scoping Profile</h5>
+                <p style={{ fontSize: "13px", color: "var(--text-muted)", marginBottom: "16px" }}>
+                  Connect directly with our lead safety consultants under bilateral NDA.
+                </p>
+                <div style={{ background: "var(--limestone)", padding: "12px", borderRadius: "var(--radius-xs)", fontSize: "12px", marginBottom: "16px" }}>
+                  <div><strong>Sector:</strong> {facilityType}</div>
+                  <div><strong>Hazard:</strong> {primaryHazard}</div>
+                  <div><strong>Focus:</strong> {urgentNeed}</div>
+                </div>
               </div>
-
               <Link
-                className="button button-orange w-full"
+                className="button button-primary"
+                style={{ width: "100%", justifyContent: "center" }}
                 href={`/contact?sector=${encodeURIComponent(
                   facilityType
                 )}&hazard=${encodeURIComponent(primaryHazard)}&priority=${encodeURIComponent(
                   urgentNeed
                 )}`}
               >
-                Discuss This Assessment <ArrowUpRight size={16} />
+                <span>Request Scoped Proposal</span>
+                <ArrowUpRight size={15} />
               </Link>
             </div>
           </div>

@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, CheckCircle2, Lock } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Lock, CheckCircle2 } from "lucide-react";
 
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      {/* Full-bleed cinematic industrial hero photo */}
+      {/* Full-bleed cinematic industrial hero photo with refined contrast */}
       <div className="hero-photo" aria-hidden="true" />
-      {/* Editorial multi-gradient wash */}
+      {/* Multi-gradient wash for flawless typography contrast */}
       <div className="hero-wash" aria-hidden="true" />
 
       {/* Hero content container */}
@@ -14,7 +14,7 @@ export default function Hero() {
         <div className="hero-content">
           <div className="hero-kicker">
             <span className="kicker-dot" />
-            <span>PROCESS SAFETY &bull; INDUSTRIAL HSE ADVISORY</span>
+            <span>HSE ENGINEERING CONSULTANCY &bull; PAN-INDIA ADVISORY</span>
           </div>
 
           <h1 id="hero-title" className="hero-heading">
@@ -23,7 +23,7 @@ export default function Hero() {
           </h1>
 
           <p className="hero-description">
-            HESAONE LLP provides specialized process hazard analysis (HAZOP / LOPA), fire safety engineering, and statutory EHS compliance advisory. We partner with industrial leaders to safeguard facilities, eliminate loss of containment, and engineer enduring cultures of safety.
+            HESAONE LLP provides specialized process hazard analysis (HAZOP / LOPA), fire safety hydraulics, and statutory safety audits. We partner with industrial leaders to safeguard facilities, prevent loss of primary containment, and engineer enduring safety cultures.
           </p>
 
           <div className="hero-actions">
@@ -36,44 +36,70 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="hero-standards-strip">
-            <span className="strip-title">REGULATORY CODE ALIGNMENT</span>
-            <div className="strip-tags">
-              <span className="std-pill">ISO 45001 / 14001</span>
-              <span className="std-pill">OSHA 29 CFR 1910.119</span>
-              <span className="std-pill">IEC 61508 / 61511</span>
-              <span className="std-pill">NFPA Codes</span>
-              <span className="std-pill">CCPS Guidelines</span>
+          <div className="hero-trust-indicators">
+            <div className="trust-indicator-item">
+              <span className="trust-indicator-dot" />
+              <span>Pan-India On-Site Deployment</span>
+            </div>
+            <div className="trust-indicator-divider" />
+            <div className="trust-indicator-item">
+              <span className="trust-indicator-dot" />
+              <span>Bilateral NDA Confidentiality</span>
+            </div>
+            <div className="trust-indicator-divider" />
+            <div className="trust-indicator-item">
+              <span className="trust-indicator-dot" />
+              <span>Quantitative Risk Modeling (QRA)</span>
             </div>
           </div>
         </div>
 
-        {/* Right-hand architectural capability badge on desktop */}
+        {/* Right-hand architectural engineering panel */}
         <div className="hero-sidebar">
-          <div className="hero-spec-card">
-            <div className="spec-card-header">
-              <span className="spec-badge">CORE CAPABILITY</span>
-              <span className="nda-badge">
-                <Lock size={12} /> Mutual NDA Protected
+          <div className="hero-blueprint-panel">
+            <div className="blueprint-top">
+              <span className="blueprint-badge">PRACTICE SPECIFICATION</span>
+              <span className="blueprint-nda">
+                <Lock size={12} /> Bilateral NDA Protected
               </span>
             </div>
+            <div className="blueprint-code">GOVERNING CODES: FACTORIES ACT &bull; ISO 45001 &bull; IEC 61511</div>
             <h3>Process Hazard Studies &amp; Statutory Audits</h3>
             <p>
-              From greenfield HAZOP/SIL allocation to brownfield plant compliance audits and behavior-based safety leadership.
+              Multidisciplinary engineering verification from greenfield HAZOP / SIL allocation to brownfield plant compliance audits and behavior-based safety leadership.
             </p>
-            <div className="spec-features">
-              <div className="spec-item">
-                <CheckCircle2 size={14} className="spec-check" />
-                <span>Multidisciplinary Workshop Facilitation</span>
+
+            <div className="blueprint-specs-grid">
+              <div className="spec-metric-item">
+                <span className="spec-metric-num">100%</span>
+                <span className="spec-metric-lbl">Statutory Compliance Scope</span>
               </div>
-              <div className="spec-item">
-                <CheckCircle2 size={14} className="spec-check" />
-                <span>Quantitative Consequence Modeling</span>
+              <div className="spec-metric-item">
+                <span className="spec-metric-num">6</span>
+                <span className="spec-metric-lbl">Core Engineering Disciplines</span>
               </div>
-              <div className="spec-item">
-                <CheckCircle2 size={14} className="spec-check" />
-                <span>Actionable Engineering CAPA Registers</span>
+            </div>
+
+            <div className="blueprint-features">
+              <div className="blueprint-feature-row">
+                <CheckCircle2 size={14} className="blueprint-check" />
+                <span>Multidisciplinary HAZOP &amp; LOPA Workshops</span>
               </div>
+              <div className="blueprint-feature-row">
+                <CheckCircle2 size={14} className="blueprint-check" />
+                <span>Consequence Dispersion &amp; Quantitative Risk (QRA)</span>
+              </div>
+              <div className="blueprint-feature-row">
+                <CheckCircle2 size={14} className="blueprint-check" />
+                <span>Audit-Ready Engineering CAPA Registers</span>
+              </div>
+            </div>
+
+            <div className="blueprint-footer">
+              <Link href="/services" className="blueprint-action-link">
+                <span>View All 6 Practice Disciplines</span>
+                <ArrowUpRight size={14} />
+              </Link>
             </div>
           </div>
         </div>
@@ -96,11 +122,11 @@ export default function Hero() {
           </div>
           <div className="hero-bottom-item">
             <b>04</b>
-            <span>Environmental Audits &amp; EIA</span>
+            <span>Environmental &amp; SPCB Consents</span>
           </div>
           <Link href="/contact" className="hero-bottom-cta">
             <span>Request Facility Scope</span>
-            <ArrowUpRight size={15} />
+            <ArrowUpRight size={14} />
           </Link>
         </div>
       </div>

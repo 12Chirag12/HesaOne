@@ -1,39 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { ArrowRight, Mail, MapPin, CheckCircle2, ShieldCheck, Lock } from "lucide-react";
+import { ArrowRight, Mail, MapPin, ShieldCheck, FileCheck } from "lucide-react";
 import { servicesData, industriesData } from "@/lib/siteData";
 
 export default function Footer() {
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (newsletterEmail && newsletterEmail.includes("@")) {
-      setSubscribed(true);
-      setNewsletterEmail("");
-    }
-  };
-
   return (
     <footer className="site-footer">
       <div className="footer-top-strip">
         <div className="section-wrap footer-strip-inner">
-          <span className="strip-title">REGULATORY COMPLIANCE FRAMEWORKS:</span>
+          <span className="strip-title">REGULATORY CODES &amp; STATUTORY ALIGNMENTS:</span>
           <div className="standards-list">
+            <span>The Factories Act, 1948</span>
+            <span className="strip-dot">&bull;</span>
+            <span>MSIHC Rules, 1989</span>
+            <span className="strip-dot">&bull;</span>
             <span>ISO 45001:2018</span>
             <span className="strip-dot">&bull;</span>
             <span>ISO 14001:2015</span>
             <span className="strip-dot">&bull;</span>
-            <span>OSHA 1910.119 PSM</span>
-            <span className="strip-dot">&bull;</span>
-            <span>NFPA Fire Codes</span>
-            <span className="strip-dot">&bull;</span>
             <span>IEC 61511 / SIL</span>
             <span className="strip-dot">&bull;</span>
-            <span>CCPS Guidelines</span>
+            <span>NBC 2016 (Part 4)</span>
+            <span className="strip-dot">&bull;</span>
+            <span>NFPA Fire Codes</span>
           </div>
         </div>
       </div>
@@ -50,7 +40,7 @@ export default function Footer() {
             </span>
           </Link>
           <p className="footer-lead">
-            Integrated Health, Safety, and Environmental advisory. Providing rigorous engineering risk studies, statutory audits, and zero-harm leadership for high-hazard industry.
+            Specialized industrial Health, Safety, and Environmental (HSE) engineering advisory. Conducting rigorous process hazard analyses (HAZOP/LOPA), statutory safety audits, and engineered risk mitigation for high-hazard industry.
           </p>
 
           <div className="footer-contact-details">
@@ -60,11 +50,11 @@ export default function Footer() {
             </div>
             <div className="contact-row">
               <MapPin size={15} className="contact-icon" />
-              <span>Pan-Regional Industrial Audits &amp; Field Engineering</span>
+              <span>India-Wide Industrial Field Engagements &amp; Plant Audits</span>
             </div>
             <div className="contact-row">
-              <Lock size={15} className="contact-icon" />
-              <span>Mutual Non-Disclosure Agreement (NDA) Protected</span>
+              <FileCheck size={15} className="contact-icon" />
+              <span>Bilateral Non-Disclosure Agreements (NDA) Standard</span>
             </div>
           </div>
         </div>
@@ -89,36 +79,28 @@ export default function Footer() {
               </li>
             ))}
             <li><Link href="/approach">Engineering Methodology</Link></li>
-            <li><Link href="/case-studies">Practice Profiles</Link></li>
+            <li><Link href="/case-studies">Representative Scopes</Link></li>
           </ul>
         </div>
 
         <div className="footer-col footer-col-briefing">
-          <h4 className="footer-col-title">Technical Briefings</h4>
-          <p className="newsletter-desc">
-            Periodic technical briefings on process safety statutory changes, HAZOP methods, and risk engineering.
+          <h4 className="footer-col-title">Engineering Advisory Desk</h4>
+          <p className="footer-desk-desc">
+            Direct technical communication with certified safety practitioners and process safety leads.
           </p>
-          {subscribed ? (
-            <div className="newsletter-success">
-              <CheckCircle2 size={16} /> Subscribed to technical briefings.
+          <div className="footer-desk-card">
+            <div className="desk-card-header">
+              <span className="desk-status-dot" />
+              <span>Direct Client Channel</span>
             </div>
-          ) : (
-            <form onSubmit={handleSubscribe} className="newsletter-form">
-              <input
-                type="email"
-                placeholder="Enter corporate email"
-                value={newsletterEmail}
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                required
-                aria-label="Corporate email"
-              />
-              <button type="submit" aria-label="Subscribe to technical briefing">
-                <ArrowRight size={15} />
-              </button>
-            </form>
-          )}
-          <div className="confidentiality-notice">
-            <small>Zero spam. We do not share corporate email addresses.</small>
+            <p className="desk-email-link">hesaonellp@gmail.com</p>
+            <p className="desk-note">
+              Share P&amp;IDs, plant layouts, or audit scopes under mutual NDA.
+            </p>
+            <Link href="/contact" className="desk-cta-button">
+              <span>Initiate Facility Scope</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </div>
@@ -136,7 +118,7 @@ export default function Footer() {
           <div className="footer-bottom-links">
             <Link href="/about">About Practice</Link>
             <span>&bull;</span>
-            <Link href="/contact">Confidential Inquiries</Link>
+            <Link href="/contact">Technical Inquiries</Link>
           </div>
         </div>
       </div>

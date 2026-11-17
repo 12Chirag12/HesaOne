@@ -16,7 +16,7 @@ import { faqData } from "@/lib/siteData";
 export const metadata: Metadata = {
   title: "Contact & Consultation | Industrial HSE Advisory",
   description:
-    "Request an industrial safety consultation, HAZOP study, ISO 45001 audit, or emergency safety review with HESAONE LLP. Confidential, NDA-protected technical advisory."
+    "Request an industrial safety consultation, HAZOP study, Factories Act audit, or fire protection engineering review with HESAONE LLP. Confidential technical advisory."
 };
 
 export default function ContactPage() {
@@ -28,16 +28,14 @@ export default function ContactPage() {
       <section className="page-hero section-wrap">
         <div className="page-hero-header">
           <p className="eyebrow dark">
-            START A CONVERSATION <i>•</i> TECHNICAL ADVISORY DESK
+            DIRECT COMMUNICATION <i>•</i> TECHNICAL ADVISORY DESK
           </p>
           <h1>
             Let&apos;s engineer a safer,<br />
             <em>more resilient facility together.</em>
           </h1>
           <p className="page-hero-desc">
-            Tell us about your plant layout, operational challenges, or upcoming statutory
-            milestone. Our senior process safety engineers and lead EHS auditors provide
-            confidential, objective technical reviews.
+            Tell us about your facility scope, operational challenges, or upcoming statutory milestone. Our process safety engineers and lead HSE auditors provide confidential, objective technical advisory.
           </p>
         </div>
       </section>
@@ -49,11 +47,10 @@ export default function ContactPage() {
           <div className="contact-form-column">
             <div className="form-card-wrapper">
               <div className="form-header-box">
-                <span className="badge-tag">ONLINE CONSULTATION REQUEST</span>
+                <span className="badge-tag">ONLINE SCOPE SUBMISSION</span>
                 <h2>Request a Facility Scope &amp; Proposal</h2>
                 <p>
-                  Fill out the parameters below. We typically respond within 24 business
-                  hours with an initial technical assessment and NDA framework.
+                  Complete the parameters below to compile your technical inquiry. Our engineering team reviews facility scopes under bilateral NDA.
                 </p>
               </div>
 
@@ -71,9 +68,9 @@ export default function ContactPage() {
           <aside className="contact-info-column">
             {/* Direct Coordinates Card */}
             <div className="info-card">
-              <h3>Direct Channels</h3>
+              <h3>Direct Advisory Desk</h3>
               <p className="info-card-sub">
-                For prompt communication or preliminary technical queries:
+                For prompt communication and technical scope inquiries:
               </p>
 
               <div className="info-items-stack">
@@ -86,7 +83,7 @@ export default function ContactPage() {
                     <a href="mailto:hesaonellp@gmail.com" className="info-val-link">
                       hesaonellp@gmail.com
                     </a>
-                    <small className="info-note">Monitored directly by lead consultants</small>
+                    <small className="info-note">Direct communication with lead consultants</small>
                   </div>
                 </div>
 
@@ -95,9 +92,9 @@ export default function ContactPage() {
                     <Clock size={20} />
                   </div>
                   <div>
-                    <span className="info-label">Response Commitment</span>
-                    <span className="info-val-text">Under 24 Business Hours</span>
-                    <small className="info-note">Same-day triage for regulatory notices</small>
+                    <span className="info-label">Desk Hours</span>
+                    <span className="info-val-text">Monday &ndash; Saturday, 09:00 &ndash; 18:00 IST</span>
+                    <small className="info-note">Expedited triage for regulatory compliance notices</small>
                   </div>
                 </div>
 
@@ -106,51 +103,49 @@ export default function ContactPage() {
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <span className="info-label">Advisory Coverage</span>
-                    <span className="info-val-text">Pan-National &amp; Global Industrial Hubs</span>
+                    <span className="info-label">Field Engineering Reach</span>
+                    <span className="info-val-text">India Industrial Corridors</span>
                     <small className="info-note">
-                      Specialized on-site audits across key chemical, manufacturing, and port belts
+                      On-site plant audits and HAZOP facilitation across key manufacturing and chemical belts
                     </small>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Regulatory Urgent Triage Card */}
+            {/* Regulatory Triage Card */}
             <div className="info-card urgent-triage-card">
-              <div className="urgent-badge">
-                <AlertCircle size={18} />
-                <span>URGENT STATUTORY MATTERS</span>
+              <div className="urgent-badge" style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", color: "var(--amber)", fontFamily: "var(--font-mono)", fontSize: "11px", fontWeight: "700" }}>
+                <AlertCircle size={16} />
+                <span>STATUTORY COMPLIANCE SUPPORT</span>
               </div>
-              <h4>Facing a Regulatory Notice or Post-Incident Audit?</h4>
-              <p>
-                If your plant has received an inspection citation, show-cause notice, or
-                experienced an unexpected loss of containment, mark your inquiry as
-                <strong> &quot;Immediate&quot;</strong> in the form or email us directly
-                with &quot;URGENT TRIAGE&quot; in the subject line.
+              <h4 style={{ fontSize: "16px", color: "var(--graphite)", marginBottom: "8px" }}>
+                Statutory Audit Observations or CAPA Requirements?
+              </h4>
+              <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.55" }}>
+                If your plant requires technical support for statutory safety audit observations (under The Factories Act, 1948 or MSIHC Rules), indicate your upcoming compliance milestones in the inquiry form.
               </p>
             </div>
 
-            {/* Confidentiality & Security Card */}
+            {/* Confidentiality & NDA Card */}
             <div className="info-card nda-card">
-              <div className="nda-badge">
-                <ShieldCheck size={22} className="nda-shield-icon" />
-                <h4>Strict Confidentiality Guaranteed</h4>
+              <div className="nda-badge" style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
+                <ShieldCheck size={20} color="#10B981" />
+                <h4 style={{ fontSize: "16px", color: "var(--graphite)", margin: 0 }}>
+                  Bilateral NDA Standard
+                </h4>
               </div>
-              <p>
-                We understand the sensitivity of proprietary formulations, process
-                temperatures, and operational incidents.
+              <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.55", marginBottom: "12px" }}>
+                We recognize that process flowsheets, operating temperatures, and plant drawings represent sensitive operational intellectual property.
               </p>
-              <ul className="nda-points">
-                <li>
-                  <CheckCircle2 size={14} /> Mutual Non-Disclosure Agreement (NDA) executed prior
-                  to data transfer
+              <ul className="nda-points" style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
+                <li style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "12.5px", color: "var(--text-secondary)" }}>
+                  <CheckCircle2 size={14} color="#10B981" style={{ marginTop: "2px", flexShrink: 0 }} />
+                  <span>Mutual Non-Disclosure Agreement (NDA) executed prior to drawing transfers</span>
                 </li>
-                <li>
-                  <CheckCircle2 size={14} /> Encrypted, access-restricted project folders
-                </li>
-                <li>
-                  <CheckCircle2 size={14} /> Zero public disclosure without explicit written consent
+                <li style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "12.5px", color: "var(--text-secondary)" }}>
+                  <CheckCircle2 size={14} color="#10B981" style={{ marginTop: "2px", flexShrink: 0 }} />
+                  <span>Access restricted strictly to assigned lead safety engineers</span>
                 </li>
               </ul>
             </div>
@@ -167,8 +162,7 @@ export default function ContactPage() {
               Everything You Need to Know <em>About Engaging HESAONE</em>
             </h2>
             <p>
-              Common questions regarding our auditing methodologies, timelines, consultant
-              certifications, and project onboarding.
+              Common questions regarding our auditing methodologies, timelines, consultant qualifications, and project onboarding.
             </p>
           </div>
 

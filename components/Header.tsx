@@ -16,7 +16,7 @@ const navLinks = [
   },
   { label: "Industries", href: "/industries" },
   { label: "Our Approach", href: "/approach" },
-  { label: "Practice Profiles", href: "/case-studies" },
+  { label: "Representative Scopes", href: "/case-studies" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -165,16 +165,15 @@ export default function Header() {
                     ? pathname === "/"
                     : pathname.startsWith(item.href);
 
-                return (
-                  <div key={item.href} className="mobile-nav-group">
-                    <Link
-                      href={item.href}
-                      className={`mobile-nav-link ${isActive ? "active" : ""}`}
-                    >
-                      {item.label}
-                    </Link>
-
-                    {item.hasDropdown && (
+                if (item.hasDropdown) {
+                  return (
+                    <div key={item.href} className="mobile-nav-group">
+                      <Link
+                        href={item.href}
+                        className={`mobile-nav-link ${isActive ? "active" : ""}`}
+                      >
+                        {item.label}
+                      </Link>
                       <div className="mobile-subnav">
                         {servicesData.map((s) => (
                           <Link
@@ -182,22 +181,36 @@ export default function Header() {
                             href={`/services/${s.slug}`}
                             className="mobile-subnav-link"
                           >
-                            <span>{s.no}.</span> {s.title}
+                            {s.title}
                           </Link>
                         ))}
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`mobile-nav-link ${isActive ? "active" : ""}`}
+                  >
+                    {item.label}
+                  </Link>
                 );
               })}
             </nav>
 
             <div className="drawer-footer">
-              <Link className="button button-primary w-full" href="/contact">
-                Request Technical Consultation
+              <Link
+                className="button button-primary"
+                href="/contact"
+                style={{ width: "100%", justifyContent: "center" }}
+              >
+                Request Consultation
               </Link>
-              <div className="drawer-contact-info">
-                <span>Direct Inquiries:</span>
+              <div className="drawer-contact-info" style={{ marginTop: "12px" }}>
+                <span>Direct Channel:</span>
                 <a href="mailto:hesaonellp@gmail.com">hesaonellp@gmail.com</a>
               </div>
             </div>
