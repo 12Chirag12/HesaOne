@@ -20,31 +20,41 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
   };
 
   return (
-    <div className="faq-accordion-container">
+    <div className="space-y-3">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         return (
           <div
             key={item.q}
-            className={`faq-item ${isOpen ? "faq-item-open" : ""}`}
+            className={`border rounded-xl transition-all duration-200 overflow-hidden ${
+              isOpen
+                ? "bg-white border-safety/40 shadow-sm"
+                : "bg-white/80 border-limestone-border hover:border-graphite-muted/40"
+            }`}
           >
             <button
               type="button"
-              className="faq-question-btn"
+              className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 transition-colors"
               onClick={() => toggle(index)}
               aria-expanded={isOpen}
             >
-              <span className="faq-question-text">
-                <span className="faq-num">0{index + 1}</span>
-                {item.q}
-              </span>
+              <div className="flex items-center gap-3.5">
+                <span className="font-mono text-xs font-bold text-safety shrink-0">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="font-semibold text-sm sm:text-base text-graphite leading-snug">
+                  {item.q}
+                </span>
+              </div>
               <ChevronDown
                 size={18}
-                className={`faq-arrow ${isOpen ? "rotated" : ""}`}
+                className={`text-graphite-muted shrink-0 transition-transform duration-200 ${
+                  isOpen ? "rotate-180 text-safety" : ""
+                }`}
               />
             </button>
             {isOpen && (
-              <div className="faq-answer-panel">
+              <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-graphite-secondary leading-relaxed border-t border-limestone-border/60">
                 <p>{item.a}</p>
               </div>
             )}

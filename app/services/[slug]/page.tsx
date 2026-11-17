@@ -12,6 +12,7 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Scale,
+  Lock,
   LucideIcon
 } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -69,7 +70,7 @@ export default async function ServiceDetailPage({
   const otherServices = servicesData.filter((s) => s.slug !== service.slug);
 
   return (
-    <div className="service-detail-page">
+    <div className="bg-limestone-warm min-h-screen">
       <Breadcrumb
         items={[
           { label: "Services", href: "/services" },
@@ -78,42 +79,60 @@ export default async function ServiceDetailPage({
       />
 
       {/* Hero Section */}
-      <section className="service-detail-hero">
-        <div className="section-wrap service-hero-inner">
-          <div className="service-hero-main">
-            <div className="service-hero-kicker">
-              <span className="hero-no-tag">SERVICE {service.no}</span>
-              <span className="kicker-sep">/</span>
-              <span className="kicker-category">INDUSTRIAL ENGINEERING</span>
-            </div>
-            <h1>{service.title}</h1>
-            <p className="service-hero-headline">{service.heroHeadline}</p>
-            <div className="service-hero-actions">
-              <Link
-                className="button button-primary"
-                href={`/contact?service=${encodeURIComponent(service.title)}`}
-              >
-                <span>Request Scoped Proposal</span>
-                <ArrowUpRight size={15} />
-              </Link>
-              <a
-                className="button button-outline"
-                href="mailto:hesaonellp@gmail.com"
-              >
-                <span>Direct Technical Desk</span>
-              </a>
-            </div>
-          </div>
+      <section className="bg-canopy text-white py-16 lg:py-20 border-b border-canopy-border relative overflow-hidden">
+        <div className="absolute inset-0 blueprint-grid opacity-15 pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Hero */}
+            <div className="lg:col-span-8 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canopy-subtle border border-safety/30 text-safety-light text-xs font-mono font-semibold tracking-wider">
+                <span>SERVICE {service.no}</span>
+                <span className="text-canopy-border">/</span>
+                <span>INDUSTRIAL ENGINEERING</span>
+              </div>
 
-          <div className="service-hero-visual-card">
-            <div className="visual-card-top">
-              <Icon size={36} className="visual-card-icon" />
-              <span className="visual-card-title">{service.title}</span>
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+                {service.title}
+              </h1>
+
+              <p className="text-base sm:text-lg text-limestone-muted leading-relaxed max-w-3xl">
+                {service.heroHeadline}
+              </p>
+
+              <div className="flex flex-wrap items-center gap-3.5 pt-2">
+                <Link
+                  href={`/contact?service=${encodeURIComponent(service.title)}`}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-safety text-white text-xs sm:text-sm font-semibold hover:bg-safety-hover transition-colors shadow-lg shadow-safety/15 group"
+                >
+                  <span>Request Scoped Proposal</span>
+                  <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </Link>
+
+                <a
+                  href="mailto:hesaonellp@gmail.com"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-canopy-subtle hover:bg-canopy-border border border-canopy-border text-limestone-light text-xs font-mono transition-colors"
+                >
+                  <span>Direct Technical Desk</span>
+                </a>
+              </div>
             </div>
-            <div className="visual-card-body">
-              <p>{service.shortDesc}</p>
-              <div className="visual-badge">
-                <ShieldCheck size={16} /> Certified Methodology Aligned
+
+            {/* Right Hero Badge Card */}
+            <div className="lg:col-span-4">
+              <div className="bg-canopy-subtle/80 border border-canopy-border rounded-2xl p-6 sm:p-8 space-y-4 shadow-xl">
+                <div className="w-14 h-14 rounded-xl bg-void border border-safety/30 flex items-center justify-center text-safety">
+                  <Icon size={28} />
+                </div>
+                <h3 className="font-serif text-xl font-bold text-white">
+                  {service.title}
+                </h3>
+                <p className="text-xs text-limestone-muted leading-relaxed">
+                  {service.shortDesc}
+                </p>
+                <div className="pt-3 border-t border-canopy-border flex items-center gap-2 text-xs font-mono text-emerald-400">
+                  <ShieldCheck size={14} />
+                  <span>Certified Statutory Methodology</span>
+                </div>
               </div>
             </div>
           </div>
@@ -121,159 +140,227 @@ export default async function ServiceDetailPage({
       </section>
 
       {/* Main Content Layout with Sticky Sidebar */}
-      <section className="section-wrap service-detail-layout">
-        <div className="service-main-content">
-          {/* Executive Overview */}
-          <div className="content-block">
-            <div className="block-eyebrow">
-              <span className="dot" /> EXECUTIVE OVERVIEW
+      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+          {/* Main Content Column (Col 1-8) */}
+          <div className="lg:col-span-8 space-y-12">
+            {/* Executive Overview */}
+            <div className="bg-white border border-limestone-border rounded-2xl p-6 sm:p-8 space-y-4 shadow-sm">
+              <span className="font-mono text-xs font-bold text-safety uppercase tracking-wider block">
+                EXECUTIVE OVERVIEW
+              </span>
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-graphite">
+                The Challenge &amp; Our Engineering Approach
+              </h2>
+              <p className="text-sm sm:text-base text-graphite-secondary leading-relaxed">
+                {service.fullDesc}
+              </p>
             </div>
-            <h2>The Challenge &amp; Our Engineering Approach</h2>
-            <p className="lead-paragraph">{service.fullDesc}</p>
-          </div>
 
-          {/* Deliverables & Outputs */}
-          <div className="content-block">
-            <div className="block-eyebrow">
-              <span className="dot" /> SCOPE &amp; OUTPUTS
-            </div>
-            <h2>Key Deliverables &amp; Technical Reports</h2>
-            <p>
-              When you engage HESAONE, your engineering leadership receives verified,
-              rigorously documented outputs ready for management presentation and
-              regulatory submission:
-            </p>
+            {/* Key Deliverables & Reports */}
+            <div className="bg-white border border-limestone-border rounded-2xl p-6 sm:p-8 space-y-6 shadow-sm">
+              <div>
+                <span className="font-mono text-xs font-bold text-safety uppercase tracking-wider block mb-1">
+                  SCOPE &amp; OUTPUTS
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-graphite">
+                  Key Deliverables &amp; Technical Reports
+                </h2>
+                <p className="text-xs sm:text-sm text-graphite-secondary mt-1">
+                  When you engage HESAONE, your engineering leadership receives verified, rigorously documented outputs ready for management presentation and regulatory submission:
+                </p>
+              </div>
 
-            <div className="deliverables-grid">
-              {service.deliverables.map((item, idx) => (
-                <div key={item} className="deliverable-item">
-                  <div className="deliv-num">0{idx + 1}</div>
-                  <div className="deliv-text">
-                    <strong>{item}</strong>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {service.deliverables.map((item, idx) => (
+                  <div
+                    key={item}
+                    className="p-4 rounded-xl bg-limestone-tint border border-limestone-border flex items-start gap-3.5"
+                  >
+                    <span className="font-mono text-xs font-bold text-safety shrink-0 mt-0.5">
+                      0{idx + 1}
+                    </span>
+                    <strong className="text-xs text-graphite font-semibold leading-relaxed">
+                      {item}
+                    </strong>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* 4-Step Methodology */}
-          <div className="content-block">
-            <div className="block-eyebrow">
-              <span className="dot" /> STRUCTURED EXECUTION
-            </div>
-            <h2>Our 4-Stage Methodology for {service.title}</h2>
-            <p>
-              We follow a repeatable, structured progression to ensure complete
-              technical coverage with minimal disruption to your daily operations:
-            </p>
+            {/* 4-Step Methodology */}
+            <div className="bg-white border border-limestone-border rounded-2xl p-6 sm:p-8 space-y-6 shadow-sm">
+              <div>
+                <span className="font-mono text-xs font-bold text-safety uppercase tracking-wider block mb-1">
+                  STRUCTURED EXECUTION
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-graphite">
+                  Our 4-Stage Methodology for {service.title}
+                </h2>
+                <p className="text-xs sm:text-sm text-graphite-secondary mt-1">
+                  We follow a repeatable, structured progression to ensure complete technical coverage with minimal disruption to your daily operations:
+                </p>
+              </div>
 
-            <div className="methodology-steps-list">
-              {service.methodology.map((m, idx) => (
-                <div key={m.step} className="method-step-card">
-                  <div className="method-step-badge">STAGE 0{idx + 1}</div>
-                  <div className="method-step-content">
-                    <h3>{m.step}</h3>
-                    <p>{m.desc}</p>
+              <div className="space-y-4">
+                {service.methodology.map((m, idx) => (
+                  <div
+                    key={m.step}
+                    className="p-5 rounded-xl bg-limestone-tint border border-limestone-border flex flex-col sm:flex-row sm:items-center gap-4"
+                  >
+                    <span className="font-mono text-xs font-bold text-safety px-2.5 py-1 rounded bg-white border border-limestone-border self-start shrink-0">
+                      STAGE 0{idx + 1}
+                    </span>
+                    <div className="space-y-1">
+                      <h3 className="text-sm font-bold text-graphite">{m.step}</h3>
+                      <p className="text-xs text-graphite-secondary leading-relaxed">{m.desc}</p>
+                    </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Business Benefits */}
+            <div className="bg-white border border-limestone-border rounded-2xl p-6 sm:p-8 space-y-6 shadow-sm">
+              <div>
+                <span className="font-mono text-xs font-bold text-safety uppercase tracking-wider block mb-1">
+                  RETURN ON SAFETY INVESTMENT
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-graphite">
+                  Quantifiable Business &amp; Operational Value
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {service.businessBenefits.map((b) => (
+                  <div
+                    key={b}
+                    className="p-4 rounded-xl bg-limestone-tint border border-limestone-border flex items-start gap-3"
+                  >
+                    <CheckCircle2 size={16} className="text-safety shrink-0 mt-0.5" />
+                    <p className="text-xs text-graphite font-medium leading-relaxed">{b}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Standards & Typical Use Cases */}
+            <div className="bg-white border border-limestone-border rounded-2xl p-6 sm:p-8 space-y-6 shadow-sm">
+              <div>
+                <span className="font-mono text-xs font-bold text-safety uppercase tracking-wider block mb-1">
+                  STATUTORY &amp; TECHNICAL BASIS
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-graphite">
+                  Governing Codes &amp; Typical Client Scenarios
+                </h2>
+              </div>
+
+              <div className="space-y-3">
+                <h4 className="font-mono text-xs font-bold text-graphite uppercase tracking-wider">
+                  International &amp; National Codes Applied:
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {service.keyStandards.map((std) => (
+                    <span
+                      key={std}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-limestone-tint border border-limestone-border text-xs font-mono text-graphite"
+                    >
+                      <Scale size={13} className="text-safety" />
+                      <span>{std}</span>
+                    </span>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
 
-          {/* Business Benefits */}
-          <div className="content-block">
-            <div className="block-eyebrow">
-              <span className="dot" /> RETURN ON SAFETY INVESTMENT
-            </div>
-            <h2>Quantifiable Business &amp; Operational Value</h2>
-            <div className="benefits-cards-grid">
-              {service.businessBenefits.map((b) => (
-                <div key={b} className="benefit-card">
-                  <CheckCircle2 size={18} className="bullet-check" />
-                  <p>{b}</p>
+              <div className="space-y-3 pt-3 border-t border-limestone-border">
+                <h4 className="font-mono text-xs font-bold text-graphite uppercase tracking-wider">
+                  Typical Industrial Scenarios:
+                </h4>
+                <div className="space-y-2">
+                  {service.sampleUseCases.map((uc) => (
+                    <div
+                      key={uc}
+                      className="p-3 rounded-lg bg-limestone-tint border border-limestone-border text-xs text-graphite-secondary flex items-start gap-2"
+                    >
+                      <span className="text-safety font-bold">&rsaquo;</span>
+                      <span>{uc}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
 
-          {/* Standards & Typical Use Cases */}
-          <div className="content-block">
-            <div className="block-eyebrow">
-              <span className="dot" /> STATUTORY &amp; TECHNICAL BASIS
-            </div>
-            <h2>Governing International Codes &amp; Standards</h2>
-            <ul className="standards-bullet-list">
-              {service.keyStandards.map((std) => (
-                <li key={std}>
-                  <Scale size={18} className="standards-icon" />
-                  <span>{std}</span>
-                </li>
-              ))}
-            </ul>
-
-            <h3 className="subhead-margin">Typical Client Scenarios</h3>
-            <div className="use-cases-box">
-              {service.sampleUseCases.map((uc) => (
-                <div key={uc} className="use-case-item">
-                  <span className="bullet-point">▸</span>
-                  <span>{uc}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Sidebar */}
-        <aside className="service-sidebar">
-          {/* Quick Enquire Card */}
-          <div className="sidebar-card sidebar-enquire-card">
-            <span className="sidebar-kicker">ENGAGE OUR TEAM</span>
-            <h3>Need assistance with {service.title}?</h3>
-            <p>
-              Speak directly with an accredited safety specialist. We review your P&amp;IDs
-              and provide a transparent scope outline within 24 hours.
-            </p>
-            <Link
-              className="button button-primary w-full"
-              href={`/contact?service=${encodeURIComponent(service.title)}`}
-            >
-              <span>Request Consultation</span>
-              <ArrowUpRight size={15} />
-            </Link>
-            <div className="sidebar-contact-direct">
-              <small>Direct Email Inquiry:</small>
-              <a href="mailto:hesaonellp@gmail.com">hesaonellp@gmail.com</a>
-            </div>
-          </div>
-
-          {/* Other Core Services Navigation */}
-          <div className="sidebar-card">
-            <h4>Other HSE Disciplines</h4>
-            <div className="sidebar-other-links">
-              {otherServices.map((other) => (
+          {/* Sticky Sidebar (Col 9-12) */}
+          <aside className="lg:col-span-4 space-y-6">
+            <div className="sticky top-24 space-y-6">
+              {/* Quick Inquiry Card */}
+              <div className="bg-canopy text-white border border-canopy-border rounded-2xl p-6 space-y-4 shadow-xl">
+                <span className="font-mono text-[11px] font-bold text-safety-light uppercase tracking-wider block">
+                  ENGAGE OUR TEAM
+                </span>
+                <h3 className="font-serif text-xl font-bold text-white">
+                  Need assistance with {service.title}?
+                </h3>
+                <p className="text-xs text-limestone-muted leading-relaxed">
+                  Speak directly with an accredited safety specialist. We review your P&amp;IDs and provide a transparent scope outline within 24 hours.
+                </p>
                 <Link
-                  key={other.slug}
-                  href={`/services/${other.slug}`}
-                  className="other-service-row"
+                  href={`/contact?service=${encodeURIComponent(service.title)}`}
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-safety text-white text-xs font-semibold hover:bg-safety-hover transition-colors shadow-md"
                 >
-                  <span className="other-num">{other.no}</span>
-                  <span className="other-name">{other.title}</span>
-                  <ArrowRight size={14} className="other-arrow" />
+                  <span>Request Consultation</span>
+                  <ArrowUpRight size={14} />
                 </Link>
-              ))}
-            </div>
-          </div>
+                <div className="pt-2 text-[11px] font-mono text-limestone-muted">
+                  <span className="block text-limestone-muted/70">Direct Email Desk:</span>
+                  <a href="mailto:hesaonellp@gmail.com" className="text-safety hover:underline">
+                    hesaonellp@gmail.com
+                  </a>
+                </div>
+              </div>
 
-          {/* Guarantee / NDA Note */}
-          <div className="sidebar-card sidebar-badge-card">
-            <ShieldCheck size={28} className="shield-badge-icon" />
-            <h5>100% NDA Protected</h5>
-            <p>
-              All facility drawings, process chemistries, and operational data remain
-              confidential under strict legal non-disclosure agreements.
-            </p>
-          </div>
-        </aside>
+              {/* Other Disciplines List */}
+              <div className="bg-white border border-limestone-border rounded-2xl p-6 space-y-4 shadow-sm">
+                <h4 className="font-mono text-xs font-bold text-graphite uppercase tracking-wider border-b border-limestone-border pb-3">
+                  Other HSE Disciplines
+                </h4>
+                <div className="space-y-2">
+                  {otherServices.map((other) => (
+                    <Link
+                      key={other.slug}
+                      href={`/services/${other.slug}`}
+                      className="group flex items-center justify-between p-2.5 rounded-lg hover:bg-limestone-tint transition-colors text-xs text-graphite"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <span className="font-mono text-[11px] font-bold text-safety">
+                          {other.no}
+                        </span>
+                        <span className="font-medium group-hover:text-safety transition-colors">
+                          {other.title}
+                        </span>
+                      </div>
+                      <ArrowRight size={12} className="text-graphite-muted group-hover:text-safety group-hover:translate-x-0.5 transition-all" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bilateral NDA Card */}
+              <div className="bg-white border border-limestone-border rounded-2xl p-5 space-y-2.5 shadow-sm">
+                <div className="flex items-center gap-2 text-emerald-600">
+                  <Lock size={16} />
+                  <span className="font-mono text-xs font-bold uppercase tracking-wider">
+                    100% NDA Protected
+                  </span>
+                </div>
+                <p className="text-xs text-graphite-secondary leading-relaxed">
+                  All facility drawings, process chemistries, and operational data remain strictly confidential under mutual non-disclosure agreements.
+                </p>
+              </div>
+            </div>
+          </aside>
+        </div>
       </section>
 
       {/* CTA */}

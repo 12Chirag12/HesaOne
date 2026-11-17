@@ -12,29 +12,40 @@ interface BreadcrumbProps {
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   return (
-    <nav className="breadcrumb-nav" aria-label="Breadcrumb">
-      <div className="section-wrap breadcrumb-inner">
-        <Link href="/" className="breadcrumb-home">
-          <Home size={14} />
-          <span>Home</span>
-        </Link>
-        {items.map((item, idx) => {
-          const isLast = idx === items.length - 1;
-          return (
-            <span key={item.label} className="breadcrumb-segment">
-              <ChevronRight size={13} className="breadcrumb-separator" />
-              {isLast || !item.href ? (
-                <span className="breadcrumb-current" aria-current="page">
-                  {item.label}
-                </span>
-              ) : (
-                <Link href={item.href} className="breadcrumb-link">
-                  {item.label}
-                </Link>
-              )}
-            </span>
-          );
-        })}
+    <nav className="bg-canopy-subtle/50 border-b border-canopy-border/60 py-3" aria-label="Breadcrumb">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ol className="flex items-center flex-wrap gap-1.5 text-xs text-limestone-muted">
+          <li className="inline-flex items-center">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-limestone-muted hover:text-white transition-colors"
+            >
+              <Home size={13} className="text-safety" />
+              <span>Home</span>
+            </Link>
+          </li>
+
+          {items.map((item, idx) => {
+            const isLast = idx === items.length - 1;
+            return (
+              <li key={item.label} className="inline-flex items-center gap-1.5">
+                <ChevronRight size={12} className="text-canopy-border" />
+                {isLast || !item.href ? (
+                  <span className="font-medium text-white" aria-current="page">
+                    {item.label}
+                  </span>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="hover:text-white transition-colors text-limestone-muted"
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </nav>
   );

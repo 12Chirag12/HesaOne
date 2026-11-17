@@ -6,7 +6,6 @@ import {
   ShieldCheck,
   FileCheck,
   Layers,
-  Scale,
   Lock
 } from "lucide-react";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -64,134 +63,158 @@ const allPracticeProfiles = [...caseStudiesData, ...additionalProfiles];
 
 export default function CaseStudiesPage() {
   return (
-    <div className="case-studies-page">
+    <div className="bg-limestone-warm min-h-screen">
       <Breadcrumb items={[{ label: "Representative Scopes" }]} />
 
       {/* Hero Header */}
-      <section className="page-hero section-wrap">
-        <div className="page-hero-header">
-          <p className="eyebrow dark">
-            REPRESENTATIVE SCOPES <i>•</i> TECHNICAL EXECUTION
-          </p>
-          <h1>
+      <section className="bg-canopy text-white py-16 lg:py-20 border-b border-canopy-border relative overflow-hidden">
+        <div className="absolute inset-0 blueprint-grid opacity-15 pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canopy-subtle border border-safety/30 text-safety-light text-xs font-mono font-semibold tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-safety animate-pulse" />
+            <span>REPRESENTATIVE SCOPES &bull; TECHNICAL EXECUTION</span>
+          </div>
+
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight max-w-4xl">
             Representative engineering challenges.<br />
-            <em>Methodical safety solutions.</em>
+            <span className="italic text-safety-light font-normal">Methodical safety solutions.</span>
           </h1>
-          <p className="page-hero-desc">
+
+          <p className="text-base sm:text-lg text-limestone-muted max-w-3xl leading-relaxed">
             Explore how HESAONE LLP conducts specialized process safety assessments, fire engineering evaluations, machinery safeguarding, and management system audits across high-hazard industrial environments.
           </p>
         </div>
       </section>
 
-      {/* Technical Framework Overview */}
-      <section className="standards-banner">
-        <div className="section-wrap standards-banner-inner">
-          <span className="standards-banner-title">DIAGNOSTIC CAPABILITIES APPLIED</span>
-          <div className="standards-pills-row">
-            <div className="standards-item">
-              <ShieldCheck size={16} color="var(--amber)" />
-              <b>Process Safety</b>
+      {/* Technical Framework Overview Ribbon */}
+      <section className="bg-void border-b border-canopy-border py-4 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs">
+          <span className="font-mono text-safety-light uppercase font-bold tracking-wider text-[11px] shrink-0">
+            DIAGNOSTIC CAPABILITIES APPLIED:
+          </span>
+          <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-limestone-muted">
+            <div className="flex items-center gap-1.5">
+              <ShieldCheck size={14} className="text-safety" />
+              <strong className="text-white">Process Safety:</strong>
               <span>HAZOP &bull; LOPA &bull; QRA (IEC 61511)</span>
             </div>
-            <div className="standards-divider" />
-            <div className="standards-item">
-              <FileCheck size={16} color="var(--amber)" />
-              <b>Management Systems</b>
+            <span className="text-canopy-border hidden sm:inline">&bull;</span>
+            <div className="flex items-center gap-1.5">
+              <FileCheck size={14} className="text-safety" />
+              <strong className="text-white">Management Systems:</strong>
               <span>ISO 45001 &bull; Factories Act 1948</span>
             </div>
-            <div className="standards-divider" />
-            <div className="standards-item">
-              <Layers size={16} color="var(--amber)" />
-              <b>Fire Engineering</b>
+            <span className="text-canopy-border hidden sm:inline">&bull;</span>
+            <div className="flex items-center gap-1.5">
+              <Layers size={14} className="text-safety" />
+              <strong className="text-white">Fire Engineering:</strong>
               <span>Hydraulic Sprinkler &bull; NBC 2016</span>
-            </div>
-            <div className="standards-divider" />
-            <div className="standards-item">
-              <Scale size={16} color="var(--amber)" />
-              <b>Statutory Consents</b>
-              <span>MSIHC Rules &bull; SPCB Parameters</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Case Studies Detailed Cards */}
-      <section className="case-studies-list-section section-wrap">
-        {/* Confidentiality Disclosure Banner */}
-        <div className="confidentiality-disclosure-banner">
-          <div className="disclosure-icon-wrap">
-            <Lock size={20} />
+      {/* Main Scopes Section */}
+      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {/* Bilateral NDA Policy Banner */}
+        <div className="bg-canopy border border-safety/30 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start gap-5 shadow-xl">
+          <div className="w-12 h-12 rounded-xl bg-canopy-subtle border border-safety/40 flex items-center justify-center text-safety shrink-0">
+            <Lock size={22} />
           </div>
-          <div className="disclosure-copy">
-            <strong>Bilateral Non-Disclosure Agreement (NDA) &amp; Client Confidentiality Policy</strong>
-            <p>
+          <div className="space-y-1.5">
+            <h3 className="font-serif text-lg font-bold text-white">
+              Bilateral Non-Disclosure Agreement (NDA) &amp; Client Confidentiality Policy
+            </h3>
+            <p className="text-xs sm:text-sm text-limestone-muted leading-relaxed">
               In strict accordance with professional engineering ethics and mutual non-disclosure agreements, actual client organization names, proprietary chemical formulations, and confidential plant topologies are withheld. The following practice profiles represent typical technical challenges, diagnostic methodologies, and tangible deliverables executed across high-hazard industrial sectors.
             </p>
           </div>
         </div>
 
-        <div className="cases-stack">
+        {/* Practice Profiles Stack */}
+        <div className="space-y-10">
           {allPracticeProfiles.map((cs, idx) => (
-            <article key={cs.id} className="case-study-card-expanded" id={cs.id}>
-              <div className="case-card-top-bar">
-                <span className="case-index">REPRESENTATIVE PROFILE 0{idx + 1}</span>
-                <span className="case-sector-pill">{cs.clientSector}</span>
+            <article
+              key={cs.id}
+              id={cs.id}
+              className="bg-white border border-limestone-border rounded-2xl p-6 sm:p-10 shadow-sm space-y-6 hover:border-graphite-muted/40 transition-colors scroll-mt-24"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-limestone-border pb-4">
+                <span className="font-mono text-xs font-bold text-safety uppercase tracking-wider">
+                  REPRESENTATIVE PROFILE 0{idx + 1}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-limestone-tint border border-limestone-border text-graphite font-mono text-xs font-medium self-start sm:self-auto">
+                  {cs.clientSector}
+                </span>
               </div>
 
-              <h2 style={{ fontSize: "24px", color: "var(--graphite)", marginBottom: "20px" }}>{cs.title}</h2>
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-graphite">
+                {cs.title}
+              </h2>
 
-              <div className="case-narrative-grid">
-                <div className="narrative-col" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                  <div>
-                    <h4 style={{ fontSize: "12.5px", fontFamily: "var(--font-mono)", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "6px" }}>
-                      Operational Context &amp; Challenge
-                    </h4>
-                    <p style={{ fontSize: "14.5px", color: "var(--text-secondary)", lineHeight: "1.6" }}>{cs.challenge}</p>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+                {/* Left: Challenge & Solution */}
+                <div className="lg:col-span-7 space-y-5">
+                  <div className="space-y-1.5">
+                    <span className="font-mono text-[11px] font-bold text-graphite-muted uppercase tracking-wider block">
+                      Operational Context &amp; Challenge:
+                    </span>
+                    <p className="text-xs sm:text-sm text-graphite-secondary leading-relaxed">
+                      {cs.challenge}
+                    </p>
                   </div>
 
-                  <div>
-                    <h4 style={{ fontSize: "12.5px", fontFamily: "var(--font-mono)", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "6px" }}>
-                      HESAONE Technical Execution
-                    </h4>
-                    <p style={{ fontSize: "14.5px", color: "var(--text-secondary)", lineHeight: "1.6" }}>{cs.solution}</p>
+                  <div className="space-y-1.5">
+                    <span className="font-mono text-[11px] font-bold text-graphite-muted uppercase tracking-wider block">
+                      HESAONE Technical Execution:
+                    </span>
+                    <p className="text-xs sm:text-sm text-graphite-secondary leading-relaxed">
+                      {cs.solution}
+                    </p>
                   </div>
                 </div>
 
-                <div className="metrics-col">
-                  <div className="ind-subcard" style={{ background: "var(--limestone)" }}>
-                    <h4 style={{ fontSize: "12.5px", fontFamily: "var(--font-mono)", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "12px" }}>
-                      Documented Deliverables &amp; Outcomes:
-                    </h4>
-                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px", marginBottom: "20px" }}>
-                      {cs.results.map((r) => (
-                        <li key={r} style={{ display: "flex", alignItems: "flex-start", gap: "10px", fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.45" }}>
-                          <CheckCircle2 size={16} className="bullet-check" />
-                          <span>{r}</span>
-                        </li>
-                      ))}
-                    </ul>
+                {/* Right: Results & Metrics */}
+                <div className="lg:col-span-5 bg-limestone-tint border border-limestone-border rounded-xl p-5 space-y-4">
+                  <span className="font-mono text-[11px] font-bold text-safety uppercase tracking-wider block">
+                    Documented Deliverables &amp; Outcomes:
+                  </span>
+                  <ul className="space-y-2 text-xs text-graphite-secondary">
+                    {cs.results.map((r) => (
+                      <li key={r} className="flex items-start gap-2.5">
+                        <CheckCircle2 size={14} className="text-safety shrink-0 mt-0.5" />
+                        <span className="leading-relaxed">{r}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
-                      {cs.metrics.map((m) => (
-                        <div key={m.label} style={{ background: "#FFFFFF", border: "1px solid var(--border-light)", padding: "10px 8px", borderRadius: "var(--radius-xs)", textAlign: "center" }}>
-                          <b style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--graphite)", marginBottom: "2px" }}>{m.value}</b>
-                          <small style={{ fontSize: "10px", color: "var(--text-muted)" }}>{m.label}</small>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="grid grid-cols-3 gap-2 pt-3 border-t border-limestone-border">
+                    {cs.metrics.map((m) => (
+                      <div
+                        key={m.label}
+                        className="bg-white border border-limestone-border p-2.5 rounded-lg text-center"
+                      >
+                        <b className="block font-mono text-[11px] text-graphite font-bold mb-0.5 leading-snug">
+                          {m.value}
+                        </b>
+                        <small className="text-[10px] text-graphite-muted block">
+                          {m.label}
+                        </small>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              <div style={{ marginTop: "24px", paddingTop: "16px", borderTop: "1px solid var(--border-subtle)" }}>
+              <div className="pt-4 border-t border-limestone-border flex items-center justify-between">
                 <Link
                   href={`/contact?priority=${encodeURIComponent(
                     `Practice Profile Inquiry: ${cs.title}`
                   )}`}
-                  className="button button-primary"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-canopy text-white text-xs font-semibold hover:bg-void transition-colors"
                 >
                   <span>Discuss a Similar Requirement for Your Facility</span>
-                  <ArrowUpRight size={15} />
+                  <ArrowUpRight size={14} />
                 </Link>
               </div>
             </article>

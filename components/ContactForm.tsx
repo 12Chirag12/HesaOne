@@ -13,7 +13,8 @@ import {
   Lock,
   ArrowRight,
   Copy,
-  Check
+  Check,
+  AlertCircle
 } from "lucide-react";
 
 interface SubmissionResult {
@@ -130,67 +131,75 @@ export default function ContactForm() {
 
   if (submissionResult) {
     return (
-      <div className="contact-success-card">
-        <div className="success-icon-wrap">
-          <CheckCircle2 size={36} className="success-icon" />
-        </div>
-
-        {submissionResult.mode === "dispatched" ? (
-          <>
-            <h3>Technical Consultation Request Dispatched</h3>
-            <p className="success-msg">
-              Thank you, <strong>{formData.fullName}</strong>. Your technical inquiry regarding{" "}
-              <strong>{formData.serviceCategory}</strong> for{" "}
-              <strong>{formData.companyName || "your organization"}</strong> has been transmitted to our engineering desk. A lead consultant will review your facility scope.
-            </p>
-          </>
-        ) : (
-          <>
-            <h3>Technical Inquiry Formatted &amp; Ready</h3>
-            <p className="success-msg">
-              Thank you, <strong>{formData.fullName}</strong>. To ensure direct, unmediated communication with our senior safety engineering team, your technical brief has been compiled for direct delivery to{" "}
-              <a href="mailto:hesaonellp@gmail.com" className="email-link">
-                hesaonellp@gmail.com
-              </a>.
-            </p>
-          </>
-        )}
-
-        <div className="inquiry-summary-box">
-          <div className="summary-row">
-            <span className="summary-lbl">Organization:</span>
-            <strong>{formData.companyName || "Not specified"}</strong>
+      <div className="bg-canopy border border-safety/40 rounded-xl p-6 sm:p-8 space-y-6 shadow-2xl">
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <CheckCircle2 size={26} />
           </div>
-          <div className="summary-row">
-            <span className="summary-lbl">Discipline:</span>
-            <span>{formData.serviceCategory}</span>
-          </div>
-          <div className="summary-row">
-            <span className="summary-lbl">Direct Contact:</span>
-            <span>{formData.workEmail} &bull; {formData.phoneNumber}</span>
+          <div>
+            <h3 className="text-xl font-bold text-white">
+              {submissionResult.mode === "dispatched"
+                ? "Technical Scope Transmitted"
+                : "Technical Scope Formatted & Ready"}
+            </h3>
+            <p className="text-xs text-limestone-muted">
+              Direct Communication Channel with HESAONE Lead Consultants
+            </p>
           </div>
         </div>
 
-        <div className="success-actions">
+        <p className="text-sm text-limestone-light leading-relaxed">
+          Thank you, <strong className="text-white">{formData.fullName}</strong>. Your technical inquiry regarding{" "}
+          <strong className="text-safety-light">{formData.serviceCategory}</strong> for{" "}
+          <strong className="text-white">{formData.companyName || "your organization"}</strong> is prepared for engineering review at{" "}
+          <a href="mailto:hesaonellp@gmail.com" className="text-safety underline hover:text-safety-hover">
+            hesaonellp@gmail.com
+          </a>.
+        </p>
+
+        <div className="bg-void border border-canopy-border rounded-lg p-4 space-y-2 text-xs font-mono">
+          <div className="flex justify-between py-1 border-b border-canopy-border/60">
+            <span className="text-limestone-muted">Organization:</span>
+            <strong className="text-white">{formData.companyName || "Not specified"}</strong>
+          </div>
+          <div className="flex justify-between py-1 border-b border-canopy-border/60">
+            <span className="text-limestone-muted">Practice Area:</span>
+            <span className="text-safety-light">{formData.serviceCategory}</span>
+          </div>
+          <div className="flex justify-between py-1 border-b border-canopy-border/60">
+            <span className="text-limestone-muted">Industrial Sector:</span>
+            <span className="text-white">{formData.facilitySector}</span>
+          </div>
+          <div className="flex justify-between py-1">
+            <span className="text-limestone-muted">Contact Info:</span>
+            <span className="text-white">{formData.workEmail} &bull; {formData.phoneNumber}</span>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 pt-2">
           {submissionResult.mailtoUrl && (
             <a
-              className="button button-primary"
               href={submissionResult.mailtoUrl}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-safety text-white text-xs font-semibold hover:bg-safety-hover transition-colors"
             >
               <span>Dispatch via Email Client</span>
-              <ArrowRight size={15} />
+              <ArrowRight size={14} />
             </a>
           )}
           <button
             type="button"
-            className="button button-outline"
             onClick={handleCopyScope}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-canopy-subtle hover:bg-canopy-border border border-canopy-border text-white text-xs font-medium transition-colors"
           >
-            {copied ? <Check size={14} /> : <Copy size={14} />}
+            {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
             <span>{copied ? "Copied to Clipboard" : "Copy Formatted Scope"}</span>
           </button>
-          <button type="button" className="button button-ghost" onClick={handleReset}>
-            <RotateCcw size={14} />
+          <button
+            type="button"
+            onClick={handleReset}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-limestone-muted hover:text-white text-xs transition-colors"
+          >
+            <RotateCcw size={13} />
             <span>Submit Another Scope</span>
           </button>
         </div>
@@ -199,38 +208,45 @@ export default function ContactForm() {
   }
 
   return (
-    <form className="interactive-contact-form" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="space-y-5">
       {errorMessage && (
-        <div className="form-error-banner" role="alert">
+        <div className="p-3.5 rounded-lg bg-rose-500/10 border border-rose-500/30 flex items-center gap-2.5 text-xs text-rose-300" role="alert">
+          <AlertCircle size={16} className="shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
 
-      <div className="form-grid-2">
-        <div className="form-field">
-          <label htmlFor="fullName">
-            Full Name <span className="req">*</span>
+      {/* Row 1: Full Name & Work Email */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="fullName" className="block text-xs font-semibold text-graphite mb-1.5">
+            Full Name <span className="text-safety">*</span>
           </label>
-          <div className="input-with-icon">
-            <User size={15} className="input-icon" />
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-graphite-muted">
+              <User size={15} />
+            </div>
             <input
               id="fullName"
               name="fullName"
               type="text"
               required
-              placeholder="e.g. R. K. Sharma / Lead Engineer"
+              placeholder="e.g. Rajesh Sharma / Plant Lead"
               value={formData.fullName}
               onChange={handleChange}
+              className="w-full pl-9 pr-3 py-2.5 rounded-lg bg-white border border-limestone-border text-graphite text-xs sm:text-sm placeholder:text-graphite-muted focus:outline-none focus:border-safety focus:ring-1 focus:ring-safety transition-colors"
             />
           </div>
         </div>
 
-        <div className="form-field">
-          <label htmlFor="workEmail">
-            Corporate Email <span className="req">*</span>
+        <div>
+          <label htmlFor="workEmail" className="block text-xs font-semibold text-graphite mb-1.5">
+            Corporate Email <span className="text-safety">*</span>
           </label>
-          <div className="input-with-icon">
-            <Mail size={15} className="input-icon" />
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-graphite-muted">
+              <Mail size={15} />
+            </div>
             <input
               id="workEmail"
               name="workEmail"
@@ -239,18 +255,22 @@ export default function ContactForm() {
               placeholder="name@company.com"
               value={formData.workEmail}
               onChange={handleChange}
+              className="w-full pl-9 pr-3 py-2.5 rounded-lg bg-white border border-limestone-border text-graphite text-xs sm:text-sm placeholder:text-graphite-muted focus:outline-none focus:border-safety focus:ring-1 focus:ring-safety transition-colors"
             />
           </div>
         </div>
       </div>
 
-      <div className="form-grid-2">
-        <div className="form-field">
-          <label htmlFor="phoneNumber">
-            Contact Number <span className="req">*</span>
+      {/* Row 2: Phone & Company */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="phoneNumber" className="block text-xs font-semibold text-graphite mb-1.5">
+            Contact Number <span className="text-safety">*</span>
           </label>
-          <div className="input-with-icon">
-            <Phone size={15} className="input-icon" />
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-graphite-muted">
+              <Phone size={15} />
+            </div>
             <input
               id="phoneNumber"
               name="phoneNumber"
@@ -259,16 +279,19 @@ export default function ContactForm() {
               placeholder="+91 98765 43210"
               value={formData.phoneNumber}
               onChange={handleChange}
+              className="w-full pl-9 pr-3 py-2.5 rounded-lg bg-white border border-limestone-border text-graphite text-xs sm:text-sm placeholder:text-graphite-muted focus:outline-none focus:border-safety focus:ring-1 focus:ring-safety transition-colors"
             />
           </div>
         </div>
 
-        <div className="form-field">
-          <label htmlFor="companyName">
-            Organization / Plant Name <span className="req">*</span>
+        <div>
+          <label htmlFor="companyName" className="block text-xs font-semibold text-graphite mb-1.5">
+            Organization / Plant Name <span className="text-safety">*</span>
           </label>
-          <div className="input-with-icon">
-            <Building size={15} className="input-icon" />
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-graphite-muted">
+              <Building size={15} />
+            </div>
             <input
               id="companyName"
               name="companyName"
@@ -277,21 +300,24 @@ export default function ContactForm() {
               placeholder="e.g. Apex Petrochemicals Ltd."
               value={formData.companyName}
               onChange={handleChange}
+              className="w-full pl-9 pr-3 py-2.5 rounded-lg bg-white border border-limestone-border text-graphite text-xs sm:text-sm placeholder:text-graphite-muted focus:outline-none focus:border-safety focus:ring-1 focus:ring-safety transition-colors"
             />
           </div>
         </div>
       </div>
 
-      <div className="form-grid-2">
-        <div className="form-field">
-          <label htmlFor="serviceCategory">
-            Practice Area / Discipline <span className="req">*</span>
+      {/* Row 3: Service Category & Sector Select */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="serviceCategory" className="block text-xs font-semibold text-graphite mb-1.5">
+            Practice Area / Discipline <span className="text-safety">*</span>
           </label>
           <select
             id="serviceCategory"
             name="serviceCategory"
             value={formData.serviceCategory}
             onChange={handleChange}
+            className="w-full px-3 py-2.5 rounded-lg bg-white border border-limestone-border text-graphite text-xs sm:text-sm focus:outline-none focus:border-safety focus:ring-1 focus:ring-safety transition-colors"
           >
             <option value="Process Safety & Risk Studies">Process Safety &amp; Risk Studies (HAZOP / QRA)</option>
             <option value="Safety Management Systems & Compliance">Safety Management Systems (ISO 45001 / Factories Act)</option>
@@ -302,15 +328,16 @@ export default function ContactForm() {
           </select>
         </div>
 
-        <div className="form-field">
-          <label htmlFor="facilitySector">
-            Industry Sector <span className="req">*</span>
+        <div>
+          <label htmlFor="facilitySector" className="block text-xs font-semibold text-graphite mb-1.5">
+            Industry Sector <span className="text-safety">*</span>
           </label>
           <select
             id="facilitySector"
             name="facilitySector"
             value={formData.facilitySector}
             onChange={handleChange}
+            className="w-full px-3 py-2.5 rounded-lg bg-white border border-limestone-border text-graphite text-xs sm:text-sm focus:outline-none focus:border-safety focus:ring-1 focus:ring-safety transition-colors"
           >
             <option value="Chemical & Pharmaceuticals">Chemical &amp; Pharmaceuticals</option>
             <option value="Manufacturing & Heavy Engineering">Manufacturing &amp; Heavy Engineering</option>
@@ -322,37 +349,41 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="form-field">
-        <label htmlFor="message">
-          Technical Scope &amp; Facility Context <span className="req">*</span>
+      {/* Message / Scope Textarea */}
+      <div>
+        <label htmlFor="message" className="block text-xs font-semibold text-graphite mb-1.5">
+          Technical Scope &amp; Facility Context <span className="text-safety">*</span>
         </label>
         <textarea
           id="message"
           name="message"
           required
-          rows={3}
+          rows={4}
           placeholder="Briefly describe your site, plant units, chemical inventory, P&amp;ID availability, or audit deadlines..."
           value={formData.message}
           onChange={handleChange}
+          className="w-full p-3 rounded-lg bg-white border border-limestone-border text-graphite text-xs sm:text-sm placeholder:text-graphite-muted focus:outline-none focus:border-safety focus:ring-1 focus:ring-safety transition-colors leading-relaxed"
         />
       </div>
 
-      <div className="form-footer-row">
-        <div className="form-nda-assurance">
-          <Lock size={14} className="nda-icon" />
-          <span>Technical disclosures handled under bilateral Non-Disclosure Agreement (NDA).</span>
+      {/* Footer: NDA Assurance & Submit Button */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-2">
+        <div className="flex items-center gap-2 text-xs text-graphite-muted">
+          <Lock size={13} className="text-safety shrink-0" />
+          <span>Disclosures handled under bilateral Non-Disclosure Agreement (NDA).</span>
         </div>
+
         <button
           type="submit"
           disabled={isSubmitting}
-          className="button button-primary"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-safety text-white text-xs sm:text-sm font-semibold hover:bg-safety-hover disabled:opacity-60 transition-all shadow-md shadow-safety/15 group"
         >
           {isSubmitting ? (
-            <span>Preparing Scope...</span>
+            <span>Processing Scope...</span>
           ) : (
             <>
               <span>Format &amp; Submit Inquiry</span>
-              <Send size={14} />
+              <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
             </>
           )}
         </button>
