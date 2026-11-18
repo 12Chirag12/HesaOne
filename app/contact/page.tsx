@@ -25,41 +25,21 @@ export default function ContactPage() {
     <div className="bg-white min-h-screen">
       <Breadcrumb items={[{ label: "Contact & Consultation" }]} />
 
-      {/* Page Hero */}
-      <section className="bg-white text-slate-900 py-16 lg:py-20 border-b border-slate-200 relative overflow-hidden blueprint-grid-light">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-800 text-xs font-mono font-semibold tracking-wider">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-600 animate-pulse" />
-            <span>DIRECT ADVISORY DESK &bull; BOISAR (WEST), PALGHAR</span>
-          </div>
-
-          <div className="max-w-4xl space-y-4">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
-              Let&apos;s engineer a safer,{" "}
-              <span className="text-sky-600">more resilient facility together.</span>
-            </h1>
-
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Tell us about your facility scope, operational challenges, or upcoming statutory compliance milestone. Our process safety engineers and lead DISH auditors provide confidential, objective technical advisory.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Interactive Contact Grid */}
-      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* Form Column (Col 1-7) */}
+      {/* Main Interactive Contact Grid & Form Content */}
+      <section className="py-8 sm:py-12 lg:py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Form Column (Col 1-7) - Directly Visible */}
           <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm space-y-6">
             <div>
-              <span className="font-mono text-xs font-bold text-sky-600 uppercase tracking-wider block mb-1">
-                ONLINE SCOPE SUBMISSION
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-800 text-xs font-mono font-semibold tracking-wider mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-600 animate-pulse" />
+                <span>DIRECT ADVISORY DESK &bull; BOISAR (WEST), PALGHAR</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
                 Request a Facility Scope &amp; Proposal
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                Complete the parameters below to compile your technical inquiry. Our engineering team reviews facility scopes under bilateral NDA.
+              </h1>
+              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                Tell us about your plant units, statutory audit deadlines, or technical scopes below. Our lead process safety engineers and DISH auditors review scopes under bilateral NDA.
               </p>
             </div>
 
