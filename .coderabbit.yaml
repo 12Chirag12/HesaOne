@@ -1,0 +1,31 @@
+# CodeRabbit Configuration for HESAONE LLP
+# Language: TypeScript / Next.js 15 / React 19
+# Scope: Industrial Engineering Consultancy Corporate Web Platform
+
+version: "2"
+language: "en"
+early_access: false
+
+reviews:
+  profile: "assertive"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  auto_review:
+    enabled: true
+    drafts: false
+  tools:
+    eslint:
+      enabled: true
+    typescript:
+      enabled: true
+  path_instructions:
+    - path: "app/**"
+      instructions: |
+        Ensure Next.js 15 App Router best practices, proper SEO metadata, accessibility (WCAG AA), semantic HTML, responsive design with Tailwind CSS, and zero type errors.
+    - path: "components/**"
+      instructions: |
+        Enforce clean modular component architecture, accessible Radix/Lucide icons with aria-labels, proper prop typing with TypeScript interfaces, clean hover states, and smooth 150-300ms transitions.
+    - path: "lib/**"
+      instructions: |
+        Verify strict factual integrity matching HESAONE LLP official regulatory and corporate profiles (DISH approved, Boisar/Palghar Maharashtra, actual client sectors, zero fabricated statistics).

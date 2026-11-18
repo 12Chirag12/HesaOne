@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Mail, Lock, FileCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck, Mail, Lock, Phone, FileCheck } from "lucide-react";
+import { companyInfo } from "@/lib/siteData";
 
 interface CTASectionProps {
   title?: string;
@@ -11,99 +12,90 @@ interface CTASectionProps {
 
 export default function CTASection({
   title = "Ready to elevate your facility's safety and compliance?",
-  subtitle = "Discuss your plant challenges with our certified process safety and EHS engineering team. We provide scoped, objective audits and actionable compliance roadmaps.",
+  subtitle = "Discuss your plant challenges with our certified process safety and EHS engineering consultants. We provide scoped, objective audits and actionable compliance roadmaps.",
   primaryBtnText = "Request Technical Consultation",
   primaryBtnLink = "/contact",
   serviceTag = "HEALTH • SAFETY • ENVIRONMENT ADVISORY"
 }: CTASectionProps) {
   return (
-    <section className="py-16 lg:py-20 bg-void border-t border-canopy-border relative overflow-hidden">
-      {/* Subtle blueprint grid overlay */}
-      <div className="absolute inset-0 blueprint-grid opacity-15 pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-canopy border border-canopy-border rounded-2xl p-8 lg:p-12 shadow-2xl relative overflow-hidden">
-          {/* Accent top stripe */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-safety via-safety-hover to-amber-500" />
+    <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white border border-slate-200 rounded-2xl p-8 sm:p-12 lg:p-16 shadow-sm relative overflow-hidden">
+          {/* Subtle top accent */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left: Main Copy & Action Buttons */}
+            {/* Left Column: Copy & Actions */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canopy-subtle border border-safety/30 text-safety-light text-xs font-mono tracking-wider font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-safety animate-pulse" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-800 text-xs font-mono font-semibold tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-600" />
                 <span>{serviceTag}</span>
               </div>
 
-              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white font-bold tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl text-slate-900 font-extrabold tracking-tight leading-snug">
                 {title}
               </h2>
 
-              <p className="text-sm sm:text-base text-limestone-muted leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                 {subtitle}
               </p>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
                 <Link
                   href={primaryBtnLink}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-safety text-white text-sm font-semibold hover:bg-safety-hover transition-all duration-200 shadow-lg shadow-safety/20 group"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-700 transition-colors shadow-sm shadow-sky-600/20 group"
                 >
                   <span>{primaryBtnText}</span>
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
 
                 <a
-                  href="mailto:hesaonellp@gmail.com"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-canopy-subtle hover:bg-canopy-border/50 border border-canopy-border text-limestone-light text-xs font-mono transition-colors"
+                  href={`tel:${companyInfo.phones[0].number.replace(/\s+/g, '')}`}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-mono transition-colors"
                 >
-                  <Mail size={14} className="text-safety" />
-                  <span>hesaonellp@gmail.com</span>
+                  <Phone size={14} className="text-sky-600" />
+                  <span>{companyInfo.phones[0].number}</span>
                 </a>
               </div>
             </div>
 
-            {/* Right: Practice Trust Docket */}
+            {/* Right Column: Practice Trust Docket */}
             <div className="lg:col-span-5">
-              <div className="bg-canopy-subtle/70 border border-canopy-border rounded-xl p-6 space-y-5">
-                <div className="flex items-center gap-3.5 border-b border-canopy-border pb-4">
-                  <div className="w-10 h-10 rounded-lg bg-safety/15 border border-safety/30 flex items-center justify-center text-safety shrink-0">
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 space-y-4">
+                <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
+                  <div className="w-10 h-10 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-600 shrink-0">
                     <ShieldCheck size={22} />
                   </div>
                   <div>
-                    <strong className="block text-sm text-white font-semibold">
+                    <strong className="block text-sm text-slate-900 font-bold">
                       HESAONE Practice Standards
                     </strong>
-                    <span className="block font-mono text-[11px] text-safety-light">
-                      Engineering Integrity &bull; Statutory Code Compliance
+                    <span className="block font-mono text-[11px] text-slate-500">
+                      DISH Approved &bull; Mutual NDA Protected
                     </span>
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-7 h-7 rounded-md bg-canopy border border-canopy-border flex items-center justify-center text-safety shrink-0 mt-0.5">
-                      <Lock size={13} />
-                    </div>
+                <div className="space-y-3.5 text-xs text-slate-600">
+                  <div className="flex items-start gap-2.5">
+                    <Lock size={15} className="text-sky-600 shrink-0 mt-0.5" />
                     <div>
-                      <strong className="block text-xs text-white font-semibold">
-                        Mutual NDA Protection Standard
-                      </strong>
-                      <p className="text-[11px] text-limestone-muted leading-relaxed mt-0.5">
-                        All drawings, P&amp;IDs, process chemistries, and operational data remain strictly protected.
-                      </p>
+                      <strong className="text-slate-900 block">Confidentiality Assured</strong>
+                      <span>All process diagrams, P&amp;IDs, and plant drawings remain protected under bilateral NDAs.</span>
                     </div>
                   </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="w-7 h-7 rounded-md bg-canopy border border-canopy-border flex items-center justify-center text-safety shrink-0 mt-0.5">
-                      <FileCheck size={13} />
-                    </div>
+                  <div className="flex items-start gap-2.5">
+                    <FileCheck size={15} className="text-emerald-600 shrink-0 mt-0.5" />
                     <div>
-                      <strong className="block text-xs text-white font-semibold">
-                        Accredited Lead Auditors
-                      </strong>
-                      <p className="text-[11px] text-limestone-muted leading-relaxed mt-0.5">
-                        ISO 45001, ISO 14001, and Certified Functional Safety Practitioners.
-                      </p>
+                      <strong className="text-slate-900 block">DISH &amp; Statutory Alignment</strong>
+                      <span>All audits conducted in direct compliance with The Factories Act 1948 and state rules.</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <Mail size={15} className="text-sky-600 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-slate-900 block">Advisory Desk</strong>
+                      <span>Direct email: <a href={`mailto:${companyInfo.email}`} className="text-sky-600 underline">{companyInfo.email}</a></span>
                     </div>
                   </div>
                 </div>

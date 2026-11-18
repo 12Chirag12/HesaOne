@@ -36,30 +36,161 @@ export interface CaseStudy {
   metrics: { label: string; value: string }[];
 }
 
+export interface LeaderProfile {
+  name: string;
+  role: string;
+  credentials: string[];
+  experience: string;
+  summary: string;
+  highlights: string[];
+}
+
+export interface ClientSectorGroup {
+  category: string;
+  clients: string[];
+}
+
+export const companyInfo = {
+  name: "HESAONE LLP",
+  altName: "HESA-ONE LLP",
+  sanskritMotto: "आत्मानं सततं रक्षेत्",
+  mottoEnglish: "Protect oneself always",
+  foundedYear: 2018,
+  mission: "To serve humanity by applying safety culture thus increasing life expectancy of human, environment & asset.",
+  tagline: "Total Safety Solutions & Industrial HSE Engineering Advisory",
+  headOffice: {
+    addressLine1: "501, Saiwadi, Kudan Pachmarg",
+    addressLine2: "Next to CISF Colony, Boisar (West)",
+    district: "Dist. Palghar",
+    state: "Maharashtra",
+    pinCode: "401502",
+    country: "India"
+  },
+  phones: [
+    { label: "Consultation & Scope", number: "+91 96737 86820" },
+    { label: "Technical Desk", number: "+91 83788 76198" },
+    { label: "Direct Inquiries", number: "+91 77740 55113" }
+  ],
+  email: "hesaonellp@gmail.com",
+  website: "www.hesaonellp.com",
+  csrFoundation: {
+    name: "Anal Foundation",
+    focus: "Corporate Social Responsibility (CSR) offering free community seminars for Domestic Safety, Electrical Home Safety, Road Safety, and free HSE industrial orientations."
+  },
+  stats: {
+    experienceYears: "20+",
+    trainingManHours: "20,000+",
+    foundedYear: 2018,
+    accreditation: "DISH Approved Safety Auditor (Govt. of Maharashtra)"
+  }
+};
+
+export const leadershipData: LeaderProfile[] = [
+  {
+    name: "Mr. V. Raghunath",
+    role: "Principal Safety Consultant & Lead Technical Advisor",
+    credentials: [
+      "Diploma in Chemical Engineering",
+      "Post Graduate Diploma in Industrial Safety (PGDIS)",
+      "Post Graduate in Fire Safety",
+      "PG Diploma in Industrial Psychology (Pune University)"
+    ],
+    experience: "20+ Years Industrial HSE Leadership",
+    summary:
+      "Accomplished chemical and industrial safety authority with more than two decades of senior operational leadership across Chemical, Pharmaceutical, Polymer, Heavy Engineering, and Construction sectors.",
+    highlights: [
+      "Headed Corporate Safety Departments at Aarti Industries Ltd., Ajanta Pharma, and Polygenta Technologies.",
+      "Imparted more than 20,000 Man-Hours of specialized EHS, Behavior-Based Safety (BBS), and process safety training.",
+      "Plant Safety Auditor and core BBS deployment leader at Aarti Industries.",
+      "Recipient of the prestigious 'Best Safety Changer Award' at Polygenta Technologies Ltd.",
+      "Active EHS Member at DISH MARG Aurangabad and Co-Chairman of NIMA Safety Committee Nashik."
+    ]
+  },
+  {
+    name: "Mr. Jitendra Thakur",
+    role: "Associate Partner, Senior Consultant & Lead Trainer",
+    credentials: [
+      "M.Sc. in Environmental Sciences",
+      "Advance Diploma in Industrial Safety (ADIS)",
+      "Advance Diploma in Fire Safety",
+      "Certified Internal Auditor for Integrated Management Systems (IMS)"
+    ],
+    experience: "15+ Years Industrial HSE & Environmental Experience",
+    summary:
+      "Senior safety and environmental consultant specializing in regulatory factory compliance, statutory safety audits, fire protection assessments, and chemical industry hazard management.",
+    highlights: [
+      "15+ years of dedicated consulting and audit experience across Pharma, Bulk Drugs, and Specialty Chemical plants.",
+      "Certified Internal Auditor for ISO 14001, ISO 45001, and Integrated Management Systems (IMS).",
+      "Approved Internal Safety and Fire Auditor with extensive shop-floor training delivery across Maharashtra industrial belts.",
+      "Specialist in Onsite Emergency Plans (OEP), Disaster Management, and Mock Drill facilitation."
+    ]
+  }
+];
+
+export const clientRoster: ClientSectorGroup[] = [
+  {
+    category: "Automotive & Heavy Engineering",
+    clients: [
+      "Mahindra & Mahindra",
+      "Bosch Rexroth (Pune)",
+      "Lear Corporation",
+      "CTR Manufacturing Industries",
+      "Triveni Engineering & Industries Ltd."
+    ]
+  },
+  {
+    category: "Chemical, Refining & Pharmaceuticals",
+    clients: [
+      "Aarti Industries Limited",
+      "Aarti Pharma",
+      "Lupin Ltd.",
+      "Hindustan Petroleum Corporation Ltd. (HPCL Manmad Terminal)",
+      "Gharda Chemicals Limited",
+      "Ajanta Pharma",
+      "Atul Ltd.",
+      "Macleods Pharmaceuticals",
+      "Balaji Amines",
+      "Mehta Petro Refineries Ltd."
+    ]
+  },
+  {
+    category: "Polymers, Packaging & Specialty Manufacturing",
+    clients: [
+      "Polygenta Technologies Ltd.",
+      "Everest Industries Ltd.",
+      "Cosmo Films Ltd.",
+      "McLube Asia Pvt. Ltd.",
+      "Beekaylon Synthetics Pvt. Ltd.",
+      "Blue Chip Industries Pvt. Ltd.",
+      "Hexagon Nutrition Ltd."
+    ]
+  }
+];
+
 export const servicesData: ServiceDetail[] = [
   {
     slug: "process-safety-risk-studies",
     no: "01",
-    title: "Process Safety & Risk Studies",
-    shortDesc: "Structured risk identification, quantitative assessment, and hazard modeling to safeguard high-hazard operations.",
-    heroHeadline: "Systematic hazard identification and consequence engineering for process facilities.",
+    title: "Process Safety Studies & Risk Assessment",
+    shortDesc: "Hazard Identification (HIRA), HAZOP studies, PSSR reviews, LOPA analysis, and ISO 14001/45001 systems.",
+    heroHeadline: "Rigorous process safety studies and consequence modeling for high-hazard industry.",
     fullDesc:
-      "Process safety is the engineering foundation that prevents catastrophic loss of primary containment, fires, vapor cloud explosions, and toxic exposure. HESAONE LLP conducts comprehensive qualitative and quantitative hazard evaluations tailored to chemical synthesis, oil and gas handling, pharmaceutical manufacturing, and heavy process installations.",
+      "Process safety is the engineering foundation that prevents catastrophic loss of primary containment, toxic vapor release, and chemical runaway incidents. HESAONE LLP conducts structured qualitative and quantitative risk assessments tailored to continuous chemical reactors, API pharmaceutical synthesis, petrochemical terminals, and pressurized storage installations.",
     iconName: "ShieldCheck",
     deliverables: [
-      "HAZOP (Hazard and Operability) Worksheets and Action Registers",
-      "HAZID (Hazard Identification) and What-If Analysis Reports",
-      "Quantitative Risk Assessment (QRA) with FN-Curves and Risk Contours",
-      "Layer of Protection Analysis (LOPA) & SIL Allocation Dossiers",
-      "Consequence Modeling for Dispersion, Thermal Radiation, and Overpressure",
-      "Bow-Tie Diagrams with Safety-Critical Barrier Definitions"
+      "Hazard Identification & Risk Assessment (HIRA) Worksheets",
+      "HAZOP (Hazard and Operability) Multidisciplinary Studies & Action Registers",
+      "Pre-Startup Safety Review (PSSR) Protocols for New & Modified Units",
+      "Layer of Protection Analysis (LOPA) & Risk Reduction Verification",
+      "Customer Safety Pre-Audit & Verification Dossiers",
+      "ISO 14001 (EMS) & ISO 45001 (OHSMS) Implementation Frameworks"
     ],
     keyStandards: [
-      "IEC 61508 / IEC 61511 (Functional Safety & SIS)",
-      "OSHA 29 CFR 1910.119 (Process Safety Management)",
+      "The Factories Act, 1948 (Sections 41B, 41C & State Rules)",
+      "MSIHC Rules, 1989 (Major Accident Hazard Guidelines)",
+      "IEC 61508 / IEC 61511 (Functional Safety & SIF)",
       "CCPS Guidelines for Process Hazard Analysis",
-      "API 754 & API RP 581 (Risk-Based Inspection)",
-      "ISO 31000 (Risk Management Guidelines)"
+      "ISO 45001:2018 & ISO 14001:2015 Management Systems"
     ],
     methodology: [
       {
@@ -86,34 +217,34 @@ export const servicesData: ServiceDetail[] = [
       "Protect surrounding personnel, physical assets, and community boundaries"
     ],
     sampleUseCases: [
-      "Continuous chemical reactor modification and distillation expansion",
-      "Pressurized LPG, LNG, and toxic solvent storage tank farms",
-      "Bulk chemical synthesis and multi-product batch pharmaceutical facilities"
+      "Continuous chemical reactor modification and distillation expansion at chemical synthesis facilities",
+      "Pressurized LPG, LNG, and toxic solvent storage tank farms and transfer manifolds",
+      "Pre-startup safety reviews (PSSR) for brownfield API batch synthesis units"
     ]
   },
   {
     slug: "safety-management-systems",
     no: "02",
-    title: "Safety Management Systems & Compliance",
-    shortDesc: "Management frameworks, third-party compliance audits, and governance embedding safety into operational culture.",
-    heroHeadline: "Moving from procedural paperwork to an active, resilient safety management system.",
+    title: "Safety System Implementation & Compliance",
+    shortDesc: "Work permit systems (PTW), Behavior-Based Safety (BBS), unsafe condition compliance, and accident reporting.",
+    heroHeadline: "Moving from procedural paperwork to active shop-floor safety governance.",
     fullDesc:
-      "A safety management system is only as effective as its execution on the plant floor. HESAONE LLP designs, evaluates, and matures organizational Health and Safety Management Systems (OHSMS) aligned with ISO 45001 and ISO 14001, closing the gap between documented procedures and frontline operations.",
+      "A safety management system is only as effective as its frontline execution. HESAONE LLP designs, implements, and audits shop-floor safety systems—from structured Permit-to-Work (PTW) frameworks and Lockout/Tagout (LOTO) protocols to Behavior-Based Safety (BBS) observation routines and statutory CAPA management.",
     iconName: "ClipboardCheck",
     deliverables: [
-      "ISO 45001 / ISO 14001 Gap Analysis and Readiness Reports",
-      "Statutory EHS Legal Registers & Regulatory Compliance Audits",
-      "Standard Operating Procedures (SOPs) and EHS Policy Manuals",
-      "Incident Investigation Protocols and Root Cause Analysis (RCA)",
-      "Contractor Safety Management Specifications",
-      "Corrective & Preventive Action (CAPA) Governance Trackers"
+      "Permit-to-Work (PTW) System Design (Hot Work, Height, Confined Space, Electrical)",
+      "Behavior-Based Safety (BBS) Culture & Observer Routines",
+      "Unsafe Condition Finding, Inspection & CAPA Compliance Tracking",
+      "Accident / Incident Reporting, Investigation & Root Cause Analysis (RCA)",
+      "Personal Protective Equipment (PPE) Matrix & Effectiveness Audits",
+      "Statutory OHS Legal Registers & Gap Analysis Reports"
     ],
     keyStandards: [
       "ISO 45001:2018 (Occupational Health & Safety)",
-      "ISO 14001:2015 (Environmental Management)",
-      "Factories Act & State Statutory Compliance Rules",
-      "ILO-OSH 2001 (Guidelines on OHS Management Systems)",
-      "OSHA 1910 General Industry Standards"
+      "The Factories Act, 1948 & State Factory Rules",
+      "DISH Approved Safety Audit Methodologies",
+      "ILO-OSH 2001 Safety Management Guidelines",
+      "IS 14489 (Code of Practice on Occupational Safety & Health Audit)"
     ],
     methodology: [
       {
@@ -137,37 +268,37 @@ export const servicesData: ServiceDetail[] = [
       "Establish audit-ready statutory compliance across all operational units",
       "Reduce near-misses and injury frequency through systematic hazard control",
       "Enhance corporate governance and institutional investor credibility",
-      "Standardize contractor safety oversight across capital projects"
+      "Standardize contractor safety oversight across operational shifts"
     ],
     sampleUseCases: [
-      "Multi-site manufacturing enterprise seeking ISO 45001 / 14001 certification",
+      "Multi-shift automotive and mechanical engineering plants deploying BBS culture",
       "Comprehensive regulatory compliance audit following an expansion permit",
-      "Turnkey overhaul of contractor safety management for capital projects"
+      "Standardization of Permit-to-Work systems for contractor workforce"
     ]
   },
   {
     slug: "fire-emergency-safety",
     no: "03",
     title: "Industrial Fire & Emergency Safety",
-    shortDesc: "Fire risk assessments, hydraulic fire network evaluations, and engineered emergency response planning.",
+    shortDesc: "Fire audits, hydrant inspection & AMC, fire extinguisher supply/refill, Onsite Emergency Plans, and mock drills.",
     heroHeadline: "Engineered fire prevention and dependable life-safety systems for industrial facilities.",
     fullDesc:
-      "Industrial fires and explosions present severe risks to human life and business continuity. HESAONE LLP provides specialized fire engineering advisory, conducting rigorous hazard assessments, testing hydraulic fire protection capacity, and formulating actionable emergency egress plans.",
+      "Industrial fires and explosions present severe risks to human life, physical assets, and business continuity. HESAONE LLP provides specialized industrial fire engineering advisory: evaluating fire risks, inspecting hydrant networks, providing extinguisher maintenance and AMC support, drafting statutory Onsite Emergency Plans, and conducting realistic emergency evacuation drills.",
     iconName: "Flame",
     deliverables: [
       "Comprehensive Industrial Fire Risk Assessments (FRA)",
-      "Fire Hydrant & Sprinkler Network Hydraulic Calculations",
-      "Special Hazard Fire Suppression System Design Specifications",
-      "Computerized Emergency Evacuation and Egress Analyses",
-      "On-Site Emergency Response Plans (ERP) and Disaster Scenarios",
-      "Passive Fire Protection & Fire Compartmentation Audits"
+      "Fire Hydrant Network Inspection, Flow Testing & AMC Support",
+      "Fire Extinguisher Supply, Refill, Inspection & Maintenance Schedules",
+      "Statutory Onsite Emergency Plan (OEP) & Disaster Management Manuals",
+      "Full-Scale Plant Mock Drills & Evacuation Protocol Testing",
+      "Passive Fire Containment & Fire Compartmentation Audits"
     ],
     keyStandards: [
-      "NFPA 13 (Installation of Sprinkler Systems)",
-      "NFPA 30 (Flammable and Combustible Liquids Code)",
-      "NFPA 72 (National Fire Alarm and Signaling Code)",
-      "National Building Code (NBC Part 4: Fire & Life Safety)",
-      "IS 15105 / IS 13039 (Fire Protection of Industrial Buildings)"
+      "National Building Code (NBC 2016 Part 4: Fire & Life Safety)",
+      "The Factories Act, 1948 (Section 38: Precautions in case of fire)",
+      "IS 15105 / IS 13039 (Fire Protection of Industrial Buildings)",
+      "NFPA 10 (Portable Fire Extinguishers) & NFPA 14 (Standpipe Systems)",
+      "State Fire Prevention and Life Safety Measures Acts"
     ],
     methodology: [
       {
@@ -183,8 +314,8 @@ export const servicesData: ServiceDetail[] = [
         desc: "Inspect fire-rated barriers, dampers, travel distances, and emergency exit capacities."
       },
       {
-        step: "Emergency Plan & Drill Formulation",
-        desc: "Develop site-specific emergency response manuals, incident command structures, and mock-drill protocols."
+        step: "Emergency Plan & Drill Execution",
+        desc: "Develop site-specific emergency response manuals, incident command structures, and lead real-time mock drills."
       }
     ],
     businessBenefits: [
@@ -194,34 +325,34 @@ export const servicesData: ServiceDetail[] = [
       "Maintain compliance with statutory fire safety rules and licensing bodies"
     ],
     sampleUseCases: [
-      "High-bay automated logistics warehouse sprinkler coverage verification",
-      "Flammable chemical storage farm deluge system and foam proportioning design",
-      "Manufacturing plant fire audit for annual municipal fire license renewal"
+      "Chemical manufacturing plant hydrant ring-main pressure testing and quarterly AMC",
+      "Pharmaceutical warehouse fire risk assessment and statutory emergency evacuation mock drills",
+      "Polymer processing plant Onsite Emergency Plan preparation for regulatory filing"
     ]
   },
   {
     slug: "environment-sustainability",
     no: "04",
-    title: "Environmental & Sustainability Compliance",
-    shortDesc: "Environmental assessments, industrial effluent management, and statutory consent compliance.",
+    title: "Environmental & Pollution Control Solutions",
+    shortDesc: "Effluent Treatment Plant (ETP) troubleshooting, water auditing, energy conservation, and pollution control compliance.",
     heroHeadline: "Technical environmental stewardship and rigorous consent compliance for industry.",
     fullDesc:
-      "Modern industrial facilities operate under strict regulatory scrutiny regarding air emissions, effluent discharge, and hazardous waste handling. HESAONE LLP provides technical environmental advisory to ensure facilities maintain full compliance with statutory pollution control mandates.",
+      "Modern industrial facilities operate under strict regulatory scrutiny regarding air emissions, effluent discharge, water conservation, and hazardous waste. HESAONE LLP provides hands-on technical environmental advisory—troubleshooting Effluent Treatment Plants (ETP), conducting comprehensive industrial water audits, identifying energy conservation opportunities, and ensuring compliance with State Pollution Control Board mandates.",
     iconName: "Leaf",
     deliverables: [
-      "Environmental Impact Assessment (EIA) Studies and EMPs",
-      "Effluent Treatment Plant (ETP) & ZLD Performance Evaluations",
-      "Statutory Consent to Establish (CTE) & Consent to Operate (CTO) Guidance",
-      "Hazardous Waste Characterization and Storage Compliance Audits",
-      "Stack Emission & Ambient Air Quality Monitoring Frameworks",
-      "Corporate ESG and Scope 1 & 2 Carbon Footprint Accounting"
+      "Effluent Treatment Plant (ETP) Operation & Troubleshooting Audits",
+      "Industrial Water Auditing, Water Balance & Consumption Optimization",
+      "Energy Conservation & Thermal Efficiency Studies",
+      "State Pollution Control Board (SPCB / CPCB) Consent Compliance Guidance",
+      "Hazardous Waste Characterization and Storage Compliance Reviews",
+      "Environmental Management Plan (EMP) Development"
     ],
     keyStandards: [
-      "Central & State Pollution Control Board (CPCB / SPCB) Guidelines",
-      "Environment (Protection) Act & Hazardous Waste Management Rules",
-      "ISO 14001:2015 (Environmental Management Systems)",
-      "Water (Prevention & Control of Pollution) Act",
-      "Air (Prevention & Control of Pollution) Act"
+      "Water (Prevention & Control of Pollution) Act, 1974",
+      "Air (Prevention & Control of Pollution) Act, 1981",
+      "Environment (Protection) Act, 1986 & Hazardous Waste Rules",
+      "Central & State Pollution Control Board (CPCB / SPCB) Standards",
+      "ISO 14001:2015 (Environmental Management Systems)"
     ],
     methodology: [
       {
@@ -248,322 +379,348 @@ export const servicesData: ServiceDetail[] = [
       "Strengthen corporate environmental stewardship and community goodwill"
     ],
     sampleUseCases: [
-      "Chemical manufacturing zero liquid discharge (ZLD) plant performance review",
-      "Pharmaceutical facility hazardous solvent recovery and waste management audit",
-      "Industrial park environmental baseline study for brownfield site expansion"
+      "Chemical and bulk drug manufacturing ETP biological reactor troubleshooting",
+      "Textile and polymer plant site-wide water auditing and recycling optimization",
+      "Industrial manufacturing energy conservation and environmental consent review"
     ]
   },
   {
     slug: "technical-safety-services",
     no: "05",
-    title: "Technical Safety & Machine Guarding",
-    shortDesc: "Machine safety audits, hazardous area classification, electrical safety, and energy isolation.",
-    heroHeadline: "Engineering safeguards for machinery, electrical systems, and hazardous atmospheres.",
+    title: "Engineering Services & Factory Licensing Support",
+    shortDesc: "Factory layout approval, Process Flow Diagram (PFD) preparation, SOPs, and electrical safety audits.",
+    heroHeadline: "Technical engineering documentation, factory approvals, and electrical safety audits.",
     fullDesc:
-      "Physical interaction between personnel and high-energy equipment remains a leading cause of industrial fatalities and severe injuries. HESAONE LLP provides specialized engineering assessments to eliminate mechanical, electrical, and thermal hazards across production environments.",
+      "Industrial facilities require precise technical documentation, statutory layout approvals from factory inspectorates, verified electrical systems, and standardized operational procedures. HESAONE LLP assists plant engineering teams in preparing statutory factory layout drawings, developing Process Flow Diagrams (PFD), drafting Standard Operating Procedures (SOP), and conducting electrical safety and thermography audits.",
     iconName: "HardHat",
     deliverables: [
-      "Machine Guarding Risk Assessments under ISO 12100",
-      "Hazardous Area Classification (HAC) Schedules and Zone Drawings",
-      "Lockout/Tagout (LOTO) Zero-Energy State Machine Procedures",
-      "Electrical Safety Audits and Arc Flash Hazard Calculations",
-      "Ergonomic Task Risk Analyses and Manual Handling Reviews",
-      "Pressure Vessel and Pressurized System Integrity Reviews"
+      "Factory Layout Approval Documentation (DISH / Factory Inspectorate)",
+      "Process Flow Diagram (PFD) & P&ID Scoping Preparation",
+      "Standard Operating Procedures (SOPs) for High-Hazard Plant Operations",
+      "Electrical Safety Audits, Earthing Verification & Thermography Studies",
+      "Machine Guarding Assessments & Energy Isolation (LOTO) Procedures",
+      "Legal Licensing Support under The Factories Act"
     ],
     keyStandards: [
-      "ISO 12100 / ISO 13849 (Safety of Machinery)",
-      "IEC 60079 / IS 5572 (Hazardous Area Classification)",
-      "OSHA 1910.147 (The Control of Hazardous Energy - LOTO)",
-      "NFPA 70E / IEEE 1584 (Electrical Workplace Safety & Arc Flash)",
-      "OSHA 1910 Subpart O (Machinery and Machine Guarding)"
+      "The Factories Act, 1948 (Section 6: Approval, licensing and registration of factories)",
+      "Central Electricity Authority (Measures relating to Safety and Electric Supply) Regulations",
+      "IS 732 / IS 3043 (Code of Practice for Electrical Wiring & Earthing)",
+      "ISO 12100 (Safety of Machinery - General Principles for Design)",
+      "OSHA 1910.147 (Control of Hazardous Energy - LOTO)"
     ],
     methodology: [
       {
-        step: "Equipment Inventory & Hazard Mapping",
-        desc: "Survey mechanical pinch points, rotating parts, electrical panels, and flammable vapor release zones."
+        step: "Plant Survey & Layout Inspection",
+        desc: "Survey plant physical boundaries, machinery placements, escape routes, and ventilation profiles."
       },
       {
-        step: "Engineering Safety Evaluation",
-        desc: "Evaluate existing interlocks, light curtains, relief valves, and electrical enclosure ratings."
+        step: "Engineering Drawing & Flowsheet Authoring",
+        desc: "Draft accurate architectural factory layouts and process flow diagrams satisfying inspectorate specifications."
       },
       {
-        step: "Standardized Safeguard Design",
-        desc: "Specify compliant physical guards, interlocked safety devices, and visual isolation instructions."
+        step: "Electrical & Mechanical Integrity Testing",
+        desc: "Conduct electrical thermography, earthing resistance tests, and machinery pinch-point evaluations."
       },
       {
-        step: "Verification & Maintenance Integration",
-        desc: "Verify safety functions, provide operational training, and integrate checks into maintenance routines."
+        step: "SOP Formulation & Regulatory Submission",
+        desc: "Author step-by-step operating procedures and compile audit-ready dossiers for statutory clearance."
       }
     ],
     businessBenefits: [
-      "Eliminate severe mechanical crushing, amputation, and entrapment injuries",
-      "Prevent ignition of flammable atmospheres through certified electrical equipment",
-      "Standardize energy isolation procedures to protect maintenance technicians",
-      "Achieve full alignment with international machinery safety directives"
+      "Accelerate statutory factory licensing and layout approvals without bureaucratic delays",
+      "Prevent catastrophic electrical fires and arc flash incidents through proactive audits",
+      "Standardize operating procedures to reduce operator error and downtime",
+      "Ensure machinery complies with statutory safeguarding mandates"
     ],
     sampleUseCases: [
-      "Automated stamping press and robotic welding cell machine safeguarding",
-      "Chemical batch synthesis plant hazardous area classification drawing update",
-      "Turnkey site-wide LOTO program deployment for a heavy manufacturing plant"
+      "Brownfield plant expansion requiring DISH factory layout approval in Maharashtra",
+      "Automotive component manufacturing electrical safety audit and earthing verification",
+      "Chemical synthesis plant SOP preparation for toxic raw material charging"
     ]
   },
   {
     slug: "training-awareness",
     no: "06",
-    title: "HSE Training & Workforce Development",
-    shortDesc: "Competency-based safety training, Behavior-Based Safety (BBS), and leadership safety coaching.",
+    title: "HSE Training & Workforce Competency",
+    shortDesc: "Workforce safety training, fire drills, BBS coaching, chemical handling, and supervisory seminars.",
     heroHeadline: "Empowering frontline workers and leadership with practical safety competence.",
     fullDesc:
-      "Technical safeguards require a skilled, safety-conscious workforce to function effectively. HESAONE LLP delivers high-impact, competency-focused training programs designed to bridge the gap between regulatory theory and real-world shop-floor execution.",
+      "As HESAONE’s core thesis emphasizes: almost 90% of industrial accidents stem from lack of hazard awareness and overconfidence among working personnel. Our training practice—led by consultants with over 20,000 training man-hours—delivers high-impact, practical, scenario-driven safety modules in English, Hindi, and Marathi.",
     iconName: "GraduationCap",
     deliverables: [
-      "Behavior-Based Safety (BBS) Observer and Champion Workshops",
-      "Permit-to-Work (PTW) and Confined Space Entry Certification",
-      "Executive and Supervisory Process Safety Leadership Seminars",
-      "Chemical Hazard Communication (HAZCOM) and GHS Training",
-      "Practical Fire Extinguisher and First-Response Drills",
-      "Hazard Identification and Stop-Work Authority Enablement"
+      "Basic Safety Induction Training for New Workers & Contractors",
+      "Behavior-Based Safety (BBS) Observer & Leadership Coaching",
+      "Fire Hazard Awareness, Hydrant Operation & Extinguisher Drills",
+      "Permit-to-Work (PTW) & Confined Space Entry Certification",
+      "Chemical Hazards, MSDS/SDS Understanding & Spill Response",
+      "Electrical Safety, Lockout/Tagout (LOTO) & Energy Isolation Modules"
     ],
     keyStandards: [
-      "OSHA Training Guidelines & Voluntary Protection Programs",
+      "The Factories Act, 1948 (Safety Officer & Worker Training Mandates)",
       "ISO 45001 Clause 7.2 & 7.3 (Competence and Awareness)",
+      "National Safety Council Guidelines",
       "NEBOSH & IOSH Competency Frameworks",
-      "Globally Harmonized System (GHS) of Chemical Classification",
-      "Factories Act Safety Officer & Worker Training Rules"
+      "Globally Harmonized System (GHS) of Chemical Hazard Communication"
     ],
     methodology: [
       {
-        step: "Training Needs Assessment (TNA)",
-        desc: "Review site incident history and interview shift supervisors to pinpoint knowledge gaps."
+        step: "Plant Hazard Assessment & TNA",
+        desc: "Identify site-specific accident history, near-miss logs, and machinery types to tailor curriculum."
       },
       {
-        step: "Custom Curriculum & Practical Modules",
-        desc: "Develop scenario-driven, multilingual training materials focused on actual plant equipment."
+        step: "Multilingual, Practical Curriculum Design",
+        desc: "Author engaging visual modules in Hindi, Marathi, and English centered on real plant scenarios."
       },
       {
-        step: "Interactive Workshop Delivery",
-        desc: "Facilitate hands-on practical exercises, case study discussions, and hazard-hunt simulations."
+        step: "Hands-on Practical Simulation",
+        desc: "Conduct live extinguisher discharges, mock evacuation drills, and LOTO board simulations."
       },
       {
-        step: "Competency Evaluation & Tracking",
-        desc: "Administer pre/post assessments, issue certifications, and provide ongoing retention tracking."
+        step: "Competency Verification & Retention Tracking",
+        desc: "Administer pre/post training evaluations and issue verified certificates of competence."
       }
     ],
     businessBenefits: [
-      "Cultivate an active safety culture where workers proactively report hazards",
-      "Ensure supervisors understand their statutory safety liabilities and duties",
-      "Reduce human error through standardized work practices and energy isolation",
-      "Empower employees at all levels to exercise Stop-Work Authority safely"
+      "Target the 90% human factor root cause of workplace accidents",
+      "Empower employees at all levels to exercise Stop-Work Authority safely",
+      "Ensure supervisors understand their statutory legal liabilities under The Factories Act",
+      "Build a resilient, proactive safety culture that protects life and operational continuity"
     ],
     sampleUseCases: [
-      "Comprehensive Behavior-Based Safety workshop for continuous process plant operators",
-      "Permit-to-work and hazardous energy isolation training for maintenance teams",
-      "Process safety leadership seminar for site managers and plant superintendents"
+      "Site-wide Behavior-Based Safety workshop series for chemical plant operating shifts",
+      "Hands-on fire extinguisher and emergency drill training for packaging and film facilities",
+      "Contractor safety induction and permit-to-work training for plant maintenance shutdowns"
     ]
   }
 ];
 
 export const industriesData: IndustryDetail[] = [
   {
-    slug: "manufacturing-engineering",
+    slug: "chemical-pharmaceuticals",
     no: "01",
-    title: "Manufacturing & Heavy Engineering",
-    tagline: "Mechanical equipment, overhead lifting, assembly lines, and high-energy fabrication.",
+    title: "Chemical & Pharmaceuticals",
+    tagline: "Volatile organic compounds, exothermic reactions, hazardous dusts, and tight consent limits.",
     description:
-      "Automotive manufacturing, foundries, and heavy fabrication operations involve intense operational tempos, mechanical pinch points, overhead crane movements, and maintenance energy isolation challenges.",
+      "Specialty chemical synthesis, active pharmaceutical ingredient (API) manufacturing, and bulk solvent handling involve high thermal energies, toxic vapor releases, volatile solvent transfer, and strict State Pollution Control Board discharge norms. HESAONE delivers deep process safety engineering, HAZOP studies, PSSR reviews, and ETP optimization.",
+    iconName: "FlaskConical",
+    typicalHazards: [
+      "Exothermic runaway reactions and thermal decomposition",
+      "Toxic vapor releases, volatile solvent leaks, and chemical inhalation",
+      "Combustible dust flash fires in milling, drying, and API granulation",
+      "Effluent Treatment Plant (ETP) biological upset and consent parameter exceedance"
+    ],
+    complianceStandards: [
+      "The Factories Act, 1948",
+      "MSIHC Rules, 1989",
+      "OSHA 1910.119 (Process Safety Management)",
+      "NFPA 30 / NFPA 652",
+      "State Pollution Control Board (SPCB) Consent Rules"
+    ],
+    solutionsProvided: [
+      "HAZOP, HIRA, and LOPA Risk Studies for Synthesis Units",
+      "Plant Pre-Start Safety Reviews (PSSR) for Commissioning",
+      "Effluent Treatment Plant (ETP) Troubleshooting & Optimization",
+      "Onsite Emergency Plan (OEP) Preparation & Regulatory Filing"
+    ],
+    outcomes: "Verified engineering containment barriers, audit-ready statutory compliance, and zero uncontained loss of primary containment."
+  },
+  {
+    slug: "manufacturing-engineering",
+    no: "02",
+    title: "Automotive & Heavy Engineering",
+    tagline: "Mechanical equipment, overhead cranes, assembly lines, and high-energy fabrication.",
+    description:
+      "Automotive component plants, foundries, stamping facilities, and heavy engineering shops operate high-tonnage hydraulic presses, automated welding cells, overhead cranes, and complex electrical sub-stations. HESAONE implements machine safeguarding, LOTO systems, electrical safety audits, and factory layout approvals.",
     iconName: "Factory",
     typicalHazards: [
-      "Machinery entrapment, entanglement, and mechanical crushing",
+      "Machinery entrapment, pinch-point crushing, and mechanical amputations",
       "Overhead crane rigging failures and heavy material handling collisions",
       "Hazardous electrical and hydraulic energy release during maintenance",
       "High ambient noise, welding fumes, and repetitive ergonomic strain"
     ],
-    complianceStandards: ["OSHA 1910 Subpart O", "ISO 12100", "EN ISO 13849-1", "Factories Act (Machinery Safety)"],
-    solutionsProvided: [
-      "Machine Guarding and Functional Safety Audits",
-      "Comprehensive Lockout/Tagout (LOTO) Program Deployment",
-      "Overhead Crane, Rigging, and Material Handling Safety Reviews",
-      "Ergonomic Assessment and Industrial Hygiene Monitoring"
+    complianceStandards: [
+      "The Factories Act, 1948 (Machinery Safety)",
+      "ISO 12100 (Safety of Machinery)",
+      "Central Electricity Authority Safety Regulations",
+      "IS 3043 (Code of Practice for Earthing)"
     ],
-    outcomes: "Engineered physical safeguards and standardized energy isolation protocols delivering full statutory compliance."
+    solutionsProvided: [
+      "Machine Guarding and ISO 12100 Safety Assessments",
+      "Standardized Lockout/Tagout (LOTO) Energy Isolation Deployment",
+      "Electrical Safety Audits with Thermal Imaging",
+      "Factory Layout Approvals from Factory Inspectorate (DISH)"
+    ],
+    outcomes: "Engineered physical safeguards, certified energy isolation routines, and accelerated factory licensing."
   },
   {
-    slug: "chemical-pharmaceuticals",
-    no: "02",
-    title: "Chemical & Pharmaceuticals",
-    tagline: "Volatile organic compounds, exothermic reactions, hazardous dusts, and tight consent limits.",
+    slug: "polymers-packaging",
+    no: "03",
+    title: "Polymers, Packaging & Synthetics",
+    tagline: "High-speed extrusion lines, static electricity, fire loads, and synthetic fiber processing.",
     description:
-      "Chemical synthesis and pharmaceutical processing involve high pressures, flammable solvent handling, toxic vapors, and strict statutory environmental effluent discharge parameters.",
-    iconName: "FlaskConical",
+      "Polymer manufacturing, synthetic yarn spinning, film extrusion, and industrial packaging involve high-speed rotating rolls, high combustible fuel loading, static charge generation, and intense continuous operations. HESAONE advises major polymer leaders on fire protection, static mitigation, BBS culture, and water auditing.",
+    iconName: "Building2",
     typicalHazards: [
-      "Exothermic runaway reactions and thermal decomposition",
-      "Toxic vapor releases, solvent spills, and hazardous inhalation hazards",
-      "Combustible dust flash fires in milling, drying, and API handling",
-      "Effluent treatment plant upset and statutory consent non-compliance"
+      "Rapid fire spread through high-density polymer storage and film rolls",
+      "Static discharge sparks in solvent-based coating and extrusion zones",
+      "Nip-point drawing and entrapment in high-speed rewinder rollers",
+      "Significant cooling water consumption and thermal energy losses"
     ],
-    complianceStandards: ["OSHA 1910.119 (PSM)", "NFPA 30 / NFPA 652", "IEC 60079", "Pollution Control Board Consent Rules"],
+    complianceStandards: [
+      "National Building Code (NBC Part 4: Fire & Life Safety)",
+      "IS 15105 (Industrial Fire Protection Standards)",
+      "The Factories Act, 1948",
+      "ISO 14001:2015 Environmental Standards"
+    ],
     solutionsProvided: [
-      "HAZOP, What-If, and SIL Allocation Facilitation",
-      "Hazardous Area Classification (Zone 0, 1, 2 & Zone 20, 21, 22)",
-      "Industrial Effluent and Zero Liquid Discharge (ZLD) Compliance Audits",
-      "Vapor Cloud Dispersion and Consequence Modeling"
+      "Fire Hydrant & Sprinkler Network Hydraulic Inspections & AMC",
+      "Static Electricity & Flammable Vapor Hazard Audits",
+      "Comprehensive Water Auditing & Water Balance Optimization",
+      "Behavior-Based Safety (BBS) Training for Continuous Shifts"
     ],
-    outcomes: "Comprehensive process hazard identification and verified engineering barriers protecting facility containment."
+    outcomes: "Certified fire safety infrastructure, optimized water recycling, and empowered shift workforce."
   },
   {
     slug: "infrastructure-construction",
-    no: "03",
-    title: "Infrastructure & Construction",
-    tagline: "Working at height, heavy earthmoving, temporary structures, and contractor workforces.",
+    no: "04",
+    title: "Infrastructure & Industrial Construction",
+    tagline: "Working at height, deep excavations, temporary electricals, and multi-contractor sites.",
     description:
-      "Civil infrastructure, highway developments, industrial construction, and structural projects operate across dynamic site conditions with high contractor worker density and elevated physical risks.",
-    iconName: "Building2",
+      "Civil infrastructure, greenfield chemical plant erection, industrial sheds, and plant brownfield revamps operate under dynamic site conditions with high contractor worker density and elevated physical risks. HESAONE establishes rigorous site-wide permit-to-work systems, scaffolding inspections, and accident prevention frameworks.",
+    iconName: "Truck",
     typicalHazards: [
-      "Falls from height (scaffolding, edge openings, fragile roofing)",
-      "Trench cave-ins, structural collapses, and excavation failures",
-      "Struck-by moving earthmoving equipment and mobile cranes",
-      "Temporary electrical distribution faults and high-voltage line contact"
+      "Falls from height (scaffolding, structural steel, fragile roofing)",
+      "Trench cave-ins, structural collapses, and heavy machinery strikes",
+      "Temporary electrical distribution shocks and flashovers",
+      "Contractor worker turnover and lack of induction awareness"
     ],
-    complianceStandards: ["OSHA 1926", "Building & Other Construction Workers (BOCW) Act", "IS 4014 (Scaffolding)", "ANSI A10"],
+    complianceStandards: [
+      "Building & Other Construction Workers (BOCW) Act",
+      "The Factories Act, 1948",
+      "IS 4014 (Scaffolding Safety)",
+      "IS 3696 (Safety Code for Scaffolds and Ladders)"
+    ],
     solutionsProvided: [
       "Contractor HSE Pre-Qualification and Daily Oversight Frameworks",
-      "Engineered Fall Protection, Lifeline, and Safety Net Specifications",
+      "Engineered Fall Protection, Scaffolding, and Lifeline Inspections",
       "Deep Excavation Shoring and Dewatering Safety Surveys",
       "Site-Wide Permit-to-Work (PTW) and Tool-Box-Talk (TBT) Standardization"
     ],
-    outcomes: "Systematic high-risk permit controls, verified fall protection systems, and disciplined contractor safety governance."
-  },
-  {
-    slug: "logistics-warehousing",
-    no: "04",
-    title: "Logistics & Industrial Warehousing",
-    tagline: "High-bay racking, material handling vehicles, cold chains, and large fire compartments.",
-    description:
-      "Modern distribution centers and automated fulfillment hubs experience high forklift density, rapid picking schedules, towering pallet racking, and large fire compartments with concentrated combustible inventory.",
-    iconName: "Truck",
-    typicalHazards: [
-      "Forklift-pedestrian collisions and loading dock edge falls",
-      "Structural pallet racking deflection, overloading, and collapse",
-      "Rapid fire spread through high-density combustible storage arrays",
-      "Ammonia refrigerant releases in industrial cold-storage operations"
-    ],
-    complianceStandards: ["NFPA 13 (High-Rack Sprinklers)", "EN 15635 (Steel Static Racking)", "OSHA 1910.178 (Powered Industrial Trucks)"],
-    solutionsProvided: [
-      "Pedestrian Segregation and Plant Traffic Management Audits",
-      "Structural Pallet Racking Integrity and Deflection Inspections",
-      "High-Bay Fire Sprinkler Hydraulic Verification and Egress Audits",
-      "Refrigeration Emergency Response and Leak Detection Reviews"
-    ],
-    outcomes: "Physical traffic separation, certified rack structural compliance, and verified fire suppression network density."
+    outcomes: "Disciplined high-risk permit controls, verified fall protection systems, and zero-fatality project execution."
   },
   {
     slug: "energy-power-utilities",
     no: "05",
-    title: "Energy & Power Utilities",
-    tagline: "High-voltage switchgear, thermal boilers, solar assets, and battery storage.",
+    title: "Energy & Industrial Utilities",
+    tagline: "High-voltage switchyards, steam boiler networks, effluent treatment, and fuel terminals.",
     description:
-      "Power generation, transmission substations, and utility installations present extreme arc flash energies, pressurized steam networks, confined spaces, and high-energy thermal risks.",
+      "Power generation, petrochemical terminals, medium-voltage substations, and plant utility blocks present extreme arc flash energies, pressurized steam networks, fuel storage hazards, and effluent discharge compliance. HESAONE conducts electrical safety audits, arc flash studies, emergency planning, and ETP performance reviews.",
     iconName: "Zap",
     typicalHazards: [
-      "Arc flash blast, electrocution, and medium/high-voltage flashovers",
-      "High-pressure boiler tube ruptures and thermal steam releases",
-      "Battery Energy Storage System (BESS) thermal runaway risks",
-      "Work-at-height on transmission towers, chimneys, and wind assets"
+      "Arc flash blast, electrocution, and high-voltage flashovers",
+      "High-pressure boiler steam releases and pressurized line failures",
+      "Bulk hydrocarbon transfer leaks and manifold ignition risks",
+      "Heavy effluent treatment plant shock loads and consent violations"
     ],
-    complianceStandards: ["NFPA 70E", "IEEE 1584 (Arc Flash Hazard Calculations)", "Electricity Rules & Safety Regulations", "OSHA 1910.269"],
+    complianceStandards: [
+      "Central Electricity Authority Safety Regulations",
+      "Indian Boilers Act & Boiler Regulations",
+      "Petroleum Act & SMPV Rules (PESO)",
+      "NFPA 70E / IEEE 1584 Electrical Safety Standards"
+    ],
     solutionsProvided: [
-      "Arc Flash Hazard Analysis and Incident Energy Warning Labeling",
-      "High-Voltage Substation Electrical Safety Audits",
+      "Electrical Safety Audits with Thermography and Earthing Verification",
+      "Onsite Emergency Plan (OEP) Preparation for Fuel Terminals",
       "Confined Space Entry and Isolation Protocols for Boilers",
-      "Renewable BESS Fire Prevention and Suppression Reviews"
+      "ETP Troubleshooting and Continuous Consent Compliance"
     ],
-    outcomes: "Calculated arc flash protection boundaries, standardized personal protective equipment, and verified energy isolation."
+    outcomes: "Engineered arc flash safety boundaries, verified electrical earthing, and audit-ready emergency plans."
   }
 ];
 
 export const caseStudiesData: CaseStudy[] = [
   {
     id: "cs-chemical-hazop",
-    title: "Specialty Chemicals: Process Hazard Analysis & SIL Allocation",
-    clientSector: "Chemical Manufacturing",
+    title: "Specialty Chemicals Synthesis: Comprehensive HAZOP & Process Safety Audit",
+    clientSector: "Chemical & Pharmaceuticals",
     challenge:
-      "A batch chemical synthesis facility operating high-pressure reactors and volatile organic solvent loops required an updated process hazard evaluation to satisfy regulatory operating permits and assess potential thermal runaway scenarios.",
+      "A leading specialty chemical manufacturing facility operating batch synthesis reactors and volatile solvent recovery systems required an updated, audit-grade Process Hazard Analysis to satisfy statutory regulatory inspection criteria and evaluate thermal runaway safeguards.",
     solution:
-      "HESAONE facilitated a multidisciplinary HAZOP study across all active reaction nodes, conducted atmospheric dispersion simulations, and performed Layer of Protection Analysis (LOPA) to verify safety-instrumented functions.",
+      "HESAONE’s lead consultants facilitated a node-by-node HAZOP study across all active reaction lines, modeled atmospheric dispersion scenarios, and evaluated relief valve and emergency interlock capacities against international criteria.",
     results: [
-      "Completed node-by-node hazard identification covering normal, startup, and upset states",
-      "Specified SIL-rated emergency depressurization and relief interlock safeguards",
-      "Formulated an actionable, prioritized risk mitigation register with clear engineering responsibilities"
+      "Executed node-by-node hazard identification covering normal, startup, shutdown, and emergency upset states",
+      "Engineered actionable independent protection layers (IPLs) for reactor runaway protection",
+      "Delivered a verified, audit-ready Process Safety Dossier accepted by statutory authorities"
     ],
     metrics: [
-      { label: "Governing Standard", value: "IEC 61511 / OSHA PSM" },
-      { label: "Study Scope", value: "Full Node HAZOP & LOPA" },
+      { label: "Study Scope", value: "Full Node HAZOP & HIRA" },
+      { label: "Governing Code", value: "Factories Act / MSIHC" },
       { label: "Key Milestone", value: "Audit-Ready Register" }
     ]
   },
   {
-    id: "cs-auto-iso45001",
-    title: "Automotive Component Plant: ISO 45001 OHSMS & Machine Safety Overhaul",
-    clientSector: "Automotive & Engineering",
+    id: "cs-auto-bbs",
+    title: "Automotive Component Major: Machine Guarding & Behavior-Based Safety Deployment",
+    clientSector: "Automotive & Heavy Engineering",
     challenge:
-      "A multi-line mechanical press and stamping facility sought to transition from informal safety practices to a fully certified ISO 45001 management system while upgrading machine guarding and energy isolation procedures.",
+      "A multi-line automotive component manufacturing plant sought to reduce pinch-point near-misses, modernize mechanical press guarding, and deploy a shop-floor Behavior-Based Safety (BBS) observation culture across three operating shifts.",
     solution:
-      "HESAONE conducted a comprehensive statutory gap audit, drafted standardized Lockout/Tagout (LOTO) visual instructions for major press lines, and trained internal safety committee leads to sustain the management system.",
+      "HESAONE conducted ISO 12100 machine risk assessments across all stamping press lines, designed standardized visual Lockout/Tagout (LOTO) procedures, and trained 150+ supervisors and frontline operators as active BBS observers.",
     results: [
-      "Established verified operational procedures aligned with ISO 45001:2018 requirements",
-      "Engineered physical safeguarding specifications for mechanical press pinch points",
-      "Delivered practical, bilingual LOTO energy isolation protocols across all production assets"
+      "Engineered physical machine guards and interlock specifications for high-tonnage presses",
+      "Standardized bilingual visual LOTO placards mounted directly at energy isolation points",
+      "Established frontline BBS observation routines resulting in immediate reduction in unsafe acts"
     ],
     metrics: [
-      { label: "Management Standard", value: "ISO 45001:2018" },
-      { label: "Machinery Focus", value: "Press Safeguarding & LOTO" },
-      { label: "Key Milestone", value: "Certified OHSMS Framework" }
+      { label: "Machinery Focus", value: "Press Guarding & LOTO" },
+      { label: "Culture Shift", value: "BBS Observer Certified" },
+      { label: "Key Milestone", value: "150+ Operators Trained" }
     ]
   },
   {
-    id: "cs-logistics-fire",
-    title: "Distribution Center: High-Bay Sprinkler Network & Life Safety Review",
-    clientSector: "Logistics & Warehousing",
+    id: "cs-polymer-fire-etp",
+    title: "Synthetic Polymer Facility: Hydrant Network Inspection & ETP Troubleshooting",
+    clientSector: "Polymers & Specialty Manufacturing",
     challenge:
-      "A large-scale logistics fulfillment facility with multi-tier storage racking required an independent fire safety audit to evaluate hydraulic sprinkler capacity, fire water reserves, and emergency egress distances.",
+      "A continuous synthetic polymer manufacturing unit experienced biological treatment upsets in its Effluent Treatment Plant (ETP) and required an engineering verification of its high-pressure fire hydrant network for annual statutory licensing.",
     solution:
-      "HESAONE conducted hydraulic flow calculations against NFPA 13 standards, evaluated in-rack sprinkler coverage, verified fire pump curves, and modeled emergency evacuation travel routes across all operational zones.",
+      "HESAONE performed on-site biological and chemical diagnostic testing on the ETP to stabilize COD/BOD levels, conducted hydraulic pressure and flow testing across the entire hydrant ring main, and led a full-scale plant mock evacuation drill.",
     results: [
-      "Verified fire water pump flow and pressure curves against high-rack design density criteria",
-      "Identified critical egress bottlenecks and recommended optimized exit corridor alignments",
-      "Delivered a detailed fire risk assessment dossier to support insurance and statutory review"
+      "Identified root cause of ETP bacterial shock and restored compliant biological aeration parameters",
+      "Tested and verified fire hydrant ring main pressures, pump curves, and deluge system coverage",
+      "Successfully conducted statutory emergency evacuation mock drill with full workforce participation"
     ],
     metrics: [
-      { label: "Engineering Code", value: "NFPA 13 / NBC Part 4" },
-      { label: "Scope of Review", value: "Hydraulic & Egress Audit" },
-      { label: "Key Milestone", value: "Validated Life Safety Report" }
+      { label: "Environmental", value: "ETP Balance Restored" },
+      { label: "Fire Network", value: "Hydrant AMC & Tested" },
+      { label: "Key Milestone", value: "Full Mock Drill Led" }
     ]
   }
 ];
 
 export const faqData = [
   {
-    q: "How does HESAONE LLP initiate an advisory engagement with a new facility?",
-    a: "Every engagement begins with our structured scoping phase. We review your site plot plans, process flow diagrams (PFDs), chemical inventory, and statutory compliance history. Following this, our senior safety consultants conduct an on-site walkthrough or discovery session to define a transparent, technically scoped project plan."
+    q: "What certifications, accreditations, and experience do HESAONE's consultants hold?",
+    a: "HESAONE is led by certified industrial safety professionals with over 20 years of hands-on plant experience. Our team includes a DISH Approved Safety Auditor (Directorate of Industrial Safety & Health, Government of Maharashtra), Post-Graduates in Industrial Safety (PGDIS) and Fire Safety, M.Sc. in Environmental Sciences, Advanced Diplomas in Industrial Safety (ADIS), certified IMS Internal Auditors, and active members of DISH MARG and NIMA Safety Committees."
   },
   {
-    q: "What certifications and qualifications do HESAONE's consultants hold?",
-    a: "Our team consists of experienced safety professionals, including certified functional safety practitioners, lead auditors for ISO 45001 and ISO 14001, NEBOSH qualified specialists, and industrial fire safety engineers with extensive field experience across high-hazard industries."
+    q: "Which industrial sectors and clients does HESAONE serve?",
+    a: "HESAONE advises leading industrial organizations across Automotive (Mahindra & Mahindra, Bosch Rexroth Pune, Lear Corporation, CTR), Chemical & Pharmaceuticals (Aarti Industries, Lupin Ltd, HPCL Manmad, Gharda Chemicals, Ajanta Pharma, Atul Ltd, Macleods Pharma), Polymers & Synthetics (Polygenta Technologies, Everest Industries, Cosmo Films), and Heavy Engineering (Triveni Engineering)."
   },
   {
-    q: "Can HESAONE support facilities facing statutory notices or regulatory compliance audits?",
-    a: "Yes. We provide objective technical advisory for plants addressing statutory audit observations, regulatory inspection notices, or internal compliance remediation. We assist in identifying root causes, drafting actionable Corrective and Preventive Action (CAPA) plans, and verifying that safeguards satisfy statutory criteria."
+    q: "How does HESAONE support facilities with DISH and statutory Factory Inspectorate compliance?",
+    a: "As a DISH Approved Safety Auditor practice, we conduct comprehensive statutory safety audits under The Factories Act, 1948, prepare statutory factory layout approvals, assist with MSIHC Rules compliance, conduct electrical safety audits, author Onsite Emergency Plans (OEP), and provide actionable Corrective and Preventive Action (CAPA) roadmaps for regulatory submissions."
   },
   {
-    q: "What is the typical timeframe required for a formal HAZOP study?",
-    a: "The duration of a HAZOP study depends directly on the number of nodes (piping, instrumentation, and operational sections) under review. A focused plant modification typically takes 2 to 4 workshop days, while complex greenfield synthesis units can span several weeks of structured multidisciplinary facilitation."
+    q: "Why is HSE training the core focus of HESAONE?",
+    a: "Our core operating thesis—proven across decades of field inspections—is that almost 90% of industrial accidents stem from lack of hazard awareness and overconfidence among working personnel. We have delivered over 20,000 Man-Hours of hands-on, scenario-driven training in Hindi, Marathi, and English covering fire drills, chemical handling, permit-to-work, machine safety, and Behavior-Based Safety (BBS)."
   },
   {
-    q: "Do you deliver on-site workforce safety training customized to plant equipment?",
-    a: "Yes. We develop scenario-driven, practical training programs tailored directly to your facility's machinery, chemicals, and operating workflows. Training can be delivered in English, Hindi, and vernacular languages to ensure genuine frontline understanding and hazard awareness."
+    q: "What community initiatives does HESAONE support under its CSR program?",
+    a: "Under the 'Anal Foundation' banner, HESAONE provides free community seminars on Domestic Safety, Electrical Home Safety, and Road Safety. We also offer free initial HSE orientation sessions to industrial facilities to build safety awareness and protect worker lives."
   },
   {
-    q: "How does HESAONE protect client operational data and proprietary process designs?",
-    a: "Confidentiality is fundamental to our practice. We execute mutual Non-Disclosure Agreements (NDAs) prior to receiving process diagrams, formulations, or operational documents. All project files are stored securely and accessed exclusively by assigned project engineers."
+    q: "How do we engage HESAONE for a plant audit, HAZOP study, or proposal?",
+    a: "You can reach our advisory desk directly by phone (+91 96737 86820 / +91 83788 76198 / +91 77740 55113) or email (hesaonellp@gmail.com). We review your plant context, chemical inventory, or P&IDs under bilateral Non-Disclosure Agreement (NDA) and provide a transparent, scoped technical proposal within 24 to 48 hours."
   }
 ];

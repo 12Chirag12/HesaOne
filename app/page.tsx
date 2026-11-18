@@ -14,13 +14,19 @@ import {
   Truck,
   CheckCircle2,
   Zap,
+  BookOpen,
+  HeartHandshake,
   Lock,
+  Scale,
+  Award,
+  Sparkles,
   LucideIcon
 } from "lucide-react";
 import Hero from "@/components/Hero";
+import ClientLogos from "@/components/ClientLogos";
 import CTASection from "@/components/CTASection";
 import InteractiveRiskAssessment from "@/components/InteractiveRiskAssessment";
-import { servicesData, industriesData, caseStudiesData } from "@/lib/siteData";
+import { servicesData, leadershipData, companyInfo } from "@/lib/siteData";
 
 const iconMap: Record<string, LucideIcon> = {
   ShieldCheck,
@@ -37,456 +43,322 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 export default function Home() {
-  const featuredStudy = caseStudiesData[0];
-
   return (
-    <div className="bg-[#FAF9F5] text-graphite">
-      {/* 1. Hero Split-Stage */}
+    <div className="bg-white min-h-screen">
+      {/* 1. Split-Stage White Clean Hero with Crystal Badges */}
       <Hero />
 
-      {/* 2. Statutory Regulatory Ledger Ribbon */}
-      <section className="bg-[#0A1118] text-white border-b border-white/10 py-5">
-        <div className="section-container flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="flex flex-col shrink-0">
-            <span className="font-mono text-[10px] tracking-[0.18em] font-bold text-safety-bright uppercase">
-              GOVERNING STATUTES
-            </span>
-            <span className="font-sans text-xs font-semibold text-slate-300">
-              Pan-India Regulatory Alignment
-            </span>
-          </div>
+      {/* 2. Client Trust Roster (Real Companies from PDF) */}
+      <ClientLogos />
 
-          <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 text-xs">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-white/5 border border-white/10 shrink-0">
-              <span className="font-mono font-bold text-safety-bright text-[11px]">The Factories Act 1948</span>
-              <span className="text-slate-400 text-[11px]">&bull; Sec 41B/41C</span>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-white/5 border border-white/10 shrink-0">
-              <span className="font-mono font-bold text-safety-bright text-[11px]">MSIHC Rules 1989</span>
-              <span className="text-slate-400 text-[11px]">&bull; Rule 10 Audits</span>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-white/5 border border-white/10 shrink-0">
-              <span className="font-mono font-bold text-safety-bright text-[11px]">ISO 45001 &bull; 14001</span>
-              <span className="text-slate-400 text-[11px]">&bull; Certified OHSMS</span>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-white/5 border border-white/10 shrink-0">
-              <span className="font-mono font-bold text-safety-bright text-[11px]">IEC 61511</span>
-              <span className="text-slate-400 text-[11px]">&bull; SIL 1-3 Allocation</span>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-white/5 border border-white/10 shrink-0">
-              <span className="font-mono font-bold text-safety-bright text-[11px]">NBC 2016 Part 4</span>
-              <span className="text-slate-400 text-[11px]">&bull; Fire Hydraulics</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Corporate Philosophy & Engineering Charter */}
-      <section className="py-20 lg:py-28 border-b border-limestone-200" id="about">
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-5">
-              <div className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-widest text-safety uppercase mb-4">
-                <span>01</span>
-                <span>/</span>
-                <span>PRACTICE PHILOSOPHY</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-graphite leading-[1.15] mb-6">
-                Safety is not administrative paperwork.<br />
-                <span className="font-serif italic font-normal text-safety">It is the engineering foundation of resilient industry.</span>
+      {/* 3. Leadership & Real Engineering Heritage (Crystal Cards) */}
+      <section className="py-16 sm:py-24 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="max-w-2xl space-y-2">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-sky-600 block">
+                SENIOR CONSULTING LEADERSHIP
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Led by Plant-Experienced Safety Authorities
               </h2>
-              <p className="text-slate-600 text-base leading-relaxed mb-6">
-                HESAONE LLP provides specialized engineering advisory and compliance solutions for high-hazard industrial operations. We bridge the gap between regulatory mandates and plant frontline realities through quantitative hazard modeling, objective compliance audits, and field-tested safety leadership.
+              <p className="text-base text-slate-600 leading-relaxed">
+                HESAONE was formed in {companyInfo.foundedYear} by senior safety directors with over two decades of on-floor leadership at leading corporations including Aarti Industries, Ajanta Pharma, and Polygenta Technologies.
               </p>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 text-sm font-bold text-safety hover:text-safety-amber transition-colors"
+            </div>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-sky-600 hover:text-sky-700 font-mono transition-colors self-start md:self-auto"
+            >
+              <span>Read Full Leadership Dossier</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {leadershipData.map((leader) => (
+              <div
+                key={leader.name}
+                className="crystal-card rounded-2xl p-6 sm:p-8 space-y-5"
               >
-                <span>Read our full organizational charter &amp; governance</span>
-                <ArrowRight size={16} />
-              </Link>
-            </div>
+                <div className="flex items-start justify-between gap-4 border-b border-slate-200/80 pb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">{leader.name}</h3>
+                    <span className="font-mono text-xs font-semibold text-sky-700 block mt-0.5">
+                      {leader.role}
+                    </span>
+                  </div>
+                  <span className="px-3 py-1 rounded-full crystal-pill text-slate-700 font-mono text-[11px] font-semibold shrink-0">
+                    {leader.experience}
+                  </span>
+                </div>
 
-            <div className="lg:col-span-7 flex flex-col gap-6">
-              {/* Pillar 01 */}
-              <div className="p-8 rounded-xl bg-white border border-limestone-200 shadow-card hover:border-safety/40 transition-all">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-xs font-bold text-safety tracking-wider">PILLAR 01 // CULTURAL</span>
-                  <ShieldCheck size={20} className="text-safety" />
+                <div className="space-y-2 text-xs font-mono text-slate-600">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
+                    CREDENTIALS &amp; QUALIFICATIONS:
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {leader.credentials.map((cred) => (
+                      <span
+                        key={cred}
+                        className="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-800 shadow-2xs"
+                      >
+                        {cred}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-graphite mb-2">People First &bull; Workforce Safeguarding</h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                  Every worker deserves to return home safely at the end of every shift. We implement Behavior-Based Safety (BBS), unconditional Stop-Work Authority, and ergonomic risk assessments that build frontline safety ownership.
-                </p>
-                <div className="flex flex-wrap gap-2 text-xs font-mono text-slate-500">
-                  <span className="px-2.5 py-1 rounded bg-limestone-100">BBS Culture</span>
-                  <span className="px-2.5 py-1 rounded bg-limestone-100">Stop-Work Authority</span>
-                  <span className="px-2.5 py-1 rounded bg-limestone-100">Shop-Floor Training</span>
-                </div>
-              </div>
 
-              {/* Pillar 02 */}
-              <div className="p-8 rounded-xl bg-white border border-limestone-200 shadow-card hover:border-safety/40 transition-all">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-xs font-bold text-safety tracking-wider">PILLAR 02 // TECHNICAL</span>
-                  <Flame size={20} className="text-safety" />
-                </div>
-                <h3 className="text-xl font-bold text-graphite mb-2">Process Integrity &bull; Primary Containment</h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                  Flawless engineering barriers that prevent loss of primary containment. We facilitate rigorous multidisciplinary HAZOP/LOPA workshops, SIL functional safety validation (IEC 61511), and blast consequence dispersion modeling.
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {leader.summary}
                 </p>
-                <div className="flex flex-wrap gap-2 text-xs font-mono text-slate-500">
-                  <span className="px-2.5 py-1 rounded bg-limestone-100">HAZOP / LOPA</span>
-                  <span className="px-2.5 py-1 rounded bg-limestone-100">IEC 61511 Functional Safety</span>
-                  <span className="px-2.5 py-1 rounded bg-limestone-100">Consequence Dispersion</span>
-                </div>
-              </div>
 
-              {/* Pillar 03 */}
-              <div className="p-8 rounded-xl bg-white border border-limestone-200 shadow-card hover:border-safety/40 transition-all">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-xs font-bold text-safety tracking-wider">PILLAR 03 // ENVIRONMENTAL</span>
-                  <Leaf size={20} className="text-safety" />
-                </div>
-                <h3 className="text-xl font-bold text-graphite mb-2">Planet Stewardship &bull; Zero Liquid Discharge</h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                  Preserving ecosystems through technical environmental engineering. We audit effluent treatment plants (ETP/ZLD), model air stack emissions, and secure State Pollution Control Board Consent to Establish (CTE) &amp; Operate (CTO).
-                </p>
-                <div className="flex flex-wrap gap-2 text-xs font-mono text-slate-500">
-                  <span className="px-2.5 py-1 rounded bg-limestone-100">SPCB Consents (CTE/CTO)</span>
-                  <span className="px-2.5 py-1 rounded bg-limestone-100">ETP / ZLD Audits</span>
-                  <span className="px-2.5 py-1 rounded bg-limestone-100">Stack Dispersion Modeling</span>
-                </div>
+                <ul className="space-y-2 text-xs text-slate-700 pt-2 border-t border-slate-200/80">
+                  {leader.highlights.slice(0, 3).map((hl) => (
+                    <li key={hl} className="flex items-start gap-2">
+                      <CheckCircle2 size={13} className="text-sky-600 shrink-0 mt-0.5" />
+                      <span>{hl}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Core Practice Disciplines — Architectural Capability Ledger */}
-      <section className="py-20 lg:py-28 bg-[#F3F1EA] border-b border-limestone-200" id="services">
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Sticky Sidebar */}
-            <div className="lg:col-span-4 lg:sticky lg:top-24">
-              <div className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-widest text-safety uppercase mb-4">
-                <span>02</span>
-                <span>/</span>
-                <span>CORE DISCIPLINES</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-graphite leading-[1.15] mb-4">
-                Specialized HSE engineering<br />
-                <span className="font-serif italic font-normal text-safety">built for operational reality.</span>
-              </h2>
-              <p className="text-slate-600 text-sm leading-relaxed mb-8">
-                Explore our six core advisory disciplines covering early process design, quantitative risk studies, fire hydraulics, and frontline safety governance.
-              </p>
-              <div className="flex flex-col gap-3">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-safety hover:bg-safety-amber text-white text-sm font-bold shadow-md transition-all"
-                >
-                  <span>Request Scoped Proposal</span>
-                  <ArrowRight size={15} />
-                </Link>
-                <Link
-                  href="/services"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-graphite hover:text-safety transition-colors pt-2"
-                >
-                  <span>View Complete Service Matrix</span>
-                  <ArrowUpRight size={14} />
-                </Link>
-              </div>
+      {/* 4. DEDICATED CRYSTAL INTEGRITY SECTION: The Crystal Standard of Safety */}
+      <section className="py-20 lg:py-24 crystal-section-bg border-b border-slate-200 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 relative z-10">
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full crystal-pill text-sky-900 text-xs font-mono font-semibold tracking-wider">
+              <Sparkles size={13} className="text-sky-600" />
+              <span>THE CRYSTAL STANDARD &bull; TOTAL TECHNICAL INTEGRITY</span>
             </div>
-
-            {/* Capability Ledger Cards */}
-            <div className="lg:col-span-8 flex flex-col gap-4">
-              {servicesData.map((svc) => {
-                const Icon = iconMap[svc.iconName] || ShieldCheck;
-                return (
-                  <article
-                    key={svc.no}
-                    className="p-6 sm:p-8 rounded-xl bg-white border border-limestone-200 shadow-card hover:border-safety/40 transition-all group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
-                  >
-                    <div className="flex items-start gap-5">
-                      <div className="w-12 h-12 rounded-lg bg-limestone-100 flex items-center justify-center text-graphite shrink-0 group-hover:bg-safety/10 group-hover:text-safety transition-colors">
-                        <Icon size={24} />
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2.5 mb-1.5">
-                          <span className="font-mono text-xs font-bold text-safety">DISCIPLINE {svc.no}</span>
-                          <span className="font-mono text-[11px] px-2 py-0.5 rounded bg-limestone-100 text-slate-600">
-                            {svc.keyStandards[0].split("(")[0].trim()}
-                          </span>
-                        </div>
-                        <h3 className="text-lg font-bold text-graphite group-hover:text-safety transition-colors mb-2">
-                          {svc.title}
-                        </h3>
-                        <p className="text-xs text-slate-600 leading-relaxed max-w-xl mb-3">
-                          {svc.shortDesc}
-                        </p>
-                        <div className="flex flex-wrap gap-2 text-[11px] font-mono text-slate-500">
-                          <span className="inline-flex items-center gap-1 text-slate-600">
-                            &bull; Certified Lead Auditors
-                          </span>
-                          <span className="inline-flex items-center gap-1 text-slate-600">
-                            &bull; Audit-Ready CAPA
-                          </span>
-                          <span className="inline-flex items-center gap-1 text-slate-600">
-                            &bull; Statutory Acceptance
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <Link
-                      href={`/services/${svc.slug}`}
-                      className="w-10 h-10 rounded-full border border-limestone-200 flex items-center justify-center text-slate-400 group-hover:bg-safety group-hover:border-safety group-hover:text-white transition-all shrink-0 self-end sm:self-center"
-                      aria-label={`View technical scope for ${svc.title}`}
-                    >
-                      <ArrowUpRight size={18} />
-                    </Link>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. 4-Stage Engineering Lifecycle Framework */}
-      <section className="py-20 lg:py-28 bg-[#101C24] text-white border-b border-white/10" id="approach">
-        <div className="section-container">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-widest text-safety-bright uppercase mb-3">
-              <span>03</span>
-              <span>/</span>
-              <span>ENGINEERING LIFECYCLE</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
-              How HESAONE Partners With Your Facility
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+              Clarity, Precision &amp; Statutory Rigor
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Every industrial site possesses unique operating physics. Our disciplined 4-stage lifecycle ensures every recommendation is scientifically validated, prioritized, and operationally viable.
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+              In high-consequence industries, ambiguity is the enemy of safety. Every audit, HAZOP review, and training engagement adheres to four unwavering principles.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {/* Stage 1 */}
-            <div className="p-6 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col justify-between hover:border-safety/40 transition-all">
-              <div>
-                <span className="font-mono text-xs font-bold text-safety-bright tracking-wider block mb-2">PHASE 01</span>
-                <h4 className="text-lg font-bold text-white mb-3">Understand &amp; Scope</h4>
-                <p className="text-xs text-slate-300 leading-relaxed mb-6">
-                  In-depth review of P&amp;IDs, process envelopes, statutory consent conditions, and historical near-miss logs.
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Crystal Card 1 */}
+            <div className="crystal-card rounded-2xl p-6 sm:p-7 space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 shadow-2xs">
+                <Award size={24} />
               </div>
-              <div className="p-3 rounded bg-white/[0.03] border border-white/5">
-                <span className="block font-mono text-[9.5px] uppercase tracking-wider text-safety-bright mb-1">STAGE OUTPUT</span>
-                <strong className="block text-xs text-slate-200">Scoping Blueprint &amp; Hazard Baseline</strong>
+              <div className="space-y-1">
+                <span className="font-mono text-[10px] font-bold text-sky-700 uppercase tracking-widest block">
+                  STATUTORY RECOGNITION
+                </span>
+                <h3 className="text-lg font-bold text-slate-900">
+                  DISH Approved Auditor
+                </h3>
               </div>
-            </div>
-
-            {/* Stage 2 */}
-            <div className="p-6 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col justify-between hover:border-safety/40 transition-all">
-              <div>
-                <span className="font-mono text-xs font-bold text-safety-bright tracking-wider block mb-2">PHASE 02</span>
-                <h4 className="text-lg font-bold text-white mb-3">Assess &amp; Quantify</h4>
-                <p className="text-xs text-slate-300 leading-relaxed mb-6">
-                  Multidisciplinary HAZOP workshops, quantitative consequence modeling (dispersion/fire), and hydraulic flow verification.
-                </p>
-              </div>
-              <div className="p-3 rounded bg-white/[0.03] border border-white/5">
-                <span className="block font-mono text-[9.5px] uppercase tracking-wider text-safety-bright mb-1">STAGE OUTPUT</span>
-                <strong className="block text-xs text-slate-200">Node Worksheets &amp; Risk Contours</strong>
-              </div>
-            </div>
-
-            {/* Stage 3 */}
-            <div className="p-6 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col justify-between hover:border-safety/40 transition-all">
-              <div>
-                <span className="font-mono text-xs font-bold text-safety-bright tracking-wider block mb-2">PHASE 03</span>
-                <h4 className="text-lg font-bold text-white mb-3">Engineer &amp; Recommend</h4>
-                <p className="text-xs text-slate-300 leading-relaxed mb-6">
-                  Applying the hierarchy of controls to design independent protection layers, SIL interlocks, and machine safeguarding.
-                </p>
-              </div>
-              <div className="p-3 rounded bg-white/[0.03] border border-white/5">
-                <span className="block font-mono text-[9.5px] uppercase tracking-wider text-safety-bright mb-1">STAGE OUTPUT</span>
-                <strong className="block text-xs text-slate-200">Prioritized CAPA &amp; Engineering Specs</strong>
-              </div>
-            </div>
-
-            {/* Stage 4 */}
-            <div className="p-6 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col justify-between hover:border-safety/40 transition-all">
-              <div>
-                <span className="font-mono text-xs font-bold text-safety-bright tracking-wider block mb-2">PHASE 04</span>
-                <h4 className="text-lg font-bold text-white mb-3">Strengthen &amp; Sustain</h4>
-                <p className="text-xs text-slate-300 leading-relaxed mb-6">
-                  Frontline training in Behavior-Based Safety, energy isolation (LOTO), and internal auditor coaching for lasting compliance.
-                </p>
-              </div>
-              <div className="p-3 rounded bg-white/[0.03] border border-white/5">
-                <span className="block font-mono text-[9.5px] uppercase tracking-wider text-safety-bright mb-1">STAGE OUTPUT</span>
-                <strong className="block text-xs text-slate-200">Governance System &amp; Workforce Competency</strong>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-safety hover:bg-safety-amber text-white text-sm font-bold transition-all shadow-lg"
-            >
-              <span>Initiate a Facility Scoping Review</span>
-              <ArrowRight size={16} />
-            </Link>
-            <Link
-              href="/approach"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-white/5 hover:bg-white/10 border border-white/15 text-white text-sm font-semibold transition-all"
-            >
-              <span>Explore Our Full Methodology</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Interactive Facility Risk Diagnostic Engine */}
-      <section className="py-20 lg:py-28 bg-[#FAF9F5] border-b border-limestone-200">
-        <div className="section-container">
-          <InteractiveRiskAssessment />
-        </div>
-      </section>
-
-      {/* 7. High-Hazard Industrial Sectors */}
-      <section className="py-20 lg:py-28 bg-[#101C24] text-white border-b border-white/10" id="industries">
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-5">
-              <div className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-widest text-safety-bright uppercase mb-3">
-                <span>04</span>
-                <span>/</span>
-                <span>SECTOR SPECIALIZATION</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
-                Engineered for your<br />
-                <span className="font-serif italic font-normal text-safety-bright">operational physics.</span>
-              </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-                A continuous batch chemical reactor faces fundamentally different failure modes than an automated high-bay fulfillment warehouse or a medium-voltage substation. We tailor our technical interventions directly to your sector&apos;s hazards and statutory obligations.
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Officially approved by the Directorate of Industrial Safety &amp; Health (Maharashtra). All audit reports are structured directly for statutory Factories Act compliance.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/industries"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-safety hover:bg-safety-amber text-white text-sm font-bold shadow-md transition-all"
-                >
-                  <span>Explore All Sectors</span>
-                  <ArrowRight size={15} />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-white/5 hover:bg-white/10 border border-white/15 text-white text-sm font-semibold transition-all"
-                >
-                  <span>Discuss Your Facility Profile</span>
-                </Link>
-              </div>
             </div>
 
-            <div className="lg:col-span-7 flex flex-col gap-3">
-              {industriesData.map((ind) => {
-                const Icon = iconMap[ind.iconName] || Factory;
-                return (
-                  <Link
-                    key={ind.title}
-                    href={`/industries#${ind.slug}`}
-                    className="p-5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-safety/50 hover:bg-white/[0.08] transition-all flex items-center justify-between gap-4 group"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="font-mono text-xs font-bold text-safety-bright">{ind.no}</span>
-                      <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-300 group-hover:text-safety-bright transition-colors">
-                        <Icon size={20} />
-                      </div>
-                      <div>
-                        <strong className="block text-sm font-bold text-white group-hover:text-safety-bright transition-colors">
-                          {ind.title}
-                        </strong>
-                        <span className="block text-xs text-slate-400 mt-0.5">{ind.tagline}</span>
-                      </div>
-                    </div>
-                    <ArrowUpRight size={16} className="text-slate-500 group-hover:text-safety-bright transition-colors shrink-0" />
-                  </Link>
-                );
-              })}
+            {/* Crystal Card 2 */}
+            <div className="crystal-card rounded-2xl p-6 sm:p-7 space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 shadow-2xs">
+                <Lock size={24} />
+              </div>
+              <div className="space-y-1">
+                <span className="font-mono text-[10px] font-bold text-sky-700 uppercase tracking-widest block">
+                  IP CONFIDENTIALITY
+                </span>
+                <h3 className="text-lg font-bold text-slate-900">
+                  Bilateral NDA Fortress
+                </h3>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Proprietary chemical flowsheets, reactor kinetics, P&amp;IDs, and plant layouts remain strictly quarantined under legally binding mutual non-disclosure agreements.
+              </p>
+            </div>
+
+            {/* Crystal Card 3 */}
+            <div className="crystal-card rounded-2xl p-6 sm:p-7 space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 shadow-2xs">
+                <Scale size={24} />
+              </div>
+              <div className="space-y-1">
+                <span className="font-mono text-[10px] font-bold text-sky-700 uppercase tracking-widest block">
+                  FIRST-PRINCIPLES RIGOR
+                </span>
+                <h3 className="text-lg font-bold text-slate-900">
+                  Zero Guesswork Engineering
+                </h3>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Quantitative consequence modeling, SIL safety instrumented loop allocation (IEC 61511), and hydraulic fire simulations grounded in established engineering physics.
+              </p>
+            </div>
+
+            {/* Crystal Card 4 */}
+            <div className="crystal-card rounded-2xl p-6 sm:p-7 space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 shadow-2xs">
+                <ShieldCheck size={24} />
+              </div>
+              <div className="space-y-1">
+                <span className="font-mono text-[10px] font-bold text-sky-700 uppercase tracking-widest block">
+                  THE 90% HUMAN FACTOR
+                </span>
+                <h3 className="text-lg font-bold text-slate-900">
+                  20,000+ Training M/Hrs
+                </h3>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Targeting frontline overconfidence and procedure shortcuts through multilingual, practical shop-floor Behavior-Based Safety (BBS) training.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 8. Representative Technical Practice Dossier */}
-      <section className="py-20 lg:py-28 bg-[#F3F1EA] border-b border-limestone-200">
-        <div className="section-container">
-          <div className="p-8 sm:p-12 rounded-2xl bg-white border border-limestone-200 shadow-xl">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-limestone-200 mb-8">
-              <div>
-                <div className="flex items-center gap-2.5 mb-2">
-                  <span className="font-mono text-xs font-bold text-safety tracking-wider">
-                    05 // REPRESENTATIVE TECHNICAL DOSSIER
-                  </span>
-                  <span className="font-mono text-[11px] px-2.5 py-0.5 rounded bg-limestone-100 text-slate-700 font-semibold">
-                    {featuredStudy.clientSector}
-                  </span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-graphite">{featuredStudy.title}</h3>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono text-xs font-bold shrink-0 self-start sm:self-center">
-                <Lock size={12} /> Bilateral NDA Protected
-              </div>
-            </div>
+      {/* 5. Six Core Practice Disciplines */}
+      <section className="py-16 sm:py-24 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-sky-600">
+              PRACTICE CAPABILITIES
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Single-Source Total Safety Solutions
+            </h2>
+            <p className="text-base text-slate-600 leading-relaxed">
+              From early plant layout approvals and HAZOP process studies to fire hydrant AMC, ETP troubleshooting, and frontline behavior training.
+            </p>
+          </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              <div className="lg:col-span-7 flex flex-col gap-6">
-                <div>
-                  <h4 className="font-mono text-xs font-bold tracking-wider text-slate-400 uppercase mb-2">
-                    Operational Context &amp; Challenge
-                  </h4>
-                  <p className="text-slate-700 text-sm leading-relaxed">{featuredStudy.challenge}</p>
-                </div>
-                <div>
-                  <h4 className="font-mono text-xs font-bold tracking-wider text-slate-400 uppercase mb-2">
-                    HESAONE Technical Intervention
-                  </h4>
-                  <p className="text-slate-700 text-sm leading-relaxed">{featuredStudy.solution}</p>
-                </div>
-                <Link
-                  href="/case-studies"
-                  className="inline-flex items-center gap-2 text-sm font-bold text-safety hover:text-safety-amber pt-2"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {servicesData.map((svc) => {
+              const Icon = iconMap[svc.iconName] || ShieldCheck;
+              return (
+                <div
+                  key={svc.slug}
+                  className="crystal-card rounded-2xl p-6 sm:p-8 space-y-5 flex flex-col justify-between group"
                 >
-                  <span>Explore All Representative Practice Scopes</span>
-                  <ArrowRight size={15} />
-                </Link>
-              </div>
-
-              <div className="lg:col-span-5 p-6 rounded-xl bg-limestone-50 border border-limestone-200">
-                <h4 className="font-mono text-xs font-bold tracking-wider text-slate-400 uppercase mb-4">
-                  Documented Outcomes &amp; Metrics
-                </h4>
-
-                <div className="grid grid-cols-3 gap-3 mb-6">
-                  {featuredStudy.metrics.map((m) => (
-                    <div key={m.label} className="p-3 rounded bg-white border border-limestone-200 text-center">
-                      <b className="block font-mono text-xs text-graphite mb-1">{m.value}</b>
-                      <small className="block text-[10px] text-slate-500 leading-tight">{m.label}</small>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                        <Icon size={24} />
+                      </div>
+                      <span className="font-mono text-xs font-bold text-slate-400">
+                        {svc.no}
+                      </span>
                     </div>
-                  ))}
+
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
+                      {svc.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      {svc.shortDesc}
+                    </p>
+
+                    <div className="pt-2 border-t border-slate-100">
+                      <span className="font-mono text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-2">
+                        KEY SCOPE &amp; DELIVERABLES:
+                      </span>
+                      <ul className="space-y-1.5 text-xs text-slate-700">
+                        {svc.deliverables.slice(0, 3).map((d) => (
+                          <li key={d} className="flex items-start gap-1.5">
+                            <span className="text-sky-600 font-bold">&rsaquo;</span>
+                            <span className="line-clamp-1">{d}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <Link
+                      href={`/services/${svc.slug}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 hover:text-sky-600 transition-colors"
+                    >
+                      <span>Explore Technical Scope</span>
+                      <ArrowRight size={13} className="text-sky-600" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. The HESAONE Training Philosophy (The 90% Factor) with Crystal Highlight */}
+      <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="crystal-panel rounded-3xl p-8 sm:p-12 lg:p-14 shadow-md">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              {/* Left Column: Thesis Narrative */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full crystal-pill text-sky-900 text-xs font-mono font-semibold tracking-wide">
+                  <BookOpen size={13} className="text-sky-600" />
+                  <span>CORE TRAINING PHILOSOPHY</span>
                 </div>
 
-                <ul className="flex flex-col gap-2.5 text-xs text-slate-700">
-                  {featuredStudy.results.map((res) => (
-                    <li key={res} className="flex items-start gap-2.5">
-                      <CheckCircle2 size={15} className="text-safety shrink-0 mt-0.5" />
-                      <span>{res}</span>
-                    </li>
-                  ))}
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
+                  &ldquo;Almost 90% of industrial accidents belong to lack of awareness &amp; overconfidence of working people.&rdquo;
+                </h2>
+
+                <p className="text-base text-slate-600 leading-relaxed">
+                  Engineering safeguards alone cannot prevent mishaps if operating personnel bypass procedures or fail to recognize dynamic risks. This is why practical, competency-driven safety training is the central pillar of HESAONE’s advisory methodology.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
+                    <span className="font-mono text-xl font-bold text-sky-600">20,000+ M/Hrs</span>
+                    <p className="text-xs text-slate-600">Delivered across chemical, pharma, automotive, and polymer industries.</p>
+                  </div>
+                  <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
+                    <span className="font-mono text-xl font-bold text-slate-900">Multilingual</span>
+                    <p className="text-xs text-slate-600">Conducted in Hindi, Marathi, and English for direct frontline resonance.</p>
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <Link
+                    href="/services/training-awareness"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-semibold hover:bg-slate-800 transition-colors shadow-sm"
+                  >
+                    <span>View Specialized Training Modules</span>
+                    <ArrowRight size={14} className="text-sky-400" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Column: Key Training Focus Areas */}
+              <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 space-y-4 shadow-sm">
+                <span className="font-mono text-xs font-bold text-sky-700 uppercase tracking-wider block border-b border-slate-100 pb-2.5">
+                  SPECIALIZED TRAINING TOPICS (PDF SPECIFIED)
+                </span>
+                <ul className="space-y-3 text-xs text-slate-700">
+                  <li className="flex items-start gap-2.5">
+                    <CheckCircle2 size={15} className="text-sky-600 shrink-0 mt-0.5" />
+                    <span><strong>Behavior-Based Safety (BBS):</strong> Shift observation routines, positive reinforcement, and eliminating unsafe acts.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <CheckCircle2 size={15} className="text-sky-600 shrink-0 mt-0.5" />
+                    <span><strong>Fire Safety &amp; Drills:</strong> Hydrant operations, emergency evacuation simulations, and live extinguisher discharge.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <CheckCircle2 size={15} className="text-sky-600 shrink-0 mt-0.5" />
+                    <span><strong>Chemical Hazards &amp; MSDS/SDS:</strong> Toxic vapor handling, chemical incompatibility, and spill containment.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <CheckCircle2 size={15} className="text-sky-600 shrink-0 mt-0.5" />
+                    <span><strong>Permit-to-Work (PTW):</strong> Confined space entry, hot work, height authorization, and Lockout/Tagout (LOTO).</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <CheckCircle2 size={15} className="text-sky-600 shrink-0 mt-0.5" />
+                    <span><strong>Electrical Safety:</strong> High-voltage substation precautions, arc flash avoidance, and grounding verification.</span>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -494,11 +366,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. Executive Consultation CTA Banner */}
+      {/* 7. Interactive Risk Readiness Assessment (Crystal Section) */}
+      <section className="py-16 sm:py-24 crystal-section-bg border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-sky-600">
+              SELF-ASSESSMENT TOOL
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Evaluate Your Plant Risk Profile
+            </h2>
+            <p className="text-sm text-slate-600">
+              Select your sector and immediate compliance target to receive tailored engineering recommendations.
+            </p>
+          </div>
+
+          <InteractiveRiskAssessment />
+        </div>
+      </section>
+
+      {/* 8. Corporate Social Responsibility (Anal Foundation) */}
+      <section className="py-16 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-sky-50/70 border border-sky-200 rounded-2xl p-6 sm:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-sky-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                <HeartHandshake size={24} />
+              </div>
+              <div className="space-y-1">
+                <span className="font-mono text-[11px] font-bold text-sky-800 uppercase tracking-wider">
+                  COMMUNITY GIVING &bull; ANAL FOUNDATION
+                </span>
+                <h3 className="text-xl font-bold text-slate-900">
+                  Free Community Seminars &amp; Workplace HSE Orientation
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
+                  Under the &ldquo;Anal Foundation&rdquo; CSR banner, HESAONE provides free community seminars for Domestic Safety, Home Electrical Protection, and Road Safety, alongside free workplace orientation to help small and medium units establish basic safety consciousness.
+                </p>
+              </div>
+            </div>
+            <Link
+              href="/contact?priority=Anal%20Foundation%20CSR%20Inquiry"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-600 text-white text-xs font-semibold hover:bg-sky-700 transition-colors shrink-0 shadow-xs"
+            >
+              <span>Learn About CSR Programs</span>
+              <ArrowUpRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Technical Consultation CTA */}
       <CTASection
-        title="Start a confidential technical dialogue with HESAONE."
-        subtitle="Tell us about your facility, expansion scope, or upcoming statutory audit milestones. Our lead safety engineers provide scoped, objective guidance under bilateral NDA."
-        primaryBtnText="Request a Technical Consultation"
+        title="Schedule a preliminary plant audit or technical scoping discussion."
+        subtitle="Connect with our DISH Approved safety auditors and process safety consultants. Inquiries reviewed under mutual NDA."
+        primaryBtnText="Initiate Facility Scope"
         primaryBtnLink="/contact"
       />
     </div>
